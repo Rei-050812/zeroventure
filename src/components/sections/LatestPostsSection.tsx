@@ -1,0 +1,206 @@
+'use client'
+
+import Link from 'next/link'
+import { Calendar, ArrowRight, Tag } from 'lucide-react'
+import { AnimatedElement } from '@/components/ui/AnimatedElement'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
+import { fadeUp, containerStagger } from '@/lib/animations'
+
+// Mock data for latest posts (この部分は後でSanityから取得)
+const latestPosts = {
+  blog: [
+    {
+      id: '1',
+      title: 'Next.js 15の新機能とパフォーマンス改善のポイント',
+      summary: 'Next.js 15で追加された新機能と、パフォーマンス向上のための実装方法について解説します。',
+      publishedAt: '2024-01-15',
+      category: '技術',
+      tags: ['Next.js', 'React', 'Performance'],
+      type: 'blog'
+    },
+    {
+      id: '2',
+      title: 'ベンチャー企業がWebサイトで成果を出すための5つのポイント',
+      summary: 'スタートアップ・ベンチャー企業がWebサイトを活用してビジネス成果を最大化するための実践的なアドバイス。',
+      publishedAt: '2024-01-10',
+      category: 'マーケティング',
+      tags: ['マーケティング', 'CVR', 'ベンチャー'],
+      type: 'blog'
+    }
+  ],
+  news: [
+    {
+      id: '1',
+      title: '年末年始休業のお知らせ',
+      summary: '2024年12月29日〜2025年1月3日まで年末年始休業とさせていただきます。',
+      publishedAt: '2024-12-20',
+      category: '重要',
+      type: 'news'
+    }
+  ]
+}
+
+function PostCard({ post }: { post: any }) {
+  const href = `/${post.type}/${post.id}`
+
+  return (
+    <Card className="group h-full">
+      <CardHeader>
+        <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+          <Calendar size={16} />
+          {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+          {post.category && (
+            <>
+              <span>•</span>
+              <span className="text-primary">{post.category}</span>
+            </>
+          )}
+        </div>
+        <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
+          {post.title}
+        </CardTitle>
+        <CardDescription className="line-clamp-3">
+          {post.summary}
+        </CardDescription>
+      </CardHeader>
+
+      {post.tags && (
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {post.tags.slice(0, 3).map((tag: string, index: number) => (
+              <span
+                key={index}
+                className="inline-flex items-center gap-1 text-xs bg-white/10 text-gray-300 px-2 py-1 rounded"
+              >
+                <Tag size={10} />
+                {tag}
+              </span>
+            ))}
+          </div>
+        </CardContent>
+      )}
+
+      <CardFooter>
+        <Link
+          href={href}
+          className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
+        >
+          続きを読む
+          <ArrowRight size={14} />
+        </Link>
+      </CardFooter>
+    </Card>
+  )
+}
+
+export function LatestPostsSection() {
+  return (
+    <section className="py-24 bg-gray-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedElement
+          variants={containerStagger}
+          className="space-y-16"
+        >
+          {/* Section Header */}
+          <div className="text-center">
+            <AnimatedElement variants={fadeUp}>
+              <h2 className="text-4xl font-bold text-white mb-6">
+                Latest Posts
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                技術情報やお知らせなど
+                <br />
+                最新の情報をお届け
+              </p>
+            </AnimatedElement>
+          </div>
+
+          {/* Blog Posts */}
+          <div>
+            <AnimatedElement variants={fadeUp} className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-white">Blog</h3>
+              <Link
+                href="/blog"
+                className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
+              >
+                すべてのブログを見る
+                <ArrowRight size={16} />
+              </Link>
+            </AnimatedElement>
+
+            <AnimatedElement
+              variants={containerStagger}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              {latestPosts.blog.map((post, index) => (
+                <AnimatedElement key={post.id} variants={fadeUp}>
+                  <PostCard post={post} />
+                </AnimatedElement>
+              ))}
+            </AnimatedElement>
+          </div>
+
+          {/* News */}
+          <div>
+            <AnimatedElement variants={fadeUp} className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-white">News</h3>
+              <Link
+                href="/news"
+                className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
+              >
+                すべてのお知らせを見る
+                <ArrowRight size={16} />
+              </Link>
+            </AnimatedElement>
+
+            <AnimatedElement variants={containerStagger}>
+              {latestPosts.news.map((post, index) => (
+                <AnimatedElement key={post.id} variants={fadeUp}>
+                  <div className="border-b border-white/10 pb-4">
+                    <div className="flex items-start gap-4">
+                      <div className="text-sm text-gray-400 min-w-[100px]">
+                        {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+                      </div>
+                      <div className="flex-1">
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="text-white hover:text-primary transition-colors duration-200 font-medium"
+                        >
+                          {post.title}
+                        </Link>
+                        {post.category && (
+                          <span className="ml-2 text-xs bg-primary text-black px-2 py-1 rounded">
+                            {post.category}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedElement>
+              ))}
+            </AnimatedElement>
+          </div>
+
+          {/* CTA */}
+          <AnimatedElement variants={fadeUp} className="text-center pt-8">
+            <div className="bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-lg p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                プロジェクトを始めませんか？
+              </h3>
+              <p className="text-gray-300 mb-6">
+                お気軽にお問い合わせください。無料でご相談承ります。
+              </p>
+              <Button size="lg">
+                <Link href="/contact" className="flex items-center gap-2">
+                  お問い合わせ
+                  <ArrowRight size={20} />
+                </Link>
+              </Button>
+            </div>
+          </AnimatedElement>
+        </AnimatedElement>
+      </div>
+    </section>
+  )
+}
