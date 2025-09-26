@@ -1,11 +1,13 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Calendar, ArrowRight, Tag } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
+import { getLatestPosts, getLatestNews } from '@/lib/sanity'
 
 // Mock data for latest posts (この部分は後でSanityから取得)
 const latestPosts = {
@@ -95,6 +97,42 @@ function PostCard({ post }: { post: any }) {
 }
 
 export function LatestPostsSection() {
+  const [posts, setPosts] = useState({ blog: [], news: [] })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadContent() {
+      try {
+        const [blogPosts, newsItems] = await Promise.all([
+          getLatestPosts(),
+          getLatestNews()
+        ])
+
+        setPosts({
+          blog: blogPosts.length > 0 ? blogPosts : latestPosts.blog,
+          news: newsItems.length > 0 ? newsItems : latestPosts.news
+        })
+      } catch (error) {
+        console.log('Using fallback data:', error)
+        setPosts(latestPosts)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadContent()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="py-24 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-white">Loading posts...</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,7 +171,7 @@ export function LatestPostsSection() {
               variants={containerStagger}
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
-              {latestPosts.blog.map((post, index) => (
+              {posts.blog.map((post, index) => (
                 <AnimatedElement key={post.id || `blog-${index}`} variants={fadeUp}>
                   <PostCard post={post} />
                 </AnimatedElement>
@@ -155,7 +193,7 @@ export function LatestPostsSection() {
             </AnimatedElement>
 
             <AnimatedElement variants={containerStagger}>
-              {latestPosts.news.map((post, index) => (
+              {posts.news.map((post, index) => (
                 <AnimatedElement key={post.id || `news-${index}`} variants={fadeUp}>
                   <div className="border-b border-white/10 pb-4">
                     <div className="flex items-start gap-4">

@@ -8,7 +8,7 @@ import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { getFeaturedWorks, urlFor } from '@/lib/sanity'
+import { getFeaturedWorks, getWorks, urlFor } from '@/lib/sanity'
 
 // Mock data for featured works (fallback when Sanity is not available)
 const mockWorks = [
@@ -48,15 +48,31 @@ export function WorksSection() {
   useEffect(() => {
     async function loadWorks() {
       try {
+        console.log('WorksSection: Fetching featured works from Sanity...')
         const sanityWorks = await getFeaturedWorks()
-        if (sanityWorks.length > 0) {
-          setWorks(sanityWorks)
+        console.log('WorksSection: Featured works data:', sanityWorks)
+
+        // featuredがない場合は通常のworksも取得してみる
+        if (sanityWorks.length === 0) {
+          console.log('WorksSection: No featured works found, trying all works...')
+          const allWorks = await getWorks()
+          console.log('WorksSection: All works data:', allWorks)
+
+          if (allWorks.length > 0) {
+            // 最初の3つを表示
+            setWorks(allWorks.slice(0, 3))
+            console.log('WorksSection: Using first 3 works from all works')
+          } else {
+            console.log('WorksSection: No works found, using mock data')
+            setWorks(mockWorks)
+          }
         } else {
-          // Fallback to mock data if no Sanity data
-          setWorks(mockWorks)
+          console.log('WorksSection: Using featured works data')
+          setWorks(sanityWorks)
         }
       } catch (error) {
-        console.log('Using fallback data:', error)
+        console.error('WorksSection: Error fetching data:', error)
+        console.log('WorksSection: Using fallback data')
         setWorks(mockWorks)
       } finally {
         setLoading(false)
