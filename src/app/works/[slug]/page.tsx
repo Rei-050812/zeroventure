@@ -42,8 +42,9 @@ const getWorkBySlug = async (slug: string) => {
   return works.find(work => work.slug.current === slug)
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const work = await getWorkBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const work = await getWorkBySlug(slug)
 
   if (!work) {
     return {
@@ -57,8 +58,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function WorkDetailPageRoute({ params }: { params: { slug: string } }) {
-  const work = await getWorkBySlug(params.slug)
+export default async function WorkDetailPageRoute({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const work = await getWorkBySlug(slug)
 
   if (!work) {
     notFound()

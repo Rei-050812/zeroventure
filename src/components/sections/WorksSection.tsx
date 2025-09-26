@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ExternalLink, ArrowRight } from 'lucide-react'
@@ -7,9 +8,10 @@ import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
+import { getFeaturedWorks, urlFor } from '@/lib/sanity'
 
-// Mock data for featured works (この部分は後でSanityから取得)
-const featuredWorks = [
+// Mock data for featured works (fallback when Sanity is not available)
+const mockWorks = [
   {
     id: '1',
     title: 'TechStartup LP',
@@ -40,6 +42,40 @@ const featuredWorks = [
 ]
 
 export function WorksSection() {
+  const [works, setWorks] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadWorks() {
+      try {
+        const sanityWorks = await getFeaturedWorks()
+        if (sanityWorks.length > 0) {
+          setWorks(sanityWorks)
+        } else {
+          // Fallback to mock data if no Sanity data
+          setWorks(mockWorks)
+        }
+      } catch (error) {
+        console.log('Using fallback data:', error)
+        setWorks(mockWorks)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadWorks()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="py-24 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-white">Loading works...</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,19 +102,28 @@ export function WorksSection() {
             variants={containerStagger}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {featuredWorks.map((work, index) => (
-              <AnimatedElement key={work.id} variants={fadeUp}>
+            {works.map((work, index) => (
+              <AnimatedElement key={work.id || `work-${index}`} variants={fadeUp}>
                 <Card className="group overflow-hidden">
                   {/* Cover Image */}
                   <div className="aspect-video bg-gray-800 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        {work.title}
-                      </span>
-                    </div>
+                    {work.coverImage ? (
+                      <Image
+                        src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
+                        alt={work.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">
+                          {work.title}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute top-4 right-4">
                       <span className="bg-primary text-black text-xs px-2 py-1 rounded-full font-medium">
-                        {work.category}
+                        {work.category || 'Web制作'}
                       </span>
                     </div>
                   </div>
@@ -94,9 +139,9 @@ export function WorksSection() {
 
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {work.techStack.map((tech, techIndex) => (
+                      {work.techStack?.map((tech, techIndex) => (
                         <span
-                          key={techIndex}
+                          key={`${work.id || index}-tech-${techIndex}-${tech}`}
                           className="text-xs bg-white/10 text-gray-300 px-2 py-1 rounded"
                         >
                           {tech}

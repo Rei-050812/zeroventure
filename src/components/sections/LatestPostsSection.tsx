@@ -134,7 +134,7 @@ export function LatestPostsSection() {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               {latestPosts.blog.map((post, index) => (
-                <AnimatedElement key={post.id} variants={fadeUp}>
+                <AnimatedElement key={post.id || `blog-${index}`} variants={fadeUp}>
                   <PostCard post={post} />
                 </AnimatedElement>
               ))}
@@ -156,7 +156,7 @@ export function LatestPostsSection() {
 
             <AnimatedElement variants={containerStagger}>
               {latestPosts.news.map((post, index) => (
-                <AnimatedElement key={post.id} variants={fadeUp}>
+                <AnimatedElement key={post.id || `news-${index}`} variants={fadeUp}>
                   <div className="border-b border-white/10 pb-4">
                     <div className="flex items-start gap-4">
                       <div className="text-sm text-gray-400 min-w-[100px]">
