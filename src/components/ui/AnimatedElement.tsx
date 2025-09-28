@@ -12,7 +12,7 @@ interface AnimatedElementProps extends MotionProps {
   reducedMotionFallback?: 'fade' | 'none'
 }
 
-export const AnimatedElement = forwardRef<HTMLElement, AnimatedElementProps>(
+export const AnimatedElement = forwardRef<any, AnimatedElementProps>(
   ({
     children,
     variants,

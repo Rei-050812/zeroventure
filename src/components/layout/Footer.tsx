@@ -9,32 +9,31 @@ const footerLinks = {
   services: {
     title: 'サービス',
     links: [
-      { name: 'LP制作', href: '/services/landing-page' },
-      { name: 'コーポレートサイト', href: '/services/corporate' },
-      { name: 'ブランディング', href: '/services/branding' },
+      { name: 'サービス一覧', href: '/services' },
+      { name: '料金プラン', href: '/pricing' },
+      { name: '制作実績', href: '/works' },
     ]
   },
   company: {
     title: '会社情報',
     links: [
-      { name: '会社概要', href: '/about' },
-      { name: 'プライバシーポリシー', href: '/privacy' },
-      { name: '特定商取引法', href: '/legal' },
+      { name: 'プロフィール', href: '/about' },
+      { name: 'お問い合わせ', href: '/contact' },
+      { name: '法的事項', href: '/legal' },
     ]
   },
   content: {
     title: 'コンテンツ',
     links: [
-      { name: '制作実績', href: '/works' },
       { name: 'ブログ', href: '/blog' },
-      { name: 'お知らせ', href: '/news' },
+      { name: 'ニュース', href: '/news' },
     ]
   }
 }
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white border-t border-white/10">
+    <footer className="bg-gray-900 text-white border-t border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <AnimatedElement
           variants={containerStagger}
@@ -43,16 +42,12 @@ export function Footer() {
           {/* Company Info */}
           <AnimatedElement variants={fadeUp} className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4">ZEROVENTURE</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                <span className="text-white">ZERO</span><span style={{ color: '#4CC9F0' }}>VENTURE</span>
+              </h3>
               <p className="text-gray-300 text-sm mb-4">
                 ゼロから始めるベンチャーのためのブランディング・WEB制作パートナー
               </p>
-              <Link
-                href="/contact"
-                className="bg-primary text-black px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors duration-200 inline-block"
-              >
-                お問い合わせ
-              </Link>
             </div>
           </AnimatedElement>
 

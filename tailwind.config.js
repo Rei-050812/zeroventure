@@ -11,6 +11,7 @@ module.exports = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: 'var(--primary)',
+        'primary-hover': 'var(--primary-hover)',
       },
       fontFamily: {
         sans: ['"Noto Sans JP"', 'Arial', 'Helvetica', 'sans-serif'],

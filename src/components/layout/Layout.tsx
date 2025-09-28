@@ -12,7 +12,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <MotionProvider>
-      <div className="min-h-screen bg-black text-white flex flex-col">
+      <div className="min-h-screen bg-white text-slate-900 flex flex-col">
         <Header />
         <main className="flex-1 pt-16">
           {children}

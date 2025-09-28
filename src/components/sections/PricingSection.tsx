@@ -74,7 +74,7 @@ const processSteps = [
 
 export function PricingSection() {
   return (
-    <section className="py-24 bg-black">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -83,10 +83,10 @@ export function PricingSection() {
           {/* Pricing Header */}
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">
                 Pricing
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 シンプルで分かりやすい料金体系
                 <br />
                 追加費用は一切なし
@@ -105,7 +105,7 @@ export function PricingSection() {
                   className={`relative ${
                     plan.popular
                       ? 'border-primary bg-primary/5'
-                      : 'border-white/10'
+                      : 'border-gray-200'
                   }`}
                 >
                   {plan.popular && (
@@ -125,7 +125,7 @@ export function PricingSection() {
                       <span className="text-4xl font-bold text-primary">
                         ¥{plan.price}
                       </span>
-                      <span className="text-gray-400 ml-2">
+                      <span className="text-slate-500 ml-2">
                         {plan.period}
                       </span>
                     </div>
@@ -135,7 +135,7 @@ export function PricingSection() {
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
+                        <span className="text-slate-600">{feature}</span>
                       </div>
                     ))}
                   </CardContent>
@@ -160,10 +160,10 @@ export function PricingSection() {
           {/* Process Flow */}
           <div className="pt-16">
             <AnimatedElement variants={fadeUp} className="text-center mb-16">
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">
                 Process Flow
               </h3>
-              <p className="text-gray-300">
+              <p className="text-slate-600">
                 制作の流れ
               </p>
             </AnimatedElement>
@@ -183,13 +183,13 @@ export function PricingSection() {
                         {step.step}
                       </span>
                     </div>
-                    <h4 className="text-xl font-semibold text-white">
+                    <h4 className="text-xl font-semibold text-slate-900">
                       {step.title}
                     </h4>
                     <p className="text-primary font-medium">
                       {step.description}
                     </p>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       {step.detail}
                     </p>
                   </div>

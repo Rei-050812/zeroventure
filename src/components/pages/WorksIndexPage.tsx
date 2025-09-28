@@ -88,7 +88,7 @@ export function WorksIndexPage() {
     : allWorks.filter(work => work.category === activeCategory)
 
   return (
-    <div className="min-h-screen bg-black text-white pt-24">
+    <div className="min-h-screen bg-white text-slate-900 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -100,7 +100,7 @@ export function WorksIndexPage() {
               <h1 className="text-4xl sm:text-5xl font-bold mb-6">
                 Works
               </h1>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 これまでに手がけた制作実績をご紹介
                 <br />
                 様々な業界・規模のプロジェクトに対応
@@ -118,7 +118,7 @@ export function WorksIndexPage() {
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
                     activeCategory === category
                       ? 'bg-primary text-black'
-                      : 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-gray-100 text-slate-700 hover:bg-gray-200'
                   }`}
                 >
                   {category}
@@ -138,7 +138,7 @@ export function WorksIndexPage() {
                   {/* Cover Image */}
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-600/20 relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg text-center px-4">
+                      <span className="text-slate-900 font-bold text-lg text-center px-4">
                         {work.title}
                       </span>
                     </div>
@@ -147,7 +147,7 @@ export function WorksIndexPage() {
                         {work.category}
                       </span>
                       {work.featured && (
-                        <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full font-medium">
+                        <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
                           Featured
                         </span>
                       )}
@@ -167,14 +167,14 @@ export function WorksIndexPage() {
                     <div className="space-y-4">
                       {/* Tech Stack */}
                       <div>
-                        <h4 className="text-sm font-medium text-gray-300 mb-2">
+                        <h4 className="text-sm font-medium text-slate-600 mb-2">
                           使用技術
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {work.techStack.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="text-xs bg-white/10 text-gray-300 px-2 py-1 rounded"
+                              className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded"
                             >
                               {tech}
                             </span>
@@ -201,7 +201,7 @@ export function WorksIndexPage() {
                         href={work.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-1"
+                        className="text-slate-500 hover:text-slate-700 transition-colors duration-200 flex items-center gap-1"
                       >
                         <ExternalLink size={16} />
                         <span className="text-sm">サイトを見る</span>
@@ -216,12 +216,12 @@ export function WorksIndexPage() {
           {/* CTA Section */}
           <AnimatedElement variants={fadeUp} className="text-center py-16">
             <div className="bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-lg p-8 max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">
                 あなたのプロジェクトも
                 <br />
                 実績に加えませんか？
               </h3>
-              <p className="text-gray-300 mb-6 text-lg">
+              <p className="text-slate-600 mb-6 text-lg">
                 無料相談でプロジェクトの可能性を一緒に探りましょう
               </p>
               <Button size="lg">

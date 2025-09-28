@@ -54,7 +54,7 @@ const faqItems = [
 
 export function ContactPage() {
   return (
-    <div className="min-h-screen bg-black text-white pt-24">
+    <div className="min-h-screen bg-white text-slate-900 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -66,7 +66,7 @@ export function ContactPage() {
               <h1 className="text-4xl sm:text-5xl font-bold mb-6">
                 Contact
               </h1>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 プロジェクトのご相談・お見積もりは
                 <br />
                 お気軽にお問い合わせください
@@ -83,7 +83,7 @@ export function ContactPage() {
                     <CardTitle className="text-2xl">
                       お問い合わせフォーム
                     </CardTitle>
-                    <p className="text-gray-300">
+                    <p className="text-slate-600">
                       下記フォームに必要事項をご入力の上、送信してください。
                     </p>
                   </CardHeader>
@@ -109,13 +109,13 @@ export function ContactPage() {
                           <info.icon className="w-5 h-5 text-primary" />
                         </div>
                         <div>
-                          <h4 className="font-medium text-white mb-1">
+                          <h4 className="font-medium text-slate-900 mb-1">
                             {info.title}
                           </h4>
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-slate-700 font-medium">
                             {info.content}
                           </p>
-                          <p className="text-gray-400 text-sm">
+                          <p className="text-slate-500 text-sm">
                             {info.description}
                           </p>
                         </div>
@@ -135,10 +135,10 @@ export function ContactPage() {
                     <div className="space-y-6">
                       {faqItems.map((item, index) => (
                         <div key={index} className="border-b border-white/10 pb-4 last:border-b-0 last:pb-0">
-                          <h4 className="font-medium text-white mb-2">
+                          <h4 className="font-medium text-slate-900 mb-2">
                             Q. {item.question}
                           </h4>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-slate-600 text-sm">
                             A. {item.answer}
                           </p>
                         </div>
@@ -153,10 +153,10 @@ export function ContactPage() {
           {/* Additional Info */}
           <AnimatedElement variants={fadeUp} className="text-center py-16 border-t border-white/10">
             <div className="max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 無料相談も承っております
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-slate-600 text-lg leading-relaxed">
                 プロジェクトの詳細が決まっていない段階でも、お気軽にご相談ください。
                 <br />
                 お客様のビジネスに最適なソリューションをご提案いたします。

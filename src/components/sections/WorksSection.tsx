@@ -10,8 +10,19 @@ import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
 import { getFeaturedWorks, getWorks, urlFor } from '@/lib/sanity'
 
+// Types
+interface Work {
+  id: string
+  title: string
+  summary: string
+  techStack: string[]
+  coverImage: string
+  url: string
+  category: string
+}
+
 // Mock data for featured works (fallback when Sanity is not available)
-const mockWorks = [
+const mockWorks: Work[] = [
   {
     id: '1',
     title: 'TechStartup LP',
@@ -42,7 +53,7 @@ const mockWorks = [
 ]
 
 export function WorksSection() {
-  const [works, setWorks] = useState([])
+  const [works, setWorks] = useState<Work[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -84,16 +95,16 @@ export function WorksSection() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-gray-950">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white">Loading works...</p>
+          <p className="text-slate-900">Loading works...</p>
         </div>
       </section>
     )
   }
 
   return (
-    <section className="py-24 bg-gray-950">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -102,10 +113,10 @@ export function WorksSection() {
           {/* Section Header */}
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">
                 Featured Works
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 これまでに手がけた
                 <br />
                 注目の制作実績をご紹介
@@ -122,7 +133,7 @@ export function WorksSection() {
               <AnimatedElement key={work.id || `work-${index}`} variants={fadeUp}>
                 <Card className="group overflow-hidden">
                   {/* Cover Image */}
-                  <div className="aspect-video bg-gray-800 relative overflow-hidden">
+                  <div className="aspect-video bg-gray-200 relative overflow-hidden">
                     {work.coverImage ? (
                       <Image
                         src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
@@ -132,13 +143,13 @@ export function WorksSection() {
                       />
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">
+                        <span className="text-slate-700 font-bold text-lg">
                           {work.title}
                         </span>
                       </div>
                     )}
                     <div className="absolute top-4 right-4">
-                      <span className="bg-primary text-black text-xs px-2 py-1 rounded-full font-medium">
+                      <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
                         {work.category || 'Web制作'}
                       </span>
                     </div>
@@ -158,7 +169,7 @@ export function WorksSection() {
                       {work.techStack?.map((tech, techIndex) => (
                         <span
                           key={`${work.id || index}-tech-${techIndex}-${tech}`}
-                          className="text-xs bg-white/10 text-gray-300 px-2 py-1 rounded"
+                          className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
                         >
                           {tech}
                         </span>
@@ -178,7 +189,7 @@ export function WorksSection() {
                         href={work.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors duration-200"
+                        className="text-slate-400 hover:text-slate-600 transition-colors duration-200"
                       >
                         <ExternalLink size={16} />
                       </a>

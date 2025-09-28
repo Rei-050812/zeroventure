@@ -10,7 +10,10 @@ import { slideInFromLeft, fade } from '@/lib/animations'
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'Profile', href: '/about' },
+  { name: 'Services', href: '/services' },
   { name: 'Works', href: '/works' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Blog', href: '/blog' },
   { name: 'News', href: '/news' },
   { name: 'Contact', href: '/contact' },
@@ -34,8 +37,8 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out',
         isScrolled
-          ? 'h-12 bg-black/90 backdrop-blur-md border-b border-white/10'
-          : 'h-16 bg-transparent'
+          ? 'h-12 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 shadow-sm'
+          : 'h-16 bg-gray-900/80 backdrop-blur-sm'
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -44,8 +47,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo */}
-          <Link href="/" className="font-bold text-xl text-white">
-            ZEROVENTURE
+          <Link href="/" className="font-bold text-xl">
+            <span className="text-white">ZERO</span><span style={{ color: '#4CC9F0' }}>VENTURE</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,19 +65,6 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Desktop */}
-          <motion.div
-            className="hidden md:block"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              href="/contact"
-              className="bg-primary text-black px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors duration-200"
-            >
-              お問い合わせ
-            </Link>
-          </motion.div>
 
           {/* Mobile menu button */}
           <button
@@ -95,7 +85,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-b border-white/10"
+            className="md:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 shadow-lg"
           >
             <nav className="px-4 py-6">
               <motion.div
@@ -125,15 +115,6 @@ export function Header() {
                     </Link>
                   </AnimatedElement>
                 ))}
-                <AnimatedElement variants={fade} as="div" className="pt-4">
-                  <Link
-                    href="/contact"
-                    className="bg-primary text-black px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors duration-200 inline-block text-center w-full"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    お問い合わせ
-                  </Link>
-                </AnimatedElement>
               </motion.div>
             </nav>
           </motion.div>

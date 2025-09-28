@@ -45,7 +45,7 @@ const features = [
 
 export function ServicesSection() {
   return (
-    <section className="py-24 bg-black">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -54,10 +54,10 @@ export function ServicesSection() {
           {/* Section Header */}
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">
                 Services
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 ベンチャー企業の成長を加速する
                 <br />
                 最適なWebソリューションを提供
@@ -87,7 +87,7 @@ export function ServicesSection() {
                   <CardContent>
                     <ul className="space-y-2">
                       {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-2 text-gray-300">
+                        <li key={featureIndex} className="flex items-center gap-2 text-slate-600">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                           {feature}
                         </li>
@@ -102,10 +102,10 @@ export function ServicesSection() {
           {/* Features Grid */}
           <div className="pt-16">
             <AnimatedElement variants={fadeUp} className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">
                 Why Choose Us?
               </h3>
-              <p className="text-gray-300">
+              <p className="text-slate-600">
                 ZEROVENTUREが選ばれる理由
               </p>
             </AnimatedElement>
@@ -120,10 +120,10 @@ export function ServicesSection() {
                     <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
                       <feature.icon className="w-8 h-8 text-primary" />
                     </div>
-                    <h4 className="text-xl font-semibold text-white">
+                    <h4 className="text-xl font-semibold text-slate-900">
                       {feature.title}
                     </h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

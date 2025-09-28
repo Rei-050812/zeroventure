@@ -1,11 +1,11 @@
 'use client'
 
 import { forwardRef, ButtonHTMLAttributes } from 'react'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { useMotionContext } from '@/providers/MotionProvider'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   href?: string
@@ -28,7 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const variantClasses = {
       primary: 'bg-primary text-black hover:bg-primary/90',
       secondary: 'bg-white text-black hover:bg-gray-100',
-      outline: 'border border-white text-white hover:bg-white hover:text-black',
+      outline: 'border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white',
       ghost: 'text-white hover:bg-white/10'
     }
 

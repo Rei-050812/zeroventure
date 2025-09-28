@@ -132,10 +132,10 @@ export function ContactForm() {
           <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-8 h-8 text-green-500" />
           </div>
-          <h3 className="text-2xl font-bold text-white mb-4">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
             送信完了
           </h3>
-          <p className="text-gray-300 mb-6">
+          <p className="text-slate-600 mb-6">
             お問い合わせありがとうございます。
             <br />
             24時間以内にご返信いたします。
@@ -163,7 +163,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
               お名前 <span className="text-red-400">*</span>
             </label>
             <input
@@ -173,8 +173,8 @@ export function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               className={cn(
-                "w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
-                errors.name ? "border-red-500" : "border-white/20 focus:border-primary"
+                "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
+                errors.name ? "border-red-500" : "border-gray-300 focus:border-primary"
               )}
               placeholder="山田 太郎"
             />
@@ -189,7 +189,7 @@ export function ContactForm() {
 
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
               メールアドレス <span className="text-red-400">*</span>
             </label>
             <input
@@ -199,8 +199,8 @@ export function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               className={cn(
-                "w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
-                errors.email ? "border-red-500" : "border-white/20 focus:border-primary"
+                "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
+                errors.email ? "border-red-500" : "border-gray-300 focus:border-primary"
               )}
               placeholder="example@email.com"
             />
@@ -218,7 +218,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="company" className="block text-sm font-medium text-slate-900 mb-2">
               会社名
             </label>
             <input
@@ -227,7 +227,7 @@ export function ContactForm() {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
               placeholder="株式会社サンプル"
             />
           </div>
@@ -235,7 +235,7 @@ export function ContactForm() {
 
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="phone" className="block text-sm font-medium text-slate-900 mb-2">
               電話番号
             </label>
             <input
@@ -244,7 +244,7 @@ export function ContactForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
               placeholder="090-1234-5678"
             />
           </div>
@@ -254,7 +254,7 @@ export function ContactForm() {
       {/* Project Type */}
       <AnimatedElement variants={fadeUp}>
         <div>
-          <label htmlFor="projectType" className="block text-sm font-medium text-white mb-2">
+          <label htmlFor="projectType" className="block text-sm font-medium text-slate-900 mb-2">
             プロジェクトの種類 <span className="text-red-400">*</span>
           </label>
           <select
@@ -263,8 +263,8 @@ export function ContactForm() {
             value={formData.projectType}
             onChange={handleChange}
             className={cn(
-              "w-full px-4 py-3 bg-white/10 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
-              errors.projectType ? "border-red-500" : "border-white/20 focus:border-primary"
+              "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
+              errors.projectType ? "border-red-500" : "border-gray-300 focus:border-primary"
             )}
           >
             <option value="">選択してください</option>
@@ -287,7 +287,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="budget" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="budget" className="block text-sm font-medium text-slate-900 mb-2">
               ご予算
             </label>
             <select
@@ -295,7 +295,7 @@ export function ContactForm() {
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
             >
               <option value="">選択してください</option>
               {budgetRanges.map((range) => (
@@ -309,7 +309,7 @@ export function ContactForm() {
 
         <AnimatedElement variants={fadeUp}>
           <div>
-            <label htmlFor="timeline" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="timeline" className="block text-sm font-medium text-slate-900 mb-2">
               希望納期
             </label>
             <select
@@ -317,7 +317,7 @@ export function ContactForm() {
               name="timeline"
               value={formData.timeline}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
             >
               <option value="">選択してください</option>
               {timelines.map((timeline) => (
@@ -333,7 +333,7 @@ export function ContactForm() {
       {/* Message */}
       <AnimatedElement variants={fadeUp}>
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-slate-900 mb-2">
             お問い合わせ内容 <span className="text-red-400">*</span>
           </label>
           <textarea
@@ -343,8 +343,8 @@ export function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             className={cn(
-              "w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200 resize-vertical",
-              errors.message ? "border-red-500" : "border-white/20 focus:border-primary"
+              "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200 resize-vertical",
+              errors.message ? "border-red-500" : "border-gray-300 focus:border-primary"
             )}
             placeholder="プロジェクトの詳細、ご要望、ご質問などをお聞かせください"
           />

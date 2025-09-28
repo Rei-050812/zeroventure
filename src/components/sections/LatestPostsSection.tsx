@@ -9,8 +9,33 @@ import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
 import { getLatestPosts, getLatestNews } from '@/lib/sanity'
 
+// Types
+interface BlogPost {
+  id: string
+  title: string
+  summary: string
+  publishedAt: string
+  category: string
+  tags: string[]
+  type: string
+}
+
+interface NewsItem {
+  id: string
+  title: string
+  summary: string
+  publishedAt: string
+  category: string
+  type: string
+}
+
+interface PostsState {
+  blog: BlogPost[]
+  news: NewsItem[]
+}
+
 // Mock data for latest posts (この部分は後でSanityから取得)
-const latestPosts = {
+const latestPosts: PostsState = {
   blog: [
     {
       id: '1',
@@ -43,13 +68,13 @@ const latestPosts = {
   ]
 }
 
-function PostCard({ post }: { post: any }) {
+function PostCard({ post }: { post: BlogPost | NewsItem }) {
   const href = `/${post.type}/${post.id}`
 
   return (
     <Card className="group h-full">
       <CardHeader>
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+        <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
           <Calendar size={16} />
           {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
           {post.category && (
@@ -73,7 +98,7 @@ function PostCard({ post }: { post: any }) {
             {post.tags.slice(0, 3).map((tag: string, index: number) => (
               <span
                 key={index}
-                className="inline-flex items-center gap-1 text-xs bg-white/10 text-gray-300 px-2 py-1 rounded"
+                className="inline-flex items-center gap-1 text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
               >
                 <Tag size={10} />
                 {tag}
@@ -97,7 +122,7 @@ function PostCard({ post }: { post: any }) {
 }
 
 export function LatestPostsSection() {
-  const [posts, setPosts] = useState({ blog: [], news: [] })
+  const [posts, setPosts] = useState<PostsState>({ blog: [], news: [] })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -125,16 +150,16 @@ export function LatestPostsSection() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-gray-950">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white">Loading posts...</p>
+          <p className="text-slate-900">Loading posts...</p>
         </div>
       </section>
     )
   }
 
   return (
-    <section className="py-24 bg-gray-950">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement
           variants={containerStagger}
@@ -143,10 +168,10 @@ export function LatestPostsSection() {
           {/* Section Header */}
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">
                 Latest Posts
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 技術情報やお知らせなど
                 <br />
                 最新の情報をお届け
@@ -157,7 +182,7 @@ export function LatestPostsSection() {
           {/* Blog Posts */}
           <div>
             <AnimatedElement variants={fadeUp} className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-white">Blog</h3>
+              <h3 className="text-2xl font-bold text-slate-900">Blog</h3>
               <Link
                 href="/blog"
                 className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
@@ -182,7 +207,7 @@ export function LatestPostsSection() {
           {/* News */}
           <div>
             <AnimatedElement variants={fadeUp} className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-white">News</h3>
+              <h3 className="text-2xl font-bold text-slate-900">News</h3>
               <Link
                 href="/news"
                 className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
@@ -195,20 +220,20 @@ export function LatestPostsSection() {
             <AnimatedElement variants={containerStagger}>
               {posts.news.map((post, index) => (
                 <AnimatedElement key={post.id || `news-${index}`} variants={fadeUp}>
-                  <div className="border-b border-white/10 pb-4">
+                  <div className="border-b border-gray-200 pb-4">
                     <div className="flex items-start gap-4">
-                      <div className="text-sm text-gray-400 min-w-[100px]">
+                      <div className="text-sm text-slate-500 min-w-[100px]">
                         {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
                       </div>
                       <div className="flex-1">
                         <Link
                           href={`/news/${post.id}`}
-                          className="text-white hover:text-primary transition-colors duration-200 font-medium"
+                          className="text-slate-900 hover:text-primary transition-colors duration-200 font-medium"
                         >
                           {post.title}
                         </Link>
                         {post.category && (
-                          <span className="ml-2 text-xs bg-primary text-black px-2 py-1 rounded">
+                          <span className="ml-2 text-xs bg-primary text-white px-2 py-1 rounded">
                             {post.category}
                           </span>
                         )}
@@ -222,11 +247,11 @@ export function LatestPostsSection() {
 
           {/* CTA */}
           <AnimatedElement variants={fadeUp} className="text-center pt-8">
-            <div className="bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div className="bg-gradient-to-r from-primary/10 to-purple-600/10 rounded-lg p-8 border border-gray-200">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 プロジェクトを始めませんか？
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className="text-slate-600 mb-6">
                 お気軽にお問い合わせください。無料でご相談承ります。
               </p>
               <Button size="lg">

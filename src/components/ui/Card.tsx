@@ -18,8 +18,8 @@ export function Card({ children, className, hover = true }: CardProps) {
   return (
     <motion.div
       className={cn(
-        'bg-white/5 border border-white/10 rounded-lg p-6 backdrop-blur-sm',
-        hover && 'hover:bg-white/10 hover:border-white/20',
+        'bg-white border border-gray-200 rounded-lg p-6 shadow-sm',
+        hover && 'hover:shadow-md hover:border-gray-300',
         className
       )}
       variants={!shouldReduceMotion ? scaleIn : undefined}
@@ -41,7 +41,7 @@ export function CardHeader({ children, className }: { children: ReactNode; class
 
 export function CardTitle({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <h3 className={cn('text-xl font-semibold text-white', className)}>
+    <h3 className={cn('text-xl font-semibold text-slate-900', className)}>
       {children}
     </h3>
   )
@@ -49,7 +49,7 @@ export function CardTitle({ children, className }: { children: ReactNode; classN
 
 export function CardDescription({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn('text-gray-300 text-sm', className)}>
+    <p className={cn('text-slate-600 text-sm', className)}>
       {children}
     </p>
   )
@@ -65,7 +65,7 @@ export function CardContent({ children, className }: { children: ReactNode; clas
 
 export function CardFooter({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn('mt-4 pt-4 border-t border-white/10', className)}>
+    <div className={cn('mt-4 pt-4 border-t border-gray-200', className)}>
       {children}
     </div>
   )
