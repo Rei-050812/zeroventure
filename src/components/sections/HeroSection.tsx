@@ -325,7 +325,7 @@ export function HeroSection() {
           {/* Subheading */}
           <AnimatedElement variants={fadeUp}>
             <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              迷わせない導線と計測で、結果につながるサイトへ。
+              シンプルかつ迷わない設計で、使いやすく成果につながるサイトへ。
             </p>
           </AnimatedElement>
 
@@ -364,8 +364,8 @@ export function HeroSection() {
           >
             {[
               { title: "スピード × 品質", description: "迅速かつ丁寧に、信頼できるWebサイトを届ける" },
-              { title: "成果に直結", description: "情報設計と計測で、コンバージョンを伸ばす" },
-              { title: "公開後も伴走", description: "改善と運用まで支え、事業の成長を後押し" }
+              { title: "成果に直結", description: "分かりやすい流れと工夫で、お問い合わせや購入を増やす" },
+              { title: "公開後も伴走", description: "継続的なサポートで、事業の成長を後押し" }
             ].map((item, index) => (
               <motion.div
                 key={index}

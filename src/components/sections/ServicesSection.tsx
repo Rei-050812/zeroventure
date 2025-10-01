@@ -1,6 +1,6 @@
 'use client'
 
-import { Monitor, Smartphone, TrendingUp, Users, Zap, Shield } from 'lucide-react'
+import { Monitor, Smartphone, TrendingUp, Users, Zap, Shield, PenTool } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
 import { fadeUp, containerStagger } from '@/lib/animations'
@@ -8,15 +8,21 @@ import { fadeUp, containerStagger } from '@/lib/animations'
 const services = [
   {
     title: 'LP制作',
-    description: 'コンバージョン率を最大化するランディングページを制作',
+    description: '商品の魅力を伝え、お問い合わせや購入につながるランディングページを制作',
     icon: TrendingUp,
-    features: ['CVR最適化', 'A/Bテスト', 'レスポンシブ対応', '高速表示']
+    features: ['成果につながる流れを設計', '複数パターンを試して改善', 'スマホでも見やすく対応', 'ページの表示を速く']
   },
   {
-    title: 'コーポレートサイト',
-    description: '企業の信頼性を高める本格的なコーポレートサイト',
+    title: 'コーポレートサイト制作',
+    description: '会社やお店の信頼を高める、本格的なホームページを制作',
     icon: Monitor,
-    features: ['ブランド設計', 'CMS導入', 'SEO対策', '保守・運用']
+    features: ['ブランドイメージに合わせたデザイン', '更新がしやすい仕組み導入', '検索流入を増やす工夫', '公開後のサポート']
+  },
+  {
+    title: 'ブログ制作',
+    description: '情報発信や集客につながる、使いやすいブログを制作',
+    icon: PenTool,
+    features: ['カテゴリーやタグで整理', '管理画面から簡単に更新', '検索されやすい記事構成', '継続発信を支援']
   }
 ]
 
@@ -58,7 +64,7 @@ export function ServicesSection() {
                 Services
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                LP・コーポレート・ブログを軸に、
+                LP・コーポレートサイト・ブログを軸に、
                 <br />
                 ブランドの価値を最大化するWebサイトを提供
               </p>
@@ -68,7 +74,7 @@ export function ServicesSection() {
           {/* Main Services */}
           <AnimatedElement
             variants={containerStagger}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
           >
             {services.map((service, index) => (
               <AnimatedElement key={index} variants={fadeUp}>
