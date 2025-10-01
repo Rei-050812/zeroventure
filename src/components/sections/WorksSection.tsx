@@ -59,31 +59,22 @@ export function WorksSection() {
   useEffect(() => {
     async function loadWorks() {
       try {
-        console.log('WorksSection: Fetching featured works from Sanity...')
         const sanityWorks = await getFeaturedWorks()
-        console.log('WorksSection: Featured works data:', sanityWorks)
 
         // featuredがない場合は通常のworksも取得してみる
         if (sanityWorks.length === 0) {
-          console.log('WorksSection: No featured works found, trying all works...')
           const allWorks = await getWorks()
-          console.log('WorksSection: All works data:', allWorks)
 
           if (allWorks.length > 0) {
             // 最初の3つを表示
             setWorks(allWorks.slice(0, 3))
-            console.log('WorksSection: Using first 3 works from all works')
           } else {
-            console.log('WorksSection: No works found, using mock data')
             setWorks(mockWorks)
           }
         } else {
-          console.log('WorksSection: Using featured works data')
           setWorks(sanityWorks)
         }
       } catch (error) {
-        console.error('WorksSection: Error fetching data:', error)
-        console.log('WorksSection: Using fallback data')
         setWorks(mockWorks)
       } finally {
         setLoading(false)

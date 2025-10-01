@@ -138,7 +138,6 @@ export function LatestPostsSection() {
           news: newsItems.length > 0 ? newsItems : latestPosts.news
         })
       } catch (error) {
-        console.log('Using fallback data:', error)
         setPosts(latestPosts)
       } finally {
         setLoading(false)
