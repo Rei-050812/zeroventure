@@ -46,7 +46,7 @@ export function Footer() {
                 <span className="text-white">ZERO</span><span style={{ color: '#4CC9F0' }}>VENTURE</span>
               </h3>
               <p className="text-gray-300 text-sm mb-4">
-                ゼロから始めるベンチャーのためのブランディング・WEB制作パートナー
+                ブランディング・WEB制作パートナー
               </p>
             </div>
           </AnimatedElement>

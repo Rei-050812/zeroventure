@@ -21,7 +21,7 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'ZEROVENTURE | ゼロから始めるベンチャーのためのWEB制作',
+  title: 'ZEROVENTURE',
   description: 'ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。LP制作、コーポレートサイト制作で事業成長をサポートします。',
   keywords: ['WEB制作', 'LP制作', 'ランディングページ', 'コーポレートサイト', 'ベンチャー', 'スタートアップ', 'ブランディング', 'Next.js'],
   siteUrl: 'https://zeroventure.com',
@@ -30,7 +30,7 @@ const defaultSEO = {
   twitterHandle: '@zeroventure',
   image: {
     url: '/og-image.png',
-    alt: 'ZEROVENTURE - ゼロから始めるベンチャーのためのWEB制作',
+    alt: 'ZEROVENTURE',
     width: 1200,
     height: 630
   }

@@ -4,9 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { cn } from '@/lib/utils'
-import { slideInFromLeft, fade } from '@/lib/animations'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -33,93 +31,88 @@ export function Header() {
   }, [])
 
   return (
-    <motion.header
+    <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out',
+        'fixed top-0 left-0 right-0 z-[100] transition-all duration-200',
         isScrolled
-          ? 'h-12 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 shadow-sm'
+          ? 'h-12 bg-gray-900/95 backdrop-blur-md border-b border-gray-700'
           : 'h-16 bg-gray-900/80 backdrop-blur-sm'
       )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex justify-between items-center h-full">
-          {/* Logo */}
-          <Link href="/" className="font-bold text-xl">
-            <span className="text-white">ZERO</span><span style={{ color: '#4CC9F0' }}>VENTURE</span>
-          </Link>
+      <div className="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="font-bold text-xl z-50">
+          <span className="text-white">ZERO</span>
+          <span style={{ color: '#4CC9F0' }}>VENTURE</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-white hover:text-primary transition-colors duration-200 relative group"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-150 group-hover:w-full" />
-              </Link>
-            ))}
-          </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-white hover:text-[#4CC9F0] transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
 
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="メニューを開く"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden z-50 p-2 text-white"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 shadow-lg"
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className="fixed top-0 left-0 right-0 bg-gray-900 z-40 md:hidden shadow-2xl pt-16"
           >
-            <nav className="px-4 py-6">
-              <motion.div
-                variants={{
-                  animate: {
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 0.1
-                    }
-                  }
-                }}
-                animate="animate"
-                className="flex flex-col space-y-4"
-              >
-                {navigation.map((item) => (
-                  <AnimatedElement
-                    key={item.name}
-                    variants={slideInFromLeft}
-                    as="div"
+            <nav className="flex flex-col p-4 pb-8">
+              {navigation.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block py-4 px-6 text-white hover:text-[#4CC9F0] hover:bg-gray-800 rounded-lg text-lg font-semibold transition-all duration-200 my-1"
                   >
-                    <Link
-                      href={item.href}
-                      className="text-white hover:text-primary transition-colors duration-200 block py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  </AnimatedElement>
-                ))}
-              </motion.div>
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+
+      {/* Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          />
+        )}
+      </AnimatePresence>
+    </header>
   )
 }

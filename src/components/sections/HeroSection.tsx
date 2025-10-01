@@ -285,7 +285,7 @@ function SubtleFloatingElements() {
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative">
+    <section className="min-h-screen flex items-center justify-center relative pt-20 sm:pt-0">
       {/* Interactive Mouse Follower */}
       <MouseFollower />
 
@@ -317,7 +317,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
               >
-                <TypingEffect text="Webサイト制作" className="text-purple-600" />
+                <TypingEffect text="Webサイト制作" className="text-[#4CC9F0]" />
               </motion.span>
             </h1>
           </AnimatedElement>
@@ -363,16 +363,16 @@ export function HeroSection() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-16 max-w-4xl mx-auto"
           >
             {[
-              { title: "最短1週間", description: "スピーディな制作進行" },
-              { title: "成果重視", description: "CVR向上にコミット" },
-              { title: "運用サポート", description: "公開後も継続支援" }
+              { title: "スピード × 品質", description: "迅速かつ丁寧に、信頼できるWebサイトを届ける" },
+              { title: "成果に直結", description: "情報設計と計測で、コンバージョンを伸ばす" },
+              { title: "公開後も伴走", description: "改善と運用まで支え、事業の成長を後押し" }
             ].map((item, index) => (
               <motion.div
                 key={index}
                 variants={fadeUp}
                 className="text-center space-y-2"
               >
-                <h3 className="text-purple-600 font-semibold text-lg">{item.title}</h3>
+                <h3 className="text-[#4CC9F0] font-semibold text-lg">{item.title}</h3>
                 <p className="text-slate-500 text-sm">{item.description}</p>
               </motion.div>
             ))}

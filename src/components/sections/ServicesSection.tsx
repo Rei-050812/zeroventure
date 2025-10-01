@@ -58,9 +58,9 @@ export function ServicesSection() {
                 Services
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                ベンチャー企業の成長を加速する
+                LP・コーポレート・ブログを軸に、
                 <br />
-                最適なWebソリューションを提供
+                ブランドの価値を最大化するWebサイトを提供
               </p>
             </AnimatedElement>
           </div>

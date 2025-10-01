@@ -13,7 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "ZEROVENTURE | ゼロから始めるベンチャーのためのWEB制作",
+  title: "ZEROVENTURE",
   description: "ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。LP制作、コーポレートサイト制作で事業成長をサポートします。",
 };
 
