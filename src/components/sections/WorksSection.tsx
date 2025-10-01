@@ -95,8 +95,8 @@ export function WorksSection() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-30">
           <p className="text-slate-900">Loading works...</p>
         </div>
       </section>
@@ -104,8 +104,8 @@ export function WorksSection() {
   }
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
         <AnimatedElement
           variants={containerStagger}
           className="space-y-16"

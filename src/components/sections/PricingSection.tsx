@@ -74,8 +74,8 @@ const processSteps = [
 
 export function PricingSection() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
         <AnimatedElement
           variants={containerStagger}
           className="space-y-20"
@@ -104,7 +104,7 @@ export function PricingSection() {
                 <Card
                   className={`relative ${
                     plan.popular
-                      ? 'border-primary bg-primary/5'
+                      ? 'border-primary bg-white'
                       : 'border-gray-200'
                   }`}
                 >

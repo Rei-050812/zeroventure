@@ -150,8 +150,8 @@ export function LatestPostsSection() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-30">
           <p className="text-slate-900">Loading posts...</p>
         </div>
       </section>
@@ -159,8 +159,8 @@ export function LatestPostsSection() {
   }
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
         <AnimatedElement
           variants={containerStagger}
           className="space-y-16"
