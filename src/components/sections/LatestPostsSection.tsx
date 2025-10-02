@@ -171,7 +171,7 @@ export function LatestPostsSection() {
                 Latest Posts
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                技術情報やお知らせなど
+                ブログ記事やお知らせなど
                 <br />
                 最新の情報をお届け
               </p>
@@ -248,10 +248,11 @@ export function LatestPostsSection() {
           <AnimatedElement variants={fadeUp} className="text-center pt-8">
             <div className="bg-gradient-to-r from-primary/10 to-purple-600/10 rounded-lg p-8 border border-gray-200">
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                プロジェクトを始めませんか？
+                あなたのWebサイトづくり、ここから始めませんか？
               </h3>
               <p className="text-slate-600 mb-6">
-                お気軽にお問い合わせください。無料でご相談承ります。
+                ZEROVENTUREでは、初めての方でも安心してご相談いただけます。<br />
+                無料相談からスタートし、理想のサイトづくりを全力でサポートします。
               </p>
               <Button size="lg">
                 <Link href="/contact" className="flex items-center gap-2">

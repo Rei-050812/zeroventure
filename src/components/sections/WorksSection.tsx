@@ -105,12 +105,10 @@ export function WorksSection() {
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
               <h2 className="text-4xl font-bold text-slate-900 mb-6">
-                Featured Works
+                Latest Works
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                これまでに手がけた
-                <br />
-                注目の制作実績をご紹介
+                最新の制作実績をご紹介
               </p>
             </AnimatedElement>
           </div>
