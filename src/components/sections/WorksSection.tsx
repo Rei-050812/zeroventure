@@ -122,7 +122,7 @@ export function WorksSection() {
               <AnimatedElement key={work.id || `work-${index}`} variants={fadeUp}>
                 <Card className="group overflow-hidden">
                   {/* Cover Image */}
-                  <div className="aspect-video bg-gray-200 relative overflow-hidden">
+                  <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
                     {work.coverImage ? (
                       <Image
                         src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
