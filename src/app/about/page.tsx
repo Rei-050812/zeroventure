@@ -69,6 +69,12 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedElement variants={fadeUp} className="lg:hidden mb-8 text-center">
+            <h1 className="text-4xl font-bold text-slate-900">
+              Profile
+            </h1>
+          </AnimatedElement>
+
           <AnimatedElement
             variants={containerStagger}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
@@ -86,7 +92,7 @@ export default function AboutPage() {
             </AnimatedElement>
 
             <AnimatedElement variants={fadeUp} className="space-y-6">
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900">
+              <h1 className="hidden lg:block text-4xl lg:text-5xl font-bold text-slate-900">
                 Profile
               </h1>
               <div className="space-y-4">
