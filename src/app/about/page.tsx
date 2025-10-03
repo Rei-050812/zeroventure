@@ -4,7 +4,7 @@ import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { ArrowRight, MapPin, Mail, Phone } from 'lucide-react'
+import { ArrowRight, MapPin, Mail } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -14,38 +14,52 @@ export const metadata: Metadata = {
 
 const skills = [
   {
-    category: 'フロントエンド',
-    items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion']
+    category: 'Web制作・開発',
+    items: ['HTML / CSS / JavaScript / PHP', 'Next.js / React / TypeScript / Tailwind CSS', 'WordPress', 'Sanity']
   },
   {
-    category: 'デザイン',
-    items: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator', 'Canva']
+    category: '運用・ホスティング',
+    items: ['Vercel', 'GitHub', 'レンタルサーバ各種']
   },
   {
-    category: 'バックエンド',
-    items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Firebase']
+    category: 'デザイン・ビジネスツール',
+    items: ['Canva', 'PowerPoint / Excel / Google スプレッドシート / Word', 'Slack']
   },
   {
-    category: 'ツール・その他',
-    items: ['Git', 'Docker', 'Vercel', 'Netlify', 'Sanity CMS']
+    category: '分析・マーケティング',
+    items: ['Google Analytics', 'Google Search Console']
+  },
+  {
+    category: 'AI活用',
+    items: ['ChatGPT', 'Perplexity AI', 'Windsurf', 'ClaudeCode']
   }
 ]
 
 const experience = [
   {
-    period: '2023年〜現在',
-    title: 'ZEROVENTURE 代表',
-    description: 'ベンチャー企業向けのWEB制作・ブランディングサービスを提供。LP制作、コーポレートサイト制作を中心に、50社以上の成長をサポート。'
+    period: '2018年〜2021年',
+    title: 'システムエンジニア（製造・生産管理）',
+    description: '現場システムの運用や生産管理を担当。業務効率化や品質管理に直結する仕組みづくりを推進。'
   },
   {
-    period: '2021年〜2023年',
-    title: 'フリーランスWEBデザイナー',
-    description: 'スタートアップ企業を中心に、ブランディングからWEB制作まで一貫したサービスを提供。コンバージョン率向上にこだわった設計で多数の成果を創出。'
+    period: '2021年〜2022年',
+    title: 'システムエンジニア（デジタル推進）',
+    description: '社内のデジタル化を推進。業務フロー改善や新システム導入を担当し、IT基盤強化を支援。'
   },
   {
-    period: '2019年〜2021年',
-    title: 'WEB制作会社 WEBデザイナー',
-    description: '大手企業のコーポレートサイトやECサイトのデザイン・コーディングを担当。UX/UIデザインの基礎を学び、ユーザー中心の設計手法を習得。'
+    period: '2022年〜2023年',
+    title: '情報システム担当',
+    description: 'システム運用やトラブル対応を担当。社内Webサイトの管理やデータ活用に加え、業務改善アプリの開発にも取り組む。'
+  },
+  {
+    period: '2023年〜2025年',
+    title: '情報システム担当 / Webデザイナー',
+    description: '情報システム業務を担いながら、社内向けWebデザインも担当。デザイン性と使いやすさを意識した制作を実践。'
+  },
+  {
+    period: '2025年〜現在',
+    title: 'ZEROVENTURE代表',
+    description: 'Webサイト制作とブランディングサービスを提供。デザイン性と操作性を両立させ、成果につながるサイトで事業成長を支援。'
   }
 ]
 
@@ -53,19 +67,19 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-slate-100">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement
             variants={containerStagger}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <AnimatedElement variants={fadeUp}>
-              <div className="relative aspect-square max-w-md mx-auto lg:mx-0">
+              <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <Image
-                  src="https://source.unsplash.com/800x800/?portrait,workspace,professional"
-                  alt="代表プロフィール写真"
+                  src="/images/mascot.png"
+                  alt="ZEROVENTURE マスコットキャラクター"
                   fill
-                  className="object-cover rounded-2xl shadow-lg"
+                  className="object-contain"
                   priority
                 />
               </div>
@@ -77,17 +91,12 @@ export default function AboutPage() {
               </h1>
               <div className="space-y-4">
                 <h2 className="text-2xl font-semibold text-slate-800">
-                  田中 太郎（Taro Tanaka）
+                  沼能 零仁（Reiji Numanou）
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  ZEROVENTURE代表。ベンチャー企業のブランディング・WEB制作を専門とし、
-                  「ゼロから始める企業の成長を加速させる」をミッションに、
-                  LP制作・コーポレートサイト制作で事業成長をサポートしています。
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  これまで50社以上のベンチャー企業のWEBサイト制作を手がけ、
-                  平均CVR向上率150%を実現。技術とデザインの両面から、
-                  ビジネス成果にコミットしたサービスを提供しています。
+                  ZEROVENTURE代表。食品メーカーでIT担当として、自作の社内アプリやAIを活用した仕組みで業務改善を進めたり、社内向けWebサイトの運用・管理を担当してきました。
+                  業務改善や社内サイト運用の経験を通じて、"人が使いやすい仕組みを作ること"に強い関心を持つようになり、より表現の幅が広いWeb制作へと挑戦しました。
+                  現在は、デザイン性と操作性を両立させ、AIも取り入れながら効率と品質を高め、成果につながるWebサイト制作に取り組んでいます。
                 </p>
               </div>
             </AnimatedElement>
@@ -104,8 +113,7 @@ export default function AboutPage() {
                 経歴・実績
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                WEB業界での豊富な経験を活かし、技術とビジネスの両面から
-                最適なソリューションを提供します。
+                システム開発とWeb制作の両方を経験してきた強みを活かし、デザイン性と実用性を兼ね備えた最適な解決策を提供します。
               </p>
             </AnimatedElement>
 
@@ -145,8 +153,7 @@ export default function AboutPage() {
                 スキル・使用技術
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                最新の技術トレンドを常にキャッチアップし、
-                最適な技術選定でプロジェクトを成功に導きます。
+                AIをはじめとした最新技術を取り入れ、デザイン性と実用性を兼ね備えたWebサイトで、ビジネスの成長を支援します。
               </p>
             </AnimatedElement>
 
@@ -202,21 +209,14 @@ export default function AboutPage() {
                       <MapPin className="text-primary mt-1" size={20} />
                       <div>
                         <p className="font-medium text-slate-900">所在地</p>
-                        <p className="text-slate-600">東京都渋谷区</p>
+                        <p className="text-slate-600">千葉県千葉市緑区</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <Mail className="text-primary mt-1" size={20} />
                       <div>
                         <p className="font-medium text-slate-900">メール</p>
-                        <p className="text-slate-600">contact@zeroventure.com</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone className="text-primary mt-1" size={20} />
-                      <div>
-                        <p className="font-medium text-slate-900">電話</p>
-                        <p className="text-slate-600">03-XXXX-XXXX</p>
+                        <p className="text-slate-600">r-numanou@zero-venture.com</p>
                       </div>
                     </div>
                   </CardContent>
@@ -234,8 +234,7 @@ export default function AboutPage() {
                     <div>
                       <p className="font-medium text-slate-900 mb-2">事業内容</p>
                       <p className="text-slate-600">
-                        WEBサイト制作・デザイン業務<br />
-                        ブランディング・マーケティング支援
+                        WEBサイト制作・デザイン業務
                       </p>
                     </div>
                     <div>
@@ -243,13 +242,13 @@ export default function AboutPage() {
                       <div className="space-y-2">
                         <Link
                           href="/legal/tokushoho"
-                          className="text-primary hover:text-primary-hover transition-colors duration-200 block"
+                          className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           特定商取引法に基づく表記
                         </Link>
                         <Link
                           href="/legal/privacy"
-                          className="text-primary hover:text-primary-hover transition-colors duration-200 block"
+                          className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           プライバシーポリシー
                         </Link>
@@ -272,12 +271,11 @@ export default function AboutPage() {
                 お気軽にご相談ください
               </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                あなたのビジネスを次のステージへ押し上げる
-                WEBサイト制作をお手伝いします。
+                AIなどの最新技術を活用し、あなたのビジネスを次のステージへ導くWebサイト制作を実現します。
               </p>
               <Button size="lg" className="min-w-[200px]">
                 <Link href="/contact" className="flex items-center gap-2">
-                  無料相談を申し込む
+                  無料相談する
                   <ArrowRight size={20} />
                 </Link>
               </Button>
