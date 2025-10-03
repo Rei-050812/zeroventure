@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { Monitor, Smartphone, TrendingUp, Users, Zap, Shield, ArrowRight, Check } from 'lucide-react'
+import { TrendingUp, PenTool, Users, FileText, Building2, ArrowRight, Check } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Services | ZEROVENTURE',
@@ -15,34 +15,81 @@ export const metadata: Metadata = {
 const services = [
   {
     title: 'LP制作',
-    description: 'コンバージョン率を最大化するランディングページを制作',
+    description: '商品やサービスの魅力をしっかり伝え、お問い合わせや購入につながるランディングページを制作します。成果につながる流れを意識した設計で、訪問者を自然に行動へと導きます。スマホでも快適に閲覧でき、ページの表示速度にも配慮。広告やキャンペーンと連動させることで、コンバージョン率を最大化し、ビジネスの成長を加速させます。',
     icon: TrendingUp,
-    price: '298,000円〜',
     features: [
-      'レスポンシブデザイン',
-      '基本的なSEO対策',
-      'お問い合わせフォーム',
-      '最短1週間での納期',
-      'CMS導入（WordPress）',
-      '3回までの修正対応'
+      'スマホ対応のシンプルで見やすいデザイン',
+      '必要な情報を1ページに集約し、スクロールで完結',
+      'お問い合わせフォーム設置で即座に反応を受け取れる',
+      '広告やキャンペーンに最適化された構成',
+      '行動につながる導線設計（CTA配置の最適化）',
+      '基本的なSEO対策で検索エンジンからの流入も確保',
+      'ページ表示速度の最適化で離脱率を低減',
+      '3回までの修正対応・最短1週間での納品'
     ],
     image: 'https://source.unsplash.com/800x600/?laptop,design'
   },
   {
-    title: 'コーポレートサイト',
-    description: '企業の信頼性を高める本格的なコーポレートサイト',
-    icon: Monitor,
-    price: '598,000円〜',
+    title: 'ポートフォリオサイト制作',
+    description: '作品や実績を魅力的に見せる、個人やクリエイター向けのサイトを制作します。シンプルで直感的に操作できるデザインを採用し、訪問者に作品の魅力が伝わりやすい構成を実現。SNSともスムーズに連携し、オンライン上での自己ブランディングを強化。自身の魅力や信頼感を最大限に引き出し、仕事の依頼や新たな機会を生み出すオンラインの名刺代わりとなります。',
+    icon: PenTool,
     features: [
-      'オリジナルデザイン',
-      '高度なSEO対策',
-      'アニメーション実装',
-      'パフォーマンス最適化',
-      'CMS導入（選択可能）',
-      '無制限の修正対応',
-      '3ヶ月間の運用サポート',
-      'Google Analytics設定',
-      'サーバー・ドメイン設定代行'
+      'ギャラリー機能で作品を美しく表示',
+      'プロフィール・自己紹介ページで人となりを伝える',
+      'SNSや外部リンクの設置で活動の幅を広げる',
+      'お問い合わせフォーム設置で仕事の依頼を受けやすく',
+      '信頼感を高める自己ブランディング設計',
+      'レスポンシブデザインでどのデバイスでも美しく表示',
+      'シンプルで洗練されたデザインで作品を引き立てる',
+      'パフォーマンス最適化で快適な閲覧体験を提供'
+    ],
+    image: 'https://source.unsplash.com/800x600/?portfolio,design'
+  },
+  {
+    title: 'リクルートサイト制作',
+    description: '会社の雰囲気や働く魅力を伝え、応募につながる採用専用サイトを制作します。応募ページまでの導線を整理し、求職者が必要な情報にスムーズにアクセスできる設計。社員の声やインタビューを掲載することで、会社の雰囲気をリアルに伝え、応募意欲を高めます。外部求人サービスとの連携も可能で、求職者が安心して応募できる環境を整え、採用力を高めます。',
+    icon: Users,
+    features: [
+      '求人一覧・詳細ページで募集内容を明確に表示',
+      '社員紹介や会社紹介ページで雰囲気を伝える',
+      '応募フォーム設置で応募までのハードルを下げる',
+      '外部求人サービスとの連携で応募経路を拡大',
+      '応募意欲を高める採用ブランディング設計',
+      'レスポンシブデザインでスマホからの応募もスムーズ',
+      'SEO対策で求職者の検索からの流入を増やす',
+      'CMS導入で求人情報の更新を簡単に'
+    ],
+    image: 'https://source.unsplash.com/800x600/?recruitment,team'
+  },
+  {
+    title: 'メディアサイト制作',
+    description: '記事を発信してアクセスを集め、集客やブランド認知を広げるサイトを制作します。カテゴリーやタグで記事を整理でき、読者が興味のある情報を見つけやすい設計。SNSと連携して情報を拡散し、継続的なアクセスを獲得。誰でも更新しやすい仕組みを導入し、継続的な情報発信をサポート。検索に強いサイト構造とアクセス解析機能で、効果的な集客を実現します。',
+    icon: FileText,
+    features: [
+      '記事投稿機能（カテゴリ・タグ対応）で情報を整理',
+      '関連記事や人気記事の表示で回遊率を向上',
+      '検索に強いサイト構造でSEO効果を最大化',
+      'アクセス解析・計測機能を搭載し、効果を可視化',
+      '継続的な集客を実現する仕組みを構築',
+      'CMS導入（WordPress等）で誰でも更新しやすく',
+      'SNS連携で記事の拡散力を強化',
+      'レスポンシブデザインでどのデバイスでも読みやすい'
+    ],
+    image: 'https://source.unsplash.com/800x600/?media,blog'
+  },
+  {
+    title: 'コーポレートサイト制作',
+    description: '会社やお店の信頼を高める、本格的なホームページを制作します。企業に必要な基本ページ（会社概要、サービス紹介、お知らせなど）をカバーし、ブランドイメージに沿ったデザインを実現。更新しやすい管理システムを導入することで、ニュースやお知らせを随時発信可能。信頼性を高める情報構成とブランド価値を訴求するデザインで、公開後も長期的な運用を見据え、企業の成長を支えるサイトを実現します。',
+    icon: Building2,
+    features: [
+      '会社に必要な基本ページをカバー（会社概要・サービス紹介など）',
+      'ご要望に合わせたオリジナルデザイン調整',
+      'ニュースやお知らせを更新可能なCMS導入（選択可能）',
+      '信頼性を高める情報構成と見やすいレイアウト',
+      'ブランド価値を訴求するデザインで企業イメージを向上',
+      '高度なSEO対策・アニメーション実装で印象的なサイトを実現',
+      '無制限の修正対応・3ヶ月間の運用サポートで安心',
+      'Google Analytics・サーバー・ドメイン設定代行'
     ],
     image: 'https://source.unsplash.com/800x600/?corporate,website'
   }
@@ -95,8 +142,8 @@ export default function ServicesPage() {
                 Services
               </h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                ベンチャー企業の成長を加速する<br />
-                最適なWebソリューションを提供
+                あなたのビジネスの成長を加速する<br />
+                最適なWebサイトを提供します。
               </p>
             </AnimatedElement>
           </AnimatedElement>
@@ -104,7 +151,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Detail */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={containerStagger}>
             <div className="space-y-20">
@@ -128,10 +175,7 @@ export default function ServicesPage() {
                         <div className="p-3 bg-primary/10 rounded-lg">
                           <service.icon className="w-8 h-8 text-primary" />
                         </div>
-                        <div>
-                          <h2 className="text-3xl font-bold text-slate-900">{service.title}</h2>
-                          <p className="text-primary font-semibold text-lg">{service.price}</p>
-                        </div>
+                        <h2 className="text-3xl font-bold text-slate-900">{service.title}</h2>
                       </div>
                       <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                         {service.description}
@@ -160,7 +204,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={containerStagger}>
             <AnimatedElement variants={fadeUp} className="text-center mb-12">
@@ -201,7 +245,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedElement variants={containerStagger}>
             <AnimatedElement variants={fadeUp}>
@@ -209,12 +253,11 @@ export default function ServicesPage() {
                 お気軽にご相談ください
               </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                あなたのビジネスを次のステージへ押し上げる<br />
-                Webサイト制作をお手伝いします。
+                あなたのビジネスを次のステージへ導くWebサイト制作を実現します。
               </p>
               <Button size="lg" className="min-w-[200px]">
                 <Link href="/contact" className="flex items-center gap-2">
-                  無料相談を申し込む
+                  無料相談する
                   <ArrowRight size={20} />
                 </Link>
               </Button>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { MotionToggle } from '@/components/ui/MotionToggle'
 import { fadeUp, containerStagger } from '@/lib/animations'
+import { Instagram } from 'lucide-react'
 
 const footerLinks = {
   services: {
@@ -88,28 +89,24 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex space-x-4">
               <Link
-                href="https://twitter.com/zeroventure"
+                href="https://x.com/zeroventure"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="X"
               >
-                Twitter
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </Link>
               <Link
                 href="https://instagram.com/zeroventure"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
               >
-                Instagram
-              </Link>
-              <Link
-                href="https://linkedin.com/company/zeroventure"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
+                <Instagram className="w-5 h-5" />
               </Link>
             </div>
           </AnimatedElement>

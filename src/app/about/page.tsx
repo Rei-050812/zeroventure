@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
 import { ArrowRight, MapPin, Mail } from 'lucide-react'
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 お気軽にご相談ください
               </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                AIなどの最新技術を活用し、あなたのビジネスを次のステージへ導くWebサイト制作を実現します。
+                あなたのビジネスを次のステージへ導くWebサイト制作を実現します。
               </p>
               <Button size="lg" className="min-w-[200px]">
                 <Link href="/contact" className="flex items-center gap-2">
