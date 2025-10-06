@@ -39,34 +39,36 @@ export function Header() {
           : 'h-16 bg-gray-900/80 backdrop-blur-sm'
       )}
     >
-      <div className="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="font-bold text-xl z-50">
-          <span className="text-white">ZERO</span>
-          <span style={{ color: '#4CC9F0' }}>VENTURE</span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex justify-between items-center h-full">
+          {/* Logo */}
+          <Link href="/" className="font-bold text-xl z-50">
+            <span className="text-white">ZERO</span>
+            <span style={{ color: '#4CC9F0' }}>VENTURE</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-white hover:text-[#4CC9F0] transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-white hover:text-[#4CC9F0] transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-50 p-2 text-white"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden z-50 p-2 text-white"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

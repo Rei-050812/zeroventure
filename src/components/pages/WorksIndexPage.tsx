@@ -12,8 +12,9 @@ import { getWorks, urlFor } from '@/lib/sanity'
 
 // Types
 interface Work {
-  id: string
+  _id: string
   title: string
+  slug: { current: string }
   summary: string
   techStack: string[]
   coverImage: string | any
@@ -24,8 +25,9 @@ interface Work {
 // Mock data for works (fallback when Sanity is not available)
 const mockWorks: Work[] = [
   {
-    id: '1',
+    _id: '1',
     title: 'TechStartup LP',
+    slug: { current: 'techstartup-lp' },
     summary: 'AI技術スタートアップのランディングページ制作。コンバージョン率向上を重視したデザインと導線設計',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     coverImage: '/images/works/work1.jpg',
@@ -33,8 +35,9 @@ const mockWorks: Work[] = [
     category: 'LP制作'
   },
   {
-    id: '2',
+    _id: '2',
     title: 'Corporate Site',
+    slug: { current: 'corporate-site' },
     summary: '中小企業向けコーポレートサイト。信頼性とブランディングを重視したデザイン',
     techStack: ['React', 'WordPress', 'CSS'],
     coverImage: '/images/works/work2.jpg',
@@ -42,35 +45,39 @@ const mockWorks: Work[] = [
     category: 'コーポレートサイト'
   },
   {
-    id: '3',
-    title: 'E-commerce Platform',
-    summary: 'ECサイトのフロントエンド開発。ユーザビリティとモバイル対応を重視',
-    techStack: ['Vue.js', 'Nuxt.js', 'Shopify'],
+    _id: '3',
+    title: 'Recruit Site',
+    slug: { current: 'recruit-site' },
+    summary: '採用専用サイト制作。会社の魅力を伝え、応募につながる導線設計',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     coverImage: '/images/works/work3.jpg',
     url: 'https://example.com',
-    category: 'ECサイト'
+    category: 'リクルートサイト'
   },
   {
-    id: '4',
-    title: 'Blog Platform',
-    summary: '技術ブログプラットフォーム。記事の可読性とSEO最適化に重点を置いた設計',
-    techStack: ['Gatsby', 'GraphQL', 'Contentful'],
+    _id: '4',
+    title: 'Media Site',
+    slug: { current: 'media-site' },
+    summary: '情報発信メディアサイト。記事の可読性とSEO最適化に重点を置いた設計',
+    techStack: ['Next.js', 'Sanity', 'Tailwind CSS'],
     coverImage: '/images/works/work4.jpg',
     url: 'https://example.com',
-    category: 'ブログ制作'
+    category: 'メディアサイト'
   },
   {
-    id: '5',
+    _id: '5',
     title: 'Portfolio Site',
+    slug: { current: 'portfolio-site' },
     summary: 'クリエイター向けポートフォリオサイト。作品の魅力を最大限に伝えるビジュアル重視のデザイン',
     techStack: ['React', 'Three.js', 'GSAP'],
     coverImage: '/images/works/work5.jpg',
     url: 'https://example.com',
-    category: 'ポートフォリオ'
+    category: 'ポートフォリオサイト'
   },
   {
-    id: '6',
+    _id: '6',
     title: 'SaaS Landing Page',
+    slug: { current: 'saas-landing-page' },
     summary: 'SaaSプロダクトのランディングページ。特徴とメリットを分かりやすく伝える構成',
     techStack: ['Next.js', 'Framer Motion', 'Stripe'],
     coverImage: '/images/works/work6.jpg',
@@ -104,7 +111,7 @@ export function WorksIndexPage() {
     loadWorks()
   }, [])
 
-  const categories = ['すべて', 'LP制作', 'コーポレートサイト', 'ブログ制作', 'ECサイト', 'ポートフォリオ']
+  const categories = ['すべて', 'LP制作', 'ポートフォリオサイト', 'リクルートサイト', 'メディアサイト', 'コーポレートサイト']
 
   const filteredWorks = selectedCategory === 'すべて'
     ? works
@@ -136,12 +143,12 @@ export function WorksIndexPage() {
           <div className="text-center">
             <AnimatedElement variants={fadeUp}>
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                制作実績
+                Works
               </h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                これまでに手がけた制作事例をご紹介。
+                これまでに手がけた制作事例をご紹介します。
                 <br />
-                LP制作からコーポレートサイト、ブログ制作まで幅広く対応しています。
+                多様な業種・目的に合わせて、最適なWebサイトを制作しています。
               </p>
             </AnimatedElement>
           </div>
@@ -171,46 +178,46 @@ export function WorksIndexPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredWorks.map((work, index) => (
-              <AnimatedElement key={work.id} variants={fadeUp}>
-                <Card className="h-full group hover:shadow-lg transition-shadow">
-                  <div className="relative overflow-hidden rounded-t-lg">
-                    <Image
-                      src={
-                        typeof work.coverImage === 'string' && work.coverImage.startsWith('/')
-                          ? work.coverImage
-                          : work.coverImage
-                          ? urlFor(work.coverImage)
-                          : '/images/placeholder-work.jpg'
-                      }
-                      alt={work.title}
-                      width={400}
-                      height={250}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = '/images/placeholder-work.jpg'
-                      }}
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-[#4CC9F0] text-white px-3 py-1 rounded-full text-xs font-medium">
-                        {work.category}
+              <AnimatedElement key={work._id} variants={fadeUp}>
+                <Card className="group overflow-hidden">
+                  {/* Cover Image */}
+                  <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
+                    {work.coverImage ? (
+                      <Image
+                        src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
+                        alt={work.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+                        <span className="text-slate-700 font-bold text-lg">
+                          {work.title}
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+                        {work.category || 'Web制作'}
                       </span>
                     </div>
                   </div>
 
                   <CardHeader>
-                    <CardTitle className="group-hover:text-[#4CC9F0] transition-colors">
+                    <CardTitle className="group-hover:text-primary transition-colors duration-200">
                       {work.title}
                     </CardTitle>
-                    <CardDescription>{work.summary}</CardDescription>
+                    <CardDescription>
+                      {work.summary}
+                    </CardDescription>
                   </CardHeader>
 
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {work.techStack.map((tech, techIndex) => (
+                      {work.techStack?.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
+                          className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
                         >
                           {tech}
                         </span>
@@ -218,54 +225,27 @@ export function WorksIndexPage() {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1"
-                      asChild
+                  <CardFooter className="flex justify-between items-center">
+                    <Link
+                      href={`/works/${work.slug.current}`}
+                      className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
                     >
-                      <Link href={`/works/${work.id}`}>
-                        詳細を見る
-                        <ArrowRight size={16} className="ml-1" />
-                      </Link>
-                    </Button>
+                      詳細を見る
+                    </Link>
                     {work.url && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        asChild
+                      <a
+                        href={work.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-400 hover:text-slate-600 transition-colors duration-200"
                       >
-                        <a
-                          href={work.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink size={16} />
-                        </a>
-                      </Button>
+                        <ExternalLink size={16} />
+                      </a>
                     )}
                   </CardFooter>
                 </Card>
               </AnimatedElement>
             ))}
-          </AnimatedElement>
-
-          {/* CTA Section */}
-          <AnimatedElement variants={fadeUp} className="text-center py-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
-              お気軽にご相談ください
-            </h2>
-            <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-              あなたのプロジェクトに最適なソリューションをご提案いたします。
-              まずはお気軽にお問い合わせください。
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/contact">
-                お問い合わせ
-                <ArrowRight size={20} className="ml-2" />
-              </Link>
-            </Button>
           </AnimatedElement>
         </AnimatedElement>
       </div>

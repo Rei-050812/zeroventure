@@ -12,8 +12,9 @@ import { getFeaturedWorks, getWorks, urlFor } from '@/lib/sanity'
 
 // Types
 interface Work {
-  id: string
+  _id: string
   title: string
+  slug: { current: string }
   summary: string
   techStack: string[]
   coverImage: string
@@ -24,8 +25,9 @@ interface Work {
 // Mock data for featured works (fallback when Sanity is not available)
 const mockWorks: Work[] = [
   {
-    id: '1',
+    _id: '1',
     title: 'TechStartup LP',
+    slug: { current: 'techstartup-lp' },
     summary: 'AI技術スタートアップのランディングページ制作',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     coverImage: '/works/work1.jpg',
@@ -33,8 +35,9 @@ const mockWorks: Work[] = [
     category: 'LP制作'
   },
   {
-    id: '2',
+    _id: '2',
     title: 'EcoVenture Corporate',
+    slug: { current: 'ecoventure-corporate' },
     summary: 'サステナブル企業のコーポレートサイト',
     techStack: ['WordPress', 'Custom Theme', 'GSAP'],
     coverImage: '/works/work2.jpg',
@@ -42,8 +45,9 @@ const mockWorks: Work[] = [
     category: 'コーポレートサイト'
   },
   {
-    id: '3',
+    _id: '3',
     title: 'FinanceApp LP',
+    slug: { current: 'financeapp-lp' },
     summary: 'フィンテックアプリのローンチページ',
     techStack: ['React', 'Framer Motion', 'Styled Components'],
     coverImage: '/works/work3.jpg',
@@ -119,7 +123,7 @@ export function WorksSection() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {works.map((work, index) => (
-              <AnimatedElement key={work.id || `work-${index}`} variants={fadeUp}>
+              <AnimatedElement key={work._id || `work-${index}`} variants={fadeUp}>
                 <Card className="group overflow-hidden">
                   {/* Cover Image */}
                   <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
@@ -157,7 +161,7 @@ export function WorksSection() {
                     <div className="flex flex-wrap gap-2">
                       {work.techStack?.map((tech, techIndex) => (
                         <span
-                          key={`${work.id || index}-tech-${techIndex}-${tech}`}
+                          key={`${work._id || index}-tech-${techIndex}-${tech}`}
                           className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
                         >
                           {tech}
@@ -168,7 +172,7 @@ export function WorksSection() {
 
                   <CardFooter className="flex justify-between items-center">
                     <Link
-                      href={`/works/${work.id}`}
+                      href={`/works/${work.slug.current}`}
                       className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
                     >
                       詳細を見る

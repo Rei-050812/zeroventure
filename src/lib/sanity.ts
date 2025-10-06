@@ -26,6 +26,7 @@ export async function getWorks() {
       techStack,
       coverImage,
       url,
+      category,
       featured,
       publishedAt
     }
@@ -47,10 +48,6 @@ export async function getWork(slug: string) {
       category,
       client,
       duration,
-      role,
-      challenges,
-      solutions,
-      results,
       publishedAt
     }
   `, { slug })
@@ -66,6 +63,7 @@ export async function getFeaturedWorks() {
       techStack,
       coverImage,
       url,
+      category,
       publishedAt
     }
   `)

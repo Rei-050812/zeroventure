@@ -6,6 +6,7 @@ export const work = {
   type: 'document',
   title: '制作実績',
   fields: [
+    // 基本情報
     {
       name: 'title',
       type: 'string',
@@ -22,10 +23,46 @@ export const work = {
       validation: (rule: any) => rule.required()
     },
     {
+      name: 'category',
+      type: 'string',
+      title: 'カテゴリ',
+      options: {
+        list: [
+          { title: 'LP制作', value: 'LP制作' },
+          { title: 'ポートフォリオサイト', value: 'ポートフォリオサイト' },
+          { title: 'リクルートサイト', value: 'リクルートサイト' },
+          { title: 'メディアサイト', value: 'メディアサイト' },
+          { title: 'コーポレートサイト', value: 'コーポレートサイト' }
+        ]
+      },
+      validation: (rule: any) => rule.required()
+    },
+    {
+      name: 'client',
+      type: 'string',
+      title: 'クライアント名'
+    },
+    {
+      name: 'duration',
+      type: 'string',
+      title: '制作期間'
+    },
+    // コンテンツ
+    {
       name: 'summary',
       type: 'text',
       title: '概要',
       validation: (rule: any) => rule.required().max(200)
+    },
+    {
+      name: 'description',
+      type: 'array',
+      title: '詳細説明',
+      of: [
+        {
+          type: 'block'
+        }
+      ]
     },
     {
       name: 'techStack',
@@ -34,6 +71,7 @@ export const work = {
       of: [{ type: 'string' }],
       validation: (rule: any) => rule.required().min(1)
     },
+    // 画像
     {
       name: 'coverImage',
       type: 'image',
@@ -43,6 +81,20 @@ export const work = {
       },
       validation: (rule: any) => rule.required()
     },
+    {
+      name: 'images',
+      type: 'array',
+      title: '追加画像',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          }
+        }
+      ]
+    },
+    // その他
     {
       name: 'url',
       type: 'url',
