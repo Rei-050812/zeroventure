@@ -79,41 +79,6 @@ const services = [
   }
 ]
 
-const commonFeatures = [
-  {
-    title: 'レスポンシブデザイン',
-    description: 'スマホ・タブレット・PCなど、どのデバイスでも快適に閲覧できる最適化設計。'
-  },
-  {
-    title: '高速表示',
-    description: 'ページの表示速度を最適化し、快適な閲覧体験を実現。'
-  },
-  {
-    title: 'アクセス解析',
-    description: 'Google Analyticsを導入し、効果測定や改善判断に役立てる仕組み。'
-  },
-  {
-    title: '拡張性のある設計',
-    description: '将来的な機能追加やページ増設にも柔軟に対応できる構成。'
-  },
-  {
-    title: 'SEO対策',
-    description: '検索エンジンに強い構造で、自然な流入と継続的な集客をサポート。'
-  },
-  {
-    title: 'お問い合わせフォーム',
-    description: '目的に合わせたフォームを設置し、見込み客との接点を確保。'
-  },
-  {
-    title: 'オリジナルデザイン',
-    description: 'ご要望やブランドイメージに合わせた独自デザインで構築。'
-  },
-  {
-    title: '丁寧なサポート',
-    description: '制作から公開後までを通して支える安心のサポート体制。'
-  }
-]
-
 const process = [
   {
     step: '01',
@@ -217,47 +182,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Common Features Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedElement variants={containerStagger}>
-            <AnimatedElement variants={fadeUp} className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                全サービスに含まれる基本仕様
-              </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                すべてのサービスに共通して含まれる、<br />
-                高品質なWebサイト制作のための基本要素をご紹介します。
-              </p>
-            </AnimatedElement>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {commonFeatures.map((feature, index) => (
-                <AnimatedElement key={index} variants={fadeUp}>
-                  <div className="flex gap-4 items-start">
-                    <div className="flex-shrink-0">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Check className="w-5 h-5 text-primary" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-slate-900 mb-1">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </AnimatedElement>
-              ))}
-            </div>
-          </AnimatedElement>
-        </div>
-      </section>
-
       {/* Process Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={containerStagger}>
             <AnimatedElement variants={fadeUp} className="text-center mb-12">
@@ -298,7 +224,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedElement variants={containerStagger}>
             <AnimatedElement variants={fadeUp}>

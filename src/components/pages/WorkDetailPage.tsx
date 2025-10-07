@@ -108,6 +108,20 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
             </Card>
           </AnimatedElement>
 
+          {/* Description */}
+          {work.description && work.description.length > 0 && (
+            <AnimatedElement variants={fadeUp}>
+              <Card>
+                <CardContent className="pt-6">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">詳細</h2>
+                  <div className="prose prose-slate max-w-none">
+                    <PortableText value={work.description} />
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedElement>
+          )}
+
           {/* Tech Stack */}
           <AnimatedElement variants={fadeUp}>
             <Card>
@@ -126,20 +140,6 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
               </CardContent>
             </Card>
           </AnimatedElement>
-
-          {/* Description */}
-          {work.description && work.description.length > 0 && (
-            <AnimatedElement variants={fadeUp}>
-              <Card>
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-4">詳細</h2>
-                  <div className="prose prose-slate max-w-none">
-                    <PortableText value={work.description} />
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedElement>
-          )}
 
           {/* Additional Images */}
           {work.images && work.images.length > 0 && (
