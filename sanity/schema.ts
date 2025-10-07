@@ -50,19 +50,6 @@ export const work = {
       ]
     },
     {
-      name: 'images',
-      type: 'array',
-      title: '追加画像',
-      of: [
-        {
-          type: 'image',
-          options: {
-            hotspot: true
-          }
-        }
-      ]
-    },
-    {
       name: 'techStack',
       type: 'array',
       title: '使用技術',
@@ -136,53 +123,6 @@ export const work = {
   ]
 }
 
-// Category Schema
-export const category = {
-  name: 'category',
-  type: 'document',
-  title: 'カテゴリ',
-  fields: [
-    {
-      name: 'title',
-      type: 'string',
-      title: 'タイトル',
-      validation: (rule: any) => rule.required()
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'スラッグ',
-      options: {
-        source: 'title'
-      },
-      validation: (rule: any) => rule.required()
-    }
-  ]
-}
-
-// Tag Schema
-export const tag = {
-  name: 'tag',
-  type: 'document',
-  title: 'タグ',
-  fields: [
-    {
-      name: 'title',
-      type: 'string',
-      title: 'タイトル',
-      validation: (rule: any) => rule.required()
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'スラッグ',
-      options: {
-        source: 'title'
-      },
-      validation: (rule: any) => rule.required()
-    }
-  ]
-}
 
 // Post Schema (Blog)
 export const post = {
@@ -211,8 +151,8 @@ export const post = {
       name: 'excerpt',
       type: 'text',
       title: '要約',
-      description: '記事の概要（一覧表示で使用）',
-      validation: (rule: any) => rule.required().max(200)
+      description: '記事の概要（一覧表示で使用）。空欄の場合は本文から自動抽出されます',
+      validation: (rule: any) => rule.max(200)
     },
     {
       name: 'coverImage',
@@ -237,28 +177,24 @@ export const post = {
     // 分類
     {
       name: 'category',
-      type: 'reference',
+      type: 'string',
       title: 'カテゴリ',
-      to: [{ type: 'category' }],
+      options: {
+        list: [
+          { title: 'Web制作', value: 'Web制作' },
+          { title: 'デザイン', value: 'デザイン' },
+          { title: 'SEO', value: 'SEO' },
+          { title: 'マーケティング', value: 'マーケティング' }
+        ]
+      },
       validation: (rule: any) => rule.required()
-    },
-    {
-      name: 'tags',
-      type: 'array',
-      title: 'タグ',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'tag' }]
-        }
-      ]
     },
     // SEO
     {
       name: 'metaDescription',
       type: 'text',
       title: 'メタディスクリプション',
-      description: 'SEO用の説明文（120-160文字推奨）',
+      description: 'SEO用の説明文（120-160文字推奨）。空欄の場合は要約が使用されます',
       validation: (rule: any) => rule.max(160)
     },
     // 機能
@@ -327,15 +263,17 @@ export const news = {
       validation: (rule: any) => rule.required()
     },
     {
-      name: 'categories',
-      type: 'array',
+      name: 'category',
+      type: 'string',
       title: 'カテゴリ',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'category' }]
-        }
-      ]
+      options: {
+        list: [
+          { title: 'お知らせ', value: 'お知らせ' },
+          { title: 'プレスリリース', value: 'プレスリリース' },
+          { title: '更新情報', value: '更新情報' }
+        ]
+      },
+      validation: (rule: any) => rule.required()
     },
     {
       name: 'coverImage',
@@ -370,4 +308,4 @@ export const news = {
   ]
 }
 
-export const schemaTypes = [work, category, tag, post, news]
+export const schemaTypes = [work, post, news]

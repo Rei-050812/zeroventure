@@ -2,10 +2,9 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/Card'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { Calendar, Tag, ArrowRight } from 'lucide-react'
+import { Calendar, ArrowRight } from 'lucide-react'
 import { getPosts, urlFor } from '@/lib/sanity'
 
 export const metadata: Metadata = {
@@ -78,7 +77,7 @@ export default async function BlogPage() {
                           {post.category && (
                             <div className="absolute top-4 left-4">
                               <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
-                                {post.category.title}
+                                {post.category}
                               </span>
                             </div>
                           )}
@@ -100,21 +99,6 @@ export default async function BlogPage() {
                         )}
                       </CardHeader>
 
-                      {post.tags && post.tags.length > 0 && (
-                        <CardContent>
-                          <div className="flex flex-wrap gap-2">
-                            {post.tags.slice(0, 3).map((tag: any, tagIndex: number) => (
-                              <span
-                                key={tagIndex}
-                                className="inline-flex items-center gap-1 text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
-                              >
-                                <Tag size={10} />
-                                {tag.title}
-                              </span>
-                            ))}
-                          </div>
-                        </CardContent>
-                      )}
 
                       <CardFooter>
                         <Link
@@ -134,28 +118,6 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedElement variants={containerStagger}>
-            <AnimatedElement variants={fadeUp}>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                Webサイト制作のご相談はこちら
-              </h2>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                あなたのビジネスを成功に導く<br />
-                Webサイトを一緒に作りませんか？
-              </p>
-              <Button size="lg" className="min-w-[200px]">
-                <Link href="/contact" className="flex items-center gap-2">
-                  無料相談を申し込む
-                  <ArrowRight size={20} />
-                </Link>
-              </Button>
-            </AnimatedElement>
-          </AnimatedElement>
-        </div>
-      </section>
     </main>
   )
 }

@@ -80,8 +80,7 @@ export async function getPosts() {
       slug,
       excerpt,
       body,
-      category->{title, slug},
-      tags[]->{title, slug},
+      category,
       coverImage,
       featured,
       toc,
@@ -91,6 +90,22 @@ export async function getPosts() {
   `)
 }
 
+export async function getPostBySlug(slug: string) {
+  return client.fetch(`
+    *[_type == "post" && slug.current == $slug][0] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      body,
+      category,
+      coverImage,
+      metaDescription,
+      publishedAt
+    }
+  `, { slug })
+}
+
 export async function getLatestPosts() {
   return client.fetch(`
     *[_type == "post"] | order(publishedAt desc) [0...3] {
@@ -98,7 +113,7 @@ export async function getLatestPosts() {
       title,
       slug,
       excerpt,
-      category->{title, slug},
+      category,
       coverImage,
       featured,
       publishedAt
@@ -113,7 +128,7 @@ export async function getNews() {
       title,
       slug,
       body,
-      categories[]->{title, slug},
+      category,
       coverImage,
       publishedAt
     }
@@ -127,7 +142,7 @@ export async function getLatestNews() {
       title,
       slug,
       body,
-      categories[]->{title, slug},
+      category,
       publishedAt
     }
   `)

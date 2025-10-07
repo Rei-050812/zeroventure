@@ -17,7 +17,6 @@ interface Work {
   description?: any[]
   techStack: string[]
   coverImage: any
-  images?: any[]
   url?: string
   category: string
   client?: string
@@ -140,29 +139,6 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
               </CardContent>
             </Card>
           </AnimatedElement>
-
-          {/* Additional Images */}
-          {work.images && work.images.length > 0 && (
-            <AnimatedElement variants={fadeUp}>
-              <Card>
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">追加画像</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {work.images.map((image, index) => (
-                      <div key={index} className="aspect-video bg-gray-200 relative overflow-hidden rounded-lg">
-                        <Image
-                          src={urlFor(image).width(600).height(400).url()}
-                          alt={`${work.title} - 画像 ${index + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedElement>
-          )}
 
           {/* External Link */}
           {work.url && (
