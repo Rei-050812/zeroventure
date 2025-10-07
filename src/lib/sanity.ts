@@ -75,10 +75,14 @@ export async function getPosts() {
       _id,
       title,
       slug,
+      excerpt,
       body,
-      categories[]->{title, slug},
+      category->{title, slug},
       tags[]->{title, slug},
       coverImage,
+      featured,
+      toc,
+      metaDescription,
       publishedAt
     }
   `)
@@ -90,9 +94,10 @@ export async function getLatestPosts() {
       _id,
       title,
       slug,
-      body,
-      categories[]->{title, slug},
+      excerpt,
+      category->{title, slug},
       coverImage,
+      featured,
       publishedAt
     }
   `)

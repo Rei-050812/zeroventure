@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
@@ -75,10 +75,10 @@ export default async function BlogPage() {
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                           />
-                          {post.categories && post.categories.length > 0 && (
+                          {post.category && (
                             <div className="absolute top-4 left-4">
                               <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
-                                {post.categories[0].title}
+                                {post.category.title}
                               </span>
                             </div>
                           )}
@@ -93,6 +93,11 @@ export default async function BlogPage() {
                         <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
                           {post.title}
                         </CardTitle>
+                        {post.excerpt && (
+                          <CardDescription className="line-clamp-3 mt-2">
+                            {post.excerpt}
+                          </CardDescription>
+                        )}
                       </CardHeader>
 
                       {post.tags && post.tags.length > 0 && (

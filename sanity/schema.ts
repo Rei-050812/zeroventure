@@ -178,6 +178,7 @@ export const post = {
   type: 'document',
   title: 'ブログ記事',
   fields: [
+    // 基本情報
     {
       name: 'title',
       type: 'string',
@@ -193,6 +194,23 @@ export const post = {
       },
       validation: (rule: any) => rule.required()
     },
+    // コンテンツ
+    {
+      name: 'excerpt',
+      type: 'text',
+      title: '要約',
+      description: '記事の概要（一覧表示で使用）',
+      validation: (rule: any) => rule.required().max(200)
+    },
+    {
+      name: 'coverImage',
+      type: 'image',
+      title: 'カバー画像',
+      options: {
+        hotspot: true
+      },
+      validation: (rule: any) => rule.required()
+    },
     {
       name: 'body',
       type: 'array',
@@ -204,16 +222,13 @@ export const post = {
       ],
       validation: (rule: any) => rule.required()
     },
+    // 分類
     {
-      name: 'categories',
-      type: 'array',
+      name: 'category',
+      type: 'reference',
       title: 'カテゴリ',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'category' }]
-        }
-      ]
+      to: [{ type: 'category' }],
+      validation: (rule: any) => rule.required()
     },
     {
       name: 'tags',
@@ -226,13 +241,21 @@ export const post = {
         }
       ]
     },
+    // SEO
     {
-      name: 'coverImage',
-      type: 'image',
-      title: 'カバー画像',
-      options: {
-        hotspot: true
-      }
+      name: 'metaDescription',
+      type: 'text',
+      title: 'メタディスクリプション',
+      description: 'SEO用の説明文（120-160文字推奨）',
+      validation: (rule: any) => rule.max(160)
+    },
+    // 機能
+    {
+      name: 'featured',
+      type: 'boolean',
+      title: '注目記事',
+      description: 'トップページに表示する',
+      initialValue: false
     },
     {
       name: 'toc',
@@ -240,13 +263,7 @@ export const post = {
       title: '目次表示',
       initialValue: true
     },
-    {
-      name: 'reducedMotion',
-      type: 'boolean',
-      title: 'アニメーション抑制',
-      description: 'このページでアニメーションを抑制する',
-      initialValue: false
-    },
+    // メタ情報
     {
       name: 'publishedAt',
       type: 'datetime',
