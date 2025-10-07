@@ -9,7 +9,7 @@ import { getPosts, urlFor } from '@/lib/sanity'
 
 export const metadata: Metadata = {
   title: 'Blog | ZEROVENTURE',
-  description: 'ZEROVENTUREのブログ。Web制作、デザイン、マーケティングに関する最新情報をお届けします。',
+  description: 'ZEROVENTUREのブログ。Web制作・デザイン・SEO・マーケティングの最新情報と実践的なノウハウをお届けします。',
 }
 
 export default async function BlogPage() {
@@ -43,8 +43,8 @@ export default async function BlogPage() {
                 Blog
               </h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Web制作、デザイン、マーケティングに関する<br />
-                最新情報と実践的なノウハウをお届け
+                Web制作・デザイン・SEO・マーケティングの<br />
+                最新情報と実践的なノウハウをお届けします。
               </p>
             </AnimatedElement>
           </AnimatedElement>
