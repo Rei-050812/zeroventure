@@ -22,38 +22,6 @@ export const work = {
       },
       validation: (rule: any) => rule.required()
     },
-    // 分類
-    {
-      name: 'category',
-      type: 'string',
-      title: 'カテゴリ',
-      options: {
-        list: [
-          { title: 'LP制作', value: 'LP制作' },
-          { title: 'ポートフォリオサイト', value: 'ポートフォリオサイト' },
-          { title: 'リクルートサイト', value: 'リクルートサイト' },
-          { title: 'メディアサイト', value: 'メディアサイト' },
-          { title: 'コーポレートサイト', value: 'コーポレートサイト' }
-        ]
-      },
-      validation: (rule: any) => rule.required()
-    },
-    // プロジェクト情報
-    {
-      name: 'client',
-      type: 'string',
-      title: 'クライアント名'
-    },
-    {
-      name: 'duration',
-      type: 'string',
-      title: '制作期間'
-    },
-    {
-      name: 'url',
-      type: 'url',
-      title: 'サイトURL'
-    },
     // コンテンツ
     {
       name: 'summary',
@@ -100,6 +68,38 @@ export const work = {
       title: '使用技術',
       of: [{ type: 'string' }],
       validation: (rule: any) => rule.required().min(1)
+    },
+    // 分類
+    {
+      name: 'category',
+      type: 'string',
+      title: 'カテゴリ',
+      options: {
+        list: [
+          { title: 'LP制作', value: 'LP制作' },
+          { title: 'ポートフォリオサイト', value: 'ポートフォリオサイト' },
+          { title: 'リクルートサイト', value: 'リクルートサイト' },
+          { title: 'メディアサイト', value: 'メディアサイト' },
+          { title: 'コーポレートサイト', value: 'コーポレートサイト' }
+        ]
+      },
+      validation: (rule: any) => rule.required()
+    },
+    // プロジェクト情報
+    {
+      name: 'client',
+      type: 'string',
+      title: 'クライアント名'
+    },
+    {
+      name: 'duration',
+      type: 'string',
+      title: '制作期間'
+    },
+    {
+      name: 'url',
+      type: 'url',
+      title: 'サイトURL'
     },
     // SEO
     {
