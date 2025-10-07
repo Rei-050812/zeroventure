@@ -28,6 +28,7 @@ export async function getWorks() {
       url,
       category,
       featured,
+      metaDescription,
       publishedAt
     }
   `)
@@ -48,6 +49,7 @@ export async function getWork(slug: string) {
       category,
       client,
       duration,
+      metaDescription,
       publishedAt
     }
   `, { slug })
@@ -64,6 +66,7 @@ export async function getFeaturedWorks() {
       coverImage,
       url,
       category,
+      metaDescription,
       publishedAt
     }
   `)

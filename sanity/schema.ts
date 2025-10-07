@@ -22,6 +22,7 @@ export const work = {
       },
       validation: (rule: any) => rule.required()
     },
+    // 分類
     {
       name: 'category',
       type: 'string',
@@ -37,6 +38,7 @@ export const work = {
       },
       validation: (rule: any) => rule.required()
     },
+    // プロジェクト情報
     {
       name: 'client',
       type: 'string',
@@ -47,12 +49,27 @@ export const work = {
       type: 'string',
       title: '制作期間'
     },
+    {
+      name: 'url',
+      type: 'url',
+      title: 'サイトURL'
+    },
     // コンテンツ
     {
       name: 'summary',
       type: 'text',
       title: '概要',
-      validation: (rule: any) => rule.required().max(200)
+      description: '制作実績の概要（一覧表示で使用）。空欄の場合は詳細説明から自動抽出されます',
+      validation: (rule: any) => rule.max(200)
+    },
+    {
+      name: 'coverImage',
+      type: 'image',
+      title: 'カバー画像',
+      options: {
+        hotspot: true
+      },
+      validation: (rule: any) => rule.required()
     },
     {
       name: 'description',
@@ -63,23 +80,6 @@ export const work = {
           type: 'block'
         }
       ]
-    },
-    {
-      name: 'techStack',
-      type: 'array',
-      title: '使用技術',
-      of: [{ type: 'string' }],
-      validation: (rule: any) => rule.required().min(1)
-    },
-    // 画像
-    {
-      name: 'coverImage',
-      type: 'image',
-      title: 'カバー画像',
-      options: {
-        hotspot: true
-      },
-      validation: (rule: any) => rule.required()
     },
     {
       name: 'images',
@@ -94,18 +94,30 @@ export const work = {
         }
       ]
     },
-    // その他
     {
-      name: 'url',
-      type: 'url',
-      title: 'サイトURL'
+      name: 'techStack',
+      type: 'array',
+      title: '使用技術',
+      of: [{ type: 'string' }],
+      validation: (rule: any) => rule.required().min(1)
     },
+    // SEO
+    {
+      name: 'metaDescription',
+      type: 'text',
+      title: 'メタディスクリプション',
+      description: 'SEO用の説明文（120-160文字推奨）。空欄の場合は概要が使用されます',
+      validation: (rule: any) => rule.max(160)
+    },
+    // 機能
     {
       name: 'featured',
       type: 'boolean',
       title: '注目作品',
+      description: 'トップページに表示する',
       initialValue: false
     },
+    // メタ情報
     {
       name: 'publishedAt',
       type: 'datetime',
