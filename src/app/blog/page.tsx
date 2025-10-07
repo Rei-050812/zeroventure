@@ -55,7 +55,7 @@ export default async function BlogPage() {
           ) : (
             <AnimatedElement variants={containerStagger}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post: any, index: number) => (
+                {posts.filter((post: any) => post.slug?.current).map((post: any, index: number) => (
                   <AnimatedElement key={post._id} variants={fadeUp}>
                     <Card className="group h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
                       {post.coverImage && (
