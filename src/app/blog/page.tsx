@@ -25,18 +25,8 @@ export default async function BlogPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden bg-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://source.unsplash.com/1920x1080/?blog,writing,content"
-            alt="Blog Background"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-white/85"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={containerStagger} className="text-center">
             <AnimatedElement variants={fadeUp}>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
