@@ -26,51 +26,17 @@ interface BlogPost {
 }
 
 interface NewsItem {
-  id: string
+  _id: string
   title: string
-  summary: string
+  slug: { current: string }
+  body: any[]
+  important: boolean
   publishedAt: string
-  category: string
-  type: string
 }
 
 interface PostsState {
   blog: BlogPost[]
   news: NewsItem[]
-}
-
-// Mock data for latest posts (この部分は後でSanityから取得)
-const latestPosts: PostsState = {
-  blog: [
-    {
-      id: '1',
-      title: 'Next.js 15の新機能とパフォーマンス改善のポイント',
-      summary: 'Next.js 15で追加された新機能と、パフォーマンス向上のための実装方法について解説します。',
-      publishedAt: '2024-01-15',
-      category: '技術',
-      tags: ['Next.js', 'React', 'Performance'],
-      type: 'blog'
-    },
-    {
-      id: '2',
-      title: 'ベンチャー企業がWebサイトで成果を出すための5つのポイント',
-      summary: 'スタートアップ・ベンチャー企業がWebサイトを活用してビジネス成果を最大化するための実践的なアドバイス。',
-      publishedAt: '2024-01-10',
-      category: 'マーケティング',
-      tags: ['マーケティング', 'CVR', 'ベンチャー'],
-      type: 'blog'
-    }
-  ],
-  news: [
-    {
-      id: '1',
-      title: '年末年始休業のお知らせ',
-      summary: '2024年12月29日〜2025年1月3日まで年末年始休業とさせていただきます。',
-      publishedAt: '2024-12-20',
-      category: '重要',
-      type: 'news'
-    }
-  ]
 }
 
 function PostCard({ post }: { post: BlogPost }) {
@@ -159,11 +125,12 @@ export function LatestPostsSection() {
         ])
 
         setPosts({
-          blog: blogPosts.length > 0 ? blogPosts : latestPosts.blog,
-          news: newsItems.length > 0 ? newsItems : latestPosts.news
+          blog: blogPosts || [],
+          news: newsItems || []
         })
       } catch (error) {
-        setPosts(latestPosts)
+        console.error('Failed to load content:', error)
+        setPosts({ blog: [], news: [] })
       } finally {
         setLoading(false)
       }
@@ -243,7 +210,7 @@ export function LatestPostsSection() {
 
             <AnimatedElement variants={containerStagger}>
               {posts.news.map((post, index) => (
-                <AnimatedElement key={post.id || `news-${index}`} variants={fadeUp}>
+                <AnimatedElement key={post._id || `news-${index}`} variants={fadeUp}>
                   <div className="border-b border-gray-200 pb-4">
                     <div className="flex items-start gap-4">
                       <div className="text-sm text-slate-500 min-w-[100px]">
@@ -251,14 +218,14 @@ export function LatestPostsSection() {
                       </div>
                       <div className="flex-1">
                         <Link
-                          href={`/news/${post.id}`}
+                          href={`/news/${post.slug.current}`}
                           className="text-slate-900 hover:text-primary transition-colors duration-200 font-medium"
                         >
                           {post.title}
                         </Link>
-                        {post.category && (
-                          <span className="ml-2 text-xs bg-primary text-white px-2 py-1 rounded">
-                            {post.category}
+                        {post.important && (
+                          <span className="ml-2 text-xs bg-red-600 text-white px-2 py-1 rounded">
+                            重要
                           </span>
                         )}
                       </div>

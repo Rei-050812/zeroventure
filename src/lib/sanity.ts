@@ -129,7 +129,7 @@ export async function getNews() {
       title,
       slug,
       body,
-      category,
+      important,
       coverImage,
       publishedAt
     }
@@ -143,10 +143,24 @@ export async function getLatestNews() {
       title,
       slug,
       body,
-      category,
+      important,
       publishedAt
     }
   `)
+}
+
+export async function getNewsBySlug(slug: string) {
+  return client.fetch(`
+    *[_type == "news" && slug.current == $slug][0] {
+      _id,
+      title,
+      slug,
+      body,
+      important,
+      coverImage,
+      publishedAt
+    }
+  `, { slug })
 }
 
 // 関連記事を取得（同じカテゴリの記事）

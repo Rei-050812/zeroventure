@@ -336,17 +336,11 @@ export const news = {
       validation: (rule: any) => rule.required()
     },
     {
-      name: 'category',
-      type: 'string',
-      title: 'カテゴリ',
-      options: {
-        list: [
-          { title: 'お知らせ', value: 'お知らせ' },
-          { title: 'プレスリリース', value: 'プレスリリース' },
-          { title: '更新情報', value: '更新情報' }
-        ]
-      },
-      validation: (rule: any) => rule.required()
+      name: 'important',
+      type: 'boolean',
+      title: '重要なお知らせ',
+      description: '重要なお知らせとして目立たせる',
+      initialValue: false
     },
     {
       name: 'coverImage',
