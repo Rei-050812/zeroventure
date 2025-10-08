@@ -151,50 +151,49 @@ export function BlogIndexPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPosts.map((post: Post) => (
                   <AnimatedElement key={post._id} variants={fadeUp}>
-                    <Card className="group h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
-                      {post.coverImage && (
-                        <div className="aspect-video relative overflow-hidden rounded-t-xl">
-                          <Image
-                            src={urlFor(post.coverImage).width(800).height(600).url()}
-                            alt={post.coverImage.alt || post.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          {post.category && (
-                            <div className="absolute top-4 left-4">
-                              <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
-                                {post.category}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <CardHeader>
-                        <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
-                          <Calendar size={16} />
-                          {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-                        </div>
-                        <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
-                          {post.title}
-                        </CardTitle>
-                        {post.excerpt && (
-                          <CardDescription className="line-clamp-3 mt-2">
-                            {post.excerpt}
-                          </CardDescription>
+                    <Link href={`/blog/${post.slug.current}`} className="block h-full">
+                      <Card className="group h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
+                        {post.coverImage && (
+                          <div className="aspect-video relative overflow-hidden rounded-t-xl">
+                            <Image
+                              src={urlFor(post.coverImage).width(800).height(600).url()}
+                              alt={post.coverImage.alt || post.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            {post.category && (
+                              <div className="absolute top-4 left-4">
+                                <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+                                  {post.category}
+                                </span>
+                              </div>
+                            )}
+                          </div>
                         )}
-                      </CardHeader>
 
-                      <CardFooter>
-                        <Link
-                          href={`/blog/${post.slug.current}`}
-                          className="text-primary hover:text-primary-hover transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
-                        >
-                          続きを読む
-                          <ArrowRight size={14} />
-                        </Link>
-                      </CardFooter>
-                    </Card>
+                        <CardHeader>
+                          <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
+                            <Calendar size={16} />
+                            {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+                          </div>
+                          <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
+                            {post.title}
+                          </CardTitle>
+                          {post.excerpt && (
+                            <CardDescription className="line-clamp-3 mt-2">
+                              {post.excerpt}
+                            </CardDescription>
+                          )}
+                        </CardHeader>
+
+                        <CardFooter>
+                          <span className="text-primary hover:text-primary-hover transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1">
+                            続きを読む
+                            <ArrowRight size={14} />
+                          </span>
+                        </CardFooter>
+                      </Card>
+                    </Link>
                   </AnimatedElement>
                 ))}
               </div>

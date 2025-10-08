@@ -2,21 +2,26 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, ArrowRight, Tag } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { getLatestPosts, getLatestNews } from '@/lib/sanity'
+import { getLatestPosts, getLatestNews, urlFor } from '@/lib/sanity'
 
 // Types
 interface BlogPost {
-  id: string
+  _id?: string
+  id?: string
+  slug?: { current: string }
   title: string
-  summary: string
+  excerpt?: string
+  summary?: string
   publishedAt: string
   category: string
-  tags: string[]
+  coverImage?: any
+  tags?: string[]
   type: string
 }
 
@@ -68,39 +73,60 @@ const latestPosts: PostsState = {
   ]
 }
 
-function PostCard({ post }: { post: BlogPost | NewsItem }) {
-  const href = `/${post.type}/${post.id}`
+function PostCard({ post }: { post: BlogPost }) {
+  const href = post.slug ? `/blog/${post.slug.current}` : `/${post.type}/${post.id || post._id}`
+  const postSummary = post.excerpt || post.summary
 
   return (
-    <Card className="group h-full">
+    <Card className="group overflow-hidden h-full">
+      {/* Cover Image */}
+      <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
+        {post.coverImage ? (
+          <Image
+            src={post.coverImage.asset ? urlFor(post.coverImage).width(600).height(400).url() : post.coverImage}
+            alt={post.coverImage.alt || post.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+            <span className="text-slate-700 font-bold text-lg">
+              {post.title}
+            </span>
+          </div>
+        )}
+        {post.category && (
+          <div className="absolute top-4 right-4">
+            <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+              {post.category}
+            </span>
+          </div>
+        )}
+      </div>
+
       <CardHeader>
         <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
           <Calendar size={16} />
           {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-          {post.category && (
-            <>
-              <span>•</span>
-              <span className="text-primary">{post.category}</span>
-            </>
-          )}
         </div>
         <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
           {post.title}
         </CardTitle>
-        <CardDescription className="line-clamp-3">
-          {post.summary}
-        </CardDescription>
+        {postSummary && (
+          <CardDescription className="line-clamp-3">
+            {postSummary}
+          </CardDescription>
+        )}
       </CardHeader>
 
-      {post.tags && (
+      {post.tags && post.tags.length > 0 && (
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {post.tags.slice(0, 3).map((tag: string, index: number) => (
               <span
                 key={index}
-                className="inline-flex items-center gap-1 text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
+                className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
               >
-                <Tag size={10} />
                 {tag}
               </span>
             ))}
@@ -196,7 +222,7 @@ export function LatestPostsSection() {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               {posts.blog.map((post, index) => (
-                <AnimatedElement key={post.id || `blog-${index}`} variants={fadeUp}>
+                <AnimatedElement key={post._id || post.id || `blog-${index}`} variants={fadeUp}>
                   <PostCard post={post} />
                 </AnimatedElement>
               ))}

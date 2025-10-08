@@ -109,7 +109,7 @@ export async function getPostBySlug(slug: string) {
 
 export async function getLatestPosts() {
   return client.fetch(`
-    *[_type == "post"] | order(publishedAt desc) [0...3] {
+    *[_type == "post"] | order(publishedAt desc) [0...2] {
       _id,
       title,
       slug,
