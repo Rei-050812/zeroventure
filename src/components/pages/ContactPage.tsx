@@ -72,7 +72,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-slate-900 mb-1">所在地</h3>
-                      <p className="text-slate-600">千葉市緑区</p>
+                      <p className="text-slate-600">千葉県千葉市緑区</p>
                     </div>
                   </div>
                 </div>
