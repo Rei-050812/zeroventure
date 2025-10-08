@@ -84,7 +84,7 @@ export function ContactPage() {
               <AnimatedElement variants={fadeUp}>
                 <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
                   <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                    プロジェクトについて教えてください
+                    ご相談内容をお聞かせください
                   </h2>
                   <ContactForm />
                 </div>

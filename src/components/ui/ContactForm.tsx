@@ -12,7 +12,6 @@ interface FormData {
   name: string
   email: string
   company: string
-  timeline: string
   message: string
 }
 
@@ -25,7 +24,6 @@ export function ContactForm() {
     name: '',
     email: '',
     company: '',
-    timeline: '',
     message: ''
   })
 
@@ -112,8 +110,7 @@ export function ContactForm() {
             onClick={() => {
               setIsSubmitted(false)
               setFormData({
-                name: '', email: '', company: '',
-                timeline: '', message: ''
+                name: '', email: '', company: '', message: ''
               })
             }}
             variant="outline"
@@ -182,42 +179,23 @@ export function ContactForm() {
         </AnimatedElement>
       </div>
 
-      {/* Company & Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <AnimatedElement variants={fadeUp}>
-          <div>
-            <label htmlFor="company" className="block text-sm font-medium text-slate-900 mb-2">
-              会社名・団体名
-            </label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-              placeholder="株式会社サンプル（個人の場合は「個人」とご記入ください）"
-            />
-          </div>
-        </AnimatedElement>
-
-        <AnimatedElement variants={fadeUp}>
-          <div>
-            <label htmlFor="timeline" className="block text-sm font-medium text-slate-900 mb-2">
-              希望納期
-            </label>
-            <input
-              type="text"
-              id="timeline"
-              name="timeline"
-              value={formData.timeline}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-              placeholder="例：1ヶ月以内、3ヶ月程度、相談したい など"
-            />
-          </div>
-        </AnimatedElement>
-      </div>
+      {/* Company */}
+      <AnimatedElement variants={fadeUp}>
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-slate-900 mb-2">
+            会社名・団体名
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+            placeholder="株式会社サンプル"
+          />
+        </div>
+      </AnimatedElement>
 
       {/* Message */}
       <AnimatedElement variants={fadeUp}>
@@ -235,7 +213,7 @@ export function ContactForm() {
               "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200 resize-vertical",
               errors.message ? "border-red-500" : "border-gray-300 focus:border-primary"
             )}
-            placeholder="プロジェクトの詳細、ご要望、ご質問などをお聞かせください"
+            placeholder="どんなサイトを作りたいか、実装したい機能、予算、納期、その他どんなことでもお気軽にご記入ください。"
           />
           {errors.message && (
             <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
