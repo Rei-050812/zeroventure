@@ -1,10 +1,15 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Calendar, Tag, List } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/Card'
-import { urlFor } from '@/lib/sanity'
+import { ShareButtons } from '@/components/ui/ShareButtons'
+import { RelatedArticles } from '@/components/ui/RelatedArticles'
+import { ArticleNavigation } from '@/components/ui/ArticleNavigation'
+import { ArticleCTA } from '@/components/ui/ArticleCTA'
+import { urlFor, getRelatedPosts, getAdjacentPosts } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 
 interface Heading {
@@ -43,6 +48,25 @@ interface PostDetailPageProps {
 
 export function PostDetailPage({ post }: PostDetailPageProps) {
   const headings = extractHeadings(post.body)
+  const [relatedPosts, setRelatedPosts] = useState<any[]>([])
+  const [adjacentPosts, setAdjacentPosts] = useState<{ prev: any | null; next: any | null }>({ prev: null, next: null })
+
+  useEffect(() => {
+    async function loadAdditionalContent() {
+      try {
+        const [related, adjacent] = await Promise.all([
+          getRelatedPosts(post._id, post.category, 3),
+          getAdjacentPosts(post.publishedAt)
+        ])
+        setRelatedPosts(related || [])
+        setAdjacentPosts(adjacent || { prev: null, next: null })
+      } catch (error) {
+        console.error('Failed to load additional content:', error)
+      }
+    }
+
+    loadAdditionalContent()
+  }, [post._id, post.category, post.publishedAt])
 
   const portableTextComponents = {
     types: {
@@ -216,6 +240,33 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
               </CardContent>
             </Card>
           </div>
+
+          {/* Share Buttons */}
+          <div className="flex justify-center py-8">
+            <ShareButtons
+              url={typeof window !== 'undefined' ? window.location.href : ''}
+              title={post.title}
+            />
+          </div>
+
+          {/* CTA Section */}
+          <div>
+            <ArticleCTA />
+          </div>
+
+          {/* Related Articles */}
+          {relatedPosts.length > 0 && (
+            <div>
+              <RelatedArticles posts={relatedPosts} />
+            </div>
+          )}
+
+          {/* Article Navigation */}
+          {(adjacentPosts.prev || adjacentPosts.next) && (
+            <div>
+              <ArticleNavigation prev={adjacentPosts.prev} next={adjacentPosts.next} />
+            </div>
+          )}
 
           {/* Back to Blog */}
           <div>

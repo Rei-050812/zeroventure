@@ -148,3 +148,38 @@ export async function getLatestNews() {
     }
   `)
 }
+
+// 関連記事を取得（同じカテゴリの記事）
+export async function getRelatedPosts(currentPostId: string, category: string, limit: number = 3) {
+  return client.fetch(`
+    *[_type == "post" && category == $category && _id != $currentPostId] | order(publishedAt desc) [0...$limit] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      category,
+      coverImage,
+      publishedAt
+    }
+  `, { category, currentPostId, limit })
+}
+
+// 前後の記事を取得
+export async function getAdjacentPosts(currentDate: string) {
+  return client.fetch(`
+    {
+      "prev": *[_type == "post" && publishedAt < $currentDate] | order(publishedAt desc) [0] {
+        _id,
+        title,
+        slug,
+        coverImage
+      },
+      "next": *[_type == "post" && publishedAt > $currentDate] | order(publishedAt asc) [0] {
+        _id,
+        title,
+        slug,
+        coverImage
+      }
+    }
+  `, { currentDate })
+}
