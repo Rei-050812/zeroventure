@@ -12,9 +12,6 @@ interface FormData {
   name: string
   email: string
   company: string
-  phone: string
-  projectType: string
-  budget: string
   timeline: string
   message: string
 }
@@ -23,36 +20,11 @@ interface FormErrors {
   [key: string]: string
 }
 
-const projectTypes = [
-  { value: 'lp', label: 'LP制作' },
-  { value: 'corporate', label: 'コーポレートサイト制作' },
-  { value: 'consulting', label: 'コンサルティング' },
-  { value: 'other', label: 'その他' }
-]
-
-const budgetRanges = [
-  { value: '300k', label: '30万円未満' },
-  { value: '300k-600k', label: '30万円〜60万円' },
-  { value: '600k-1m', label: '60万円〜100万円' },
-  { value: '1m+', label: '100万円以上' },
-  { value: 'consulting', label: '要相談' }
-]
-
-const timelines = [
-  { value: '1week', label: '1週間以内' },
-  { value: '1month', label: '1ヶ月以内' },
-  { value: '3months', label: '3ヶ月以内' },
-  { value: 'flexible', label: '時期は調整可能' }
-]
-
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     company: '',
-    phone: '',
-    projectType: '',
-    budget: '',
     timeline: '',
     message: ''
   })
@@ -72,10 +44,6 @@ export function ContactForm() {
       newErrors.email = 'メールアドレスを入力してください'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = '有効なメールアドレスを入力してください'
-    }
-
-    if (!formData.projectType) {
-      newErrors.projectType = 'プロジェクトの種類を選択してください'
     }
 
     if (!formData.message.trim()) {
@@ -144,8 +112,8 @@ export function ContactForm() {
             onClick={() => {
               setIsSubmitted(false)
               setFormData({
-                name: '', email: '', company: '', phone: '',
-                projectType: '', budget: '', timeline: '', message: ''
+                name: '', email: '', company: '',
+                timeline: '', message: ''
               })
             }}
             variant="outline"
@@ -214,12 +182,12 @@ export function ContactForm() {
         </AnimatedElement>
       </div>
 
-      {/* Company & Phone */}
+      {/* Company & Timeline */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedElement variants={fadeUp}>
           <div>
             <label htmlFor="company" className="block text-sm font-medium text-slate-900 mb-2">
-              会社名
+              会社名・団体名
             </label>
             <input
               type="text"
@@ -228,82 +196,8 @@ export function ContactForm() {
               value={formData.company}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-              placeholder="株式会社サンプル"
+              placeholder="株式会社サンプル（個人の場合は「個人」とご記入ください）"
             />
-          </div>
-        </AnimatedElement>
-
-        <AnimatedElement variants={fadeUp}>
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-slate-900 mb-2">
-              電話番号
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-              placeholder="090-1234-5678"
-            />
-          </div>
-        </AnimatedElement>
-      </div>
-
-      {/* Project Type */}
-      <AnimatedElement variants={fadeUp}>
-        <div>
-          <label htmlFor="projectType" className="block text-sm font-medium text-slate-900 mb-2">
-            プロジェクトの種類 <span className="text-red-400">*</span>
-          </label>
-          <select
-            id="projectType"
-            name="projectType"
-            value={formData.projectType}
-            onChange={handleChange}
-            className={cn(
-              "w-full px-4 py-3 bg-white border-2 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200",
-              errors.projectType ? "border-red-500" : "border-gray-300 focus:border-primary"
-            )}
-          >
-            <option value="">選択してください</option>
-            {projectTypes.map((type) => (
-              <option key={type.value} value={type.value} className="text-black">
-                {type.label}
-              </option>
-            ))}
-          </select>
-          {errors.projectType && (
-            <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
-              <AlertCircle size={16} />
-              {errors.projectType}
-            </p>
-          )}
-        </div>
-      </AnimatedElement>
-
-      {/* Budget & Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <AnimatedElement variants={fadeUp}>
-          <div>
-            <label htmlFor="budget" className="block text-sm font-medium text-slate-900 mb-2">
-              ご予算
-            </label>
-            <select
-              id="budget"
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-            >
-              <option value="">選択してください</option>
-              {budgetRanges.map((range) => (
-                <option key={range.value} value={range.value} className="text-black">
-                  {range.label}
-                </option>
-              ))}
-            </select>
           </div>
         </AnimatedElement>
 
@@ -312,20 +206,15 @@ export function ContactForm() {
             <label htmlFor="timeline" className="block text-sm font-medium text-slate-900 mb-2">
               希望納期
             </label>
-            <select
+            <input
+              type="text"
               id="timeline"
               name="timeline"
               value={formData.timeline}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
-            >
-              <option value="">選択してください</option>
-              {timelines.map((timeline) => (
-                <option key={timeline.value} value={timeline.value} className="text-black">
-                  {timeline.label}
-                </option>
-              ))}
-            </select>
+              className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
+              placeholder="例：1ヶ月以内、3ヶ月程度、相談したい など"
+            />
           </div>
         </AnimatedElement>
       </div>
