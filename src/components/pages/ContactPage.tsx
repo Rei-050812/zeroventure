@@ -18,9 +18,9 @@ export function ContactPage() {
                   お問い合わせ
                 </h1>
                 <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                  プロジェクトについてお気軽にご相談ください。
+                  お気軽にご相談ください。
                   <br />
-                  お客様のご要望に合わせた最適なソリューションをご提案いたします。
+                  初めての方も安心してご相談いただけます。
                 </p>
               </AnimatedElement>
             </div>
@@ -91,61 +91,6 @@ export function ContactPage() {
               </AnimatedElement>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedElement variants={fadeUp}>
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">
-                よくあるご質問
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">
-                    制作期間はどのくらいですか？
-                  </h3>
-                  <p className="text-slate-600 text-sm">
-                    プロジェクトの規模により異なりますが、LP制作で1-2週間、
-                    コーポレートサイトで2-4週間程度が目安です。
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">
-                    料金はどのように決まりますか？
-                  </h3>
-                  <p className="text-slate-600 text-sm">
-                    ご要望をお聞きした上で、最適なプランをご提案いたします。
-                    無料でお見積もりをご提供しています。
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">
-                    修正対応はありますか？
-                  </h3>
-                  <p className="text-slate-600 text-sm">
-                    制作期間中は無制限で修正対応いたします。
-                    公開後も一定期間のサポートを含んでいます。
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">
-                    遠方からでも依頼できますか？
-                  </h3>
-                  <p className="text-slate-600 text-sm">
-                    はい、全国どこからでもご依頼いただけます。
-                    オンラインでの打ち合わせも対応しています。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </AnimatedElement>
         </div>
       </section>
     </div>
