@@ -13,7 +13,6 @@ interface NewsItem {
   slug: { current: string }
   body: any[]
   important: boolean
-  coverImage?: any
   publishedAt: string
 }
 
@@ -135,21 +134,6 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
               <span>{new Date(news.publishedAt).toLocaleDateString('ja-JP')}</span>
             </div>
           </div>
-
-          {/* Cover Image */}
-          {news.coverImage && (
-            <div>
-              <div className="aspect-video bg-gray-200 relative overflow-hidden rounded-lg">
-                <Image
-                  src={news.coverImage.asset ? urlFor(news.coverImage).width(1200).height(675).url() : news.coverImage}
-                  alt={news.coverImage.alt || news.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          )}
 
           {/* Body Content */}
           <div>

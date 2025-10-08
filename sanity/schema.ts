@@ -343,22 +343,6 @@ export const news = {
       initialValue: false
     },
     {
-      name: 'coverImage',
-      type: 'image',
-      title: 'カバー画像',
-      options: {
-        hotspot: true
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: '代替テキスト',
-          description: 'アクセシビリティとSEOのために重要です',
-        }
-      ]
-    },
-    {
       name: 'reducedMotion',
       type: 'boolean',
       title: 'アニメーション抑制',

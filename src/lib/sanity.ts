@@ -130,7 +130,6 @@ export async function getNews() {
       slug,
       body,
       important,
-      coverImage,
       publishedAt
     }
   `)
@@ -157,7 +156,6 @@ export async function getNewsBySlug(slug: string) {
       slug,
       body,
       important,
-      coverImage,
       publishedAt
     }
   `, { slug })
