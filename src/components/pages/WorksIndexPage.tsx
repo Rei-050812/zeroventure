@@ -134,26 +134,29 @@ export function WorksIndexPage() {
 
   return (
     <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <AnimatedElement
-          variants={containerStagger}
-          className="space-y-16"
-        >
-          {/* Header */}
-          <div className="text-center">
-            <AnimatedElement variants={fadeUp}>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                Works
-              </h1>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                これまでに手がけた制作事例をご紹介します。
-                <br />
-                多様な業種・目的に合わせて、最適なWebサイトを制作しています。
-              </p>
-            </AnimatedElement>
-          </div>
+      {/* Header Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedElement variants={containerStagger}>
+            <div className="text-center">
+              <AnimatedElement variants={fadeUp}>
+                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                  Works
+                </h1>
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                  これまでに手がけた制作事例をご紹介します。
+                  <br />
+                  多様な業種・目的に合わせて、最適なWebサイトを制作しています。
+                </p>
+              </AnimatedElement>
+            </div>
+          </AnimatedElement>
+        </div>
+      </section>
 
-          {/* Category Filter */}
+      {/* Category Filter Section */}
+      <section className="py-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={fadeUp}>
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map((category) => (
@@ -171,8 +174,12 @@ export function WorksIndexPage() {
               ))}
             </div>
           </AnimatedElement>
+        </div>
+      </section>
 
-          {/* Works Grid */}
+      {/* Works Grid Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement
             variants={containerStagger}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -180,7 +187,7 @@ export function WorksIndexPage() {
             {filteredWorks.map((work, index) => (
               <AnimatedElement key={work._id} variants={fadeUp}>
                 <Link href={`/works/${work.slug.current}`} className="block h-full">
-                  <Card className={`group overflow-hidden h-full cursor-pointer ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+                  <Card className="group overflow-hidden h-full cursor-pointer bg-white">
                     {/* Cover Image */}
                     <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
                       {work.coverImage ? (
@@ -247,8 +254,8 @@ export function WorksIndexPage() {
               </AnimatedElement>
             ))}
           </AnimatedElement>
-        </AnimatedElement>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }
