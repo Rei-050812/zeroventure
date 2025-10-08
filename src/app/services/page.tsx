@@ -164,7 +164,7 @@ export default function ServicesPage() {
                       <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                         {service.description}
                       </p>
-                      <ul className="space-y-3 mb-8">
+                      <ul className="space-y-3">
                         {service.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-center gap-3">
                             <Check className="w-5 h-5 text-primary" />
@@ -172,12 +172,6 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <Button size="lg">
-                        <Link href={`/contact?plan=${service.id}`} className="flex items-center gap-2">
-                          お問い合わせ
-                          <ArrowRight size={20} />
-                        </Link>
-                      </Button>
                     </div>
                   </div>
                 </AnimatedElement>
