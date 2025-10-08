@@ -180,7 +180,7 @@ export function WorksIndexPage() {
             {filteredWorks.map((work, index) => (
               <AnimatedElement key={work._id} variants={fadeUp}>
                 <Link href={`/works/${work.slug.current}`} className="block h-full">
-                  <Card className="group overflow-hidden h-full cursor-pointer">
+                  <Card className={`group overflow-hidden h-full cursor-pointer ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
                     {/* Cover Image */}
                     <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
                       {work.coverImage ? (

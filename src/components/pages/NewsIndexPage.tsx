@@ -83,7 +83,7 @@ export function NewsIndexPage() {
                 {newsItems.map((news, index) => (
                   <AnimatedElement key={news._id} variants={fadeUp}>
                     <Link href={`/news/${news.slug.current}`} className="block">
-                      <Card className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer" hover={false}>
+                      <Card className={`border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`} hover={false}>
                         <CardContent className="p-6">
                           <div className="flex flex-col md:flex-row md:items-start gap-4">
                             <div className="flex-shrink-0">
