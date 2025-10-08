@@ -18,7 +18,7 @@ export function ArticleCTA() {
       <div className="flex justify-center">
         <Button size="lg">
           <Link href="/contact" className="flex items-center gap-2">
-            無料相談を申し込む
+            無料相談する
             <ArrowRight size={20} />
           </Link>
         </Button>

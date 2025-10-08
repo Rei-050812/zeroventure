@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Tag, List } from 'lucide-react'
+import { ArrowLeft, Calendar, Tag, List, ChevronDown } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/Card'
 import { ShareButtons } from '@/components/ui/ShareButtons'
 import { RelatedArticles } from '@/components/ui/RelatedArticles'
@@ -50,6 +50,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
   const headings = extractHeadings(post.body)
   const [relatedPosts, setRelatedPosts] = useState<any[]>([])
   const [adjacentPosts, setAdjacentPosts] = useState<{ prev: any | null; next: any | null }>({ prev: null, next: null })
+  const [isTocOpen, setIsTocOpen] = useState(false)
 
   useEffect(() => {
     async function loadAdditionalContent() {
@@ -200,31 +201,44 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
             <div>
               <Card className="bg-slate-50" hover={false}>
                 <CardContent className="pt-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <List size={20} className="text-primary" />
-                    <h2 className="text-xl font-bold text-slate-900">目次</h2>
-                  </div>
-                  <nav>
-                    <ul className="space-y-2">
-                      {headings.map((heading) => {
-                        const text = getHeadingText(heading)
-                        const level = heading.style === 'h1' ? 0 : heading.style === 'h2' ? 1 : heading.style === 'h3' ? 2 : 3
-                        return (
-                          <li
-                            key={heading._key}
-                            style={{ paddingLeft: `${level * 1}rem` }}
-                          >
-                            <a
-                              href={`#${heading._key}`}
-                              className="text-slate-700 hover:text-primary transition-colors duration-200 inline-block py-1"
+                  <button
+                    onClick={() => setIsTocOpen(!isTocOpen)}
+                    className="flex items-center justify-between w-full group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <List size={20} className="text-primary" />
+                      <h2 className="text-xl font-bold text-slate-900">目次</h2>
+                    </div>
+                    <ChevronDown
+                      size={20}
+                      className={`text-slate-600 transition-transform duration-200 ${
+                        isTocOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isTocOpen && (
+                    <nav className="mt-4">
+                      <ul className="space-y-2">
+                        {headings.map((heading) => {
+                          const text = getHeadingText(heading)
+                          const level = heading.style === 'h1' ? 0 : heading.style === 'h2' ? 1 : heading.style === 'h3' ? 2 : 3
+                          return (
+                            <li
+                              key={heading._key}
+                              style={{ paddingLeft: `${level * 1}rem` }}
                             >
-                              {text}
-                            </a>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </nav>
+                              <a
+                                href={`#${heading._key}`}
+                                className="text-slate-700 hover:text-primary transition-colors duration-200 inline-block py-1"
+                              >
+                                {text}
+                              </a>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </nav>
+                  )}
                 </CardContent>
               </Card>
             </div>
