@@ -3,7 +3,7 @@
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { ContactForm } from '@/components/ui/ContactForm'
 import { fadeUp, containerStagger } from '@/lib/animations'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Mail, Clock } from 'lucide-react'
 
 export function ContactPage() {
   return (
@@ -46,22 +46,9 @@ export function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-slate-900 mb-1">メール</h3>
-                      <p className="text-slate-600">hello@zeroventure.jp</p>
+                      <p className="text-slate-600">r-numanou@zero-venture.com</p>
                       <p className="text-sm text-slate-500 mt-1">
-                        24時間以内に返信いたします
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#4CC9F0] bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-[#4CC9F0]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-slate-900 mb-1">電話</h3>
-                      <p className="text-slate-600">03-XXXX-XXXX</p>
-                      <p className="text-sm text-slate-500 mt-1">
-                        平日 10:00 - 18:00
+                        なるべく早く返信いたします
                       </p>
                     </div>
                   </div>
@@ -72,7 +59,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-slate-900 mb-1">営業時間</h3>
-                      <p className="text-slate-600">平日 10:00 - 18:00</p>
+                      <p className="text-slate-600">平日 9:00 - 18:00</p>
                       <p className="text-sm text-slate-500 mt-1">
                         土日祝日はお休みをいただいております
                       </p>
@@ -85,24 +72,9 @@ export function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-slate-900 mb-1">所在地</h3>
-                      <p className="text-slate-600">
-                        東京都渋谷区
-                        <br />
-                        （詳細住所は打ち合わせ時にお伝えします）
-                      </p>
+                      <p className="text-slate-600">千葉市緑区</p>
                     </div>
                   </div>
-                </div>
-
-                {/* Response Time */}
-                <div className="mt-8 p-6 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-slate-900 mb-2">
-                    レスポンスタイム
-                  </h3>
-                  <p className="text-sm text-slate-600">
-                    お問い合わせをいただいてから、通常24時間以内にご返信いたします。
-                    お急ぎの場合は、お電話でのご連絡もお受けしております。
-                  </p>
                 </div>
               </AnimatedElement>
             </div>
