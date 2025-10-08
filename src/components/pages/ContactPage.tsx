@@ -7,26 +7,30 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 export function ContactPage() {
   return (
-    <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <AnimatedElement
-          variants={containerStagger}
-          className="space-y-16"
-        >
-          {/* Header */}
-          <div className="text-center">
-            <AnimatedElement variants={fadeUp}>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                お問い合わせ
-              </h1>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                プロジェクトについてお気軽にご相談ください。
-                <br />
-                お客様のご要望に合わせた最適なソリューションをご提案いたします。
-              </p>
-            </AnimatedElement>
-          </div>
+    <div className="min-h-screen bg-white">
+      {/* Header Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedElement variants={containerStagger}>
+            <div className="text-center">
+              <AnimatedElement variants={fadeUp}>
+                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                  お問い合わせ
+                </h1>
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                  プロジェクトについてお気軽にご相談ください。
+                  <br />
+                  お客様のご要望に合わせた最適なソリューションをご提案いたします。
+                </p>
+              </AnimatedElement>
+            </div>
+          </AnimatedElement>
+        </div>
+      </section>
 
+      {/* Contact Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div className="lg:col-span-1">
@@ -115,8 +119,12 @@ export function ContactPage() {
               </AnimatedElement>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* FAQ Section */}
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={fadeUp}>
             <div className="bg-gray-50 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">
@@ -166,8 +174,8 @@ export function ContactPage() {
               </div>
             </div>
           </AnimatedElement>
-        </AnimatedElement>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

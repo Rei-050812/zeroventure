@@ -133,9 +133,9 @@ export function WorksIndexPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="py-12 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedElement variants={containerStagger}>
             <div className="text-center">
