@@ -35,7 +35,7 @@ export function ContactPage() {
             {/* Contact Information */}
             <div className="lg:col-span-1">
               <AnimatedElement variants={fadeUp}>
-                <h2 className="text-2xl font-bold text-slate-900 mb-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center lg:text-left">
                   お気軽にご連絡ください
                 </h2>
 
