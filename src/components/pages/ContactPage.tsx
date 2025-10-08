@@ -15,7 +15,7 @@ export function ContactPage() {
             <div className="text-center">
               <AnimatedElement variants={fadeUp}>
                 <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                  お問い合わせ
+                  Contact
                 </h1>
                 <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                   お気軽にご相談ください。
