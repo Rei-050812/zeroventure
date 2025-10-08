@@ -119,7 +119,7 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
           {/* Description */}
           {work.description && work.description.length > 0 && (
             <div>
-              <Card>
+              <Card hover={false}>
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold text-slate-900 mb-4">詳細</h2>
                   <div className="prose prose-slate max-w-none">
@@ -132,7 +132,7 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
 
           {/* Tech Stack */}
           <div>
-            <Card>
+            <Card hover={false}>
               <CardContent className="pt-6">
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">使用技術</h2>
                 <div className="flex flex-wrap gap-3">
@@ -152,7 +152,7 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
           {/* External Link */}
           {work.url && (
             <div>
-              <Card className="bg-gradient-to-r from-primary/5 to-purple-600/5">
+              <Card className="bg-gradient-to-r from-primary/5 to-purple-600/5" hover={false}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>

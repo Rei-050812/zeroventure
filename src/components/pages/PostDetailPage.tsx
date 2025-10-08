@@ -174,7 +174,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
           {/* Table of Contents */}
           {post.toc && headings.length > 0 && (
             <div>
-              <Card className="bg-slate-50">
+              <Card className="bg-slate-50" hover={false}>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-2 mb-4">
                     <List size={20} className="text-primary" />
@@ -208,7 +208,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
 
           {/* Body Content */}
           <div>
-            <Card>
+            <Card hover={false}>
               <CardContent className="pt-6">
                 <div className="max-w-none">
                   <PortableText value={post.body} components={portableTextComponents} />
