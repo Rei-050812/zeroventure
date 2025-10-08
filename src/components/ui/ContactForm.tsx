@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Send, Check, AlertCircle } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
@@ -12,7 +13,16 @@ interface FormData {
   name: string
   email: string
   company: string
+  plan: string
   message: string
+}
+
+const planNames: { [key: string]: string } = {
+  'lp': 'LP Plan',
+  'portfolio': 'Portfolio Site Plan',
+  'recruit': 'Recruit Site Plan',
+  'media': 'Media Site Plan',
+  'corporate': 'Corporate Site Plan'
 }
 
 interface FormErrors {
@@ -20,16 +30,26 @@ interface FormErrors {
 }
 
 export function ContactForm() {
+  const searchParams = useSearchParams()
+  const planParam = searchParams.get('plan')
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     company: '',
+    plan: '',
     message: ''
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (planParam && planNames[planParam]) {
+      setFormData(prev => ({ ...prev, plan: planParam }))
+    }
+  }, [planParam])
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
@@ -110,7 +130,7 @@ export function ContactForm() {
             onClick={() => {
               setIsSubmitted(false)
               setFormData({
-                name: '', email: '', company: '', message: ''
+                name: '', email: '', company: '', plan: planParam || '', message: ''
               })
             }}
             variant="outline"
@@ -124,6 +144,21 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Selected Plan Display */}
+      {formData.plan && planNames[formData.plan] && (
+        <AnimatedElement variants={fadeUp}>
+          <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-4">
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-primary" />
+              <div>
+                <p className="text-sm text-slate-600">選択プラン</p>
+                <p className="text-lg font-semibold text-slate-900">{planNames[formData.plan]}</p>
+              </div>
+            </div>
+          </div>
+        </AnimatedElement>
+      )}
+
       {/* Name & Email */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedElement variants={fadeUp}>

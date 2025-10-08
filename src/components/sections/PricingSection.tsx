@@ -9,6 +9,7 @@ import { fadeUp, containerStagger } from '@/lib/animations'
 
 const pricingPlans = [
   {
+    id: 'lp',
     name: 'LP Plan',
     description: '成果を最短で引き出す1ページ完結型サイト',
     originalPrice: '80,000',
@@ -25,6 +26,7 @@ const pricingPlans = [
     buttonText: 'このプランで相談する'
   },
   {
+    id: 'portfolio',
     name: 'Portfolio Site Plan',
     description: '作品や実績を引き立てるクリエイター向けサイト',
     originalPrice: '100,000',
@@ -41,6 +43,7 @@ const pricingPlans = [
     buttonText: 'このプランで相談する'
   },
   {
+    id: 'recruit',
     name: 'Recruit Site Plan',
     description: '会社の魅力を伝えて人材を惹きつける採用サイト',
     originalPrice: '150,000',
@@ -57,6 +60,7 @@ const pricingPlans = [
     buttonText: 'このプランで相談する'
   },
   {
+    id: 'media',
     name: 'Media Site Plan',
     description: '記事更新でアクセスを増やす情報発信サイト',
     originalPrice: '180,000',
@@ -73,6 +77,7 @@ const pricingPlans = [
     buttonText: 'このプランで相談する'
   },
   {
+    id: 'corporate',
     name: 'Corporate Site Plan',
     description: '企業の信頼とブランドを確立する公式サイト',
     originalPrice: '200,000',
@@ -170,7 +175,7 @@ export function PricingSection() {
                         size="lg"
                         className="w-full"
                       >
-                        <Link href="/contact" className="flex items-center gap-2 justify-center w-full">
+                        <Link href={`/contact?plan=${plan.id}`} className="flex items-center gap-2 justify-center w-full">
                           {plan.buttonText}
                           <ArrowRight size={18} />
                         </Link>
@@ -239,7 +244,7 @@ export function PricingSection() {
                         size="lg"
                         className="w-full"
                       >
-                        <Link href="/contact" className="flex items-center gap-2 justify-center w-full">
+                        <Link href={`/contact?plan=${plan.id}`} className="flex items-center gap-2 justify-center w-full">
                           {plan.buttonText}
                           <ArrowRight size={18} />
                         </Link>

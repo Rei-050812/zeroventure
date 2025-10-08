@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 const pricingPlans = [
   {
+    id: 'lp',
     name: 'LP Plan',
     description: '成果を最短で引き出す1ページ完結型サイト',
     originalPrice: '80,000',
@@ -32,6 +33,7 @@ const pricingPlans = [
     detail: '1ページ完結で、商品・サービスの購入やお問い合わせを最大化します。お問い合わせボタンを効果的に配置し、広告から訪れた人が迷わず行動できる仕組みを作ります。'
   },
   {
+    id: 'portfolio',
     name: 'Portfolio Site Plan',
     description: '作品や実績を引き立てるクリエイター向けサイト',
     originalPrice: '100,000',
@@ -51,6 +53,7 @@ const pricingPlans = [
     detail: '約3〜5ページ構成で、作品を美しく見せることに特化したサイトです。作品の魅力を最大限に引き出す表示方法で、仕事の依頼につながる個人サイトを作ります。'
   },
   {
+    id: 'recruit',
     name: 'Recruit Site Plan',
     description: '会社の魅力を伝えて人材を惹きつける採用サイト',
     originalPrice: '150,000',
@@ -70,6 +73,7 @@ const pricingPlans = [
     detail: '約5〜7ページ構成で、求職者の応募を促進する採用専用サイトです。応募までの流れをわかりやすく設計し、会社の雰囲気をリアルに伝えます。'
   },
   {
+    id: 'media',
     name: 'Media Site Plan',
     description: '記事更新でアクセスを増やす情報発信サイト',
     originalPrice: '180,000',
@@ -89,6 +93,7 @@ const pricingPlans = [
     detail: 'トップページ＋記事投稿機能を備えた情報発信サイトです。記事を通じて検索流入を増やし、長期的な集客の基盤を作ります。更新マニュアルと記事テンプレート付きで運用も安心です。'
   },
   {
+    id: 'corporate',
     name: 'Corporate Site Plan',
     description: '企業の信頼とブランドを確立する公式サイト',
     originalPrice: '200,000',
@@ -293,7 +298,7 @@ export default function PricingPage() {
                         size="lg"
                         className="w-full"
                       >
-                        <Link href="/contact" className="flex items-center gap-2 justify-center w-full">
+                        <Link href={`/contact?plan=${plan.id}`} className="flex items-center gap-2 justify-center w-full">
                           {plan.buttonText}
                           <ArrowRight size={18} />
                         </Link>
@@ -360,7 +365,7 @@ export default function PricingPage() {
                         size="lg"
                         className="w-full"
                       >
-                        <Link href="/contact" className="flex items-center gap-2 justify-center w-full">
+                        <Link href={`/contact?plan=${plan.id}`} className="flex items-center gap-2 justify-center w-full">
                           {plan.buttonText}
                           <ArrowRight size={18} />
                         </Link>
