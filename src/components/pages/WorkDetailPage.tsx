@@ -3,9 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Calendar, User, Clock } from 'lucide-react'
-import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardContent } from '@/components/ui/Card'
-import { fadeUp, containerStagger } from '@/lib/animations'
 import { urlFor } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 
@@ -29,12 +27,35 @@ interface WorkDetailPageProps {
 }
 
 export function WorkDetailPage({ work }: WorkDetailPageProps) {
+  const portableTextComponents = {
+    types: {
+      image: ({ value }: any) => {
+        return (
+          <div className="my-8">
+            <Image
+              src={urlFor(value).width(800).url()}
+              alt={value.alt || ''}
+              width={800}
+              height={450}
+              className="rounded-lg w-full h-auto"
+            />
+            {value.caption && (
+              <p className="text-center text-sm text-slate-600 mt-2">
+                {value.caption}
+              </p>
+            )}
+          </div>
+        )
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <AnimatedElement variants={containerStagger} className="space-y-12">
+        <div className="space-y-12">
           {/* Back Button */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <Link
               href="/works"
               className="inline-flex items-center text-slate-600 hover:text-primary transition-colors duration-200"
@@ -42,24 +63,24 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
               <ArrowLeft size={20} className="mr-2" />
               Works一覧に戻る
             </Link>
-          </AnimatedElement>
+          </div>
 
           {/* Category Badge */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <span className="inline-block bg-primary text-white text-sm px-4 py-2 rounded-full font-medium">
               {work.category}
             </span>
-          </AnimatedElement>
+          </div>
 
           {/* Title */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
               {work.title}
             </h1>
-          </AnimatedElement>
+          </div>
 
           {/* Meta Information */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <div className="flex flex-wrap gap-6 text-slate-600">
               {work.client && (
                 <div className="flex items-center gap-2">
@@ -78,51 +99,39 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
                 <span>{new Date(work.publishedAt).toLocaleDateString('ja-JP')}</span>
               </div>
             </div>
-          </AnimatedElement>
+          </div>
 
           {/* Cover Image */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <div className="aspect-video bg-gray-200 relative overflow-hidden rounded-lg">
               {work.coverImage && (
                 <Image
                   src={work.coverImage.asset ? urlFor(work.coverImage).width(1200).height(675).url() : work.coverImage}
-                  alt={work.title}
+                  alt={work.coverImage.alt || work.title}
                   fill
                   className="object-cover"
                   priority
                 />
               )}
             </div>
-          </AnimatedElement>
-
-          {/* Summary */}
-          <AnimatedElement variants={fadeUp}>
-            <Card>
-              <CardContent className="pt-6">
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">概要</h2>
-                <p className="text-slate-600 text-lg leading-relaxed">
-                  {work.summary}
-                </p>
-              </CardContent>
-            </Card>
-          </AnimatedElement>
+          </div>
 
           {/* Description */}
           {work.description && work.description.length > 0 && (
-            <AnimatedElement variants={fadeUp}>
+            <div>
               <Card>
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold text-slate-900 mb-4">詳細</h2>
                   <div className="prose prose-slate max-w-none">
-                    <PortableText value={work.description} />
+                    <PortableText value={work.description} components={portableTextComponents} />
                   </div>
                 </CardContent>
               </Card>
-            </AnimatedElement>
+            </div>
           )}
 
           {/* Tech Stack */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <Card>
               <CardContent className="pt-6">
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">使用技術</h2>
@@ -138,11 +147,11 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
                 </div>
               </CardContent>
             </Card>
-          </AnimatedElement>
+          </div>
 
           {/* External Link */}
           {work.url && (
-            <AnimatedElement variants={fadeUp}>
+            <div>
               <Card className="bg-gradient-to-r from-primary/5 to-purple-600/5">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
@@ -162,11 +171,11 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
                   </div>
                 </CardContent>
               </Card>
-            </AnimatedElement>
+            </div>
           )}
 
           {/* Back to Works */}
-          <AnimatedElement variants={fadeUp}>
+          <div>
             <div className="text-center pt-8">
               <Link
                 href="/works"
@@ -176,8 +185,8 @@ export function WorkDetailPage({ work }: WorkDetailPageProps) {
                 Works一覧に戻る
               </Link>
             </div>
-          </AnimatedElement>
-        </AnimatedElement>
+          </div>
+        </div>
       </div>
     </div>
   )

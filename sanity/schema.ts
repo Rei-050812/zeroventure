@@ -37,6 +37,14 @@ export const work = {
       options: {
         hotspot: true
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: '代替テキスト',
+          description: 'アクセシビリティとSEOのために重要です',
+        }
+      ],
       validation: (rule: any) => rule.required()
     },
     {
@@ -46,6 +54,25 @@ export const work = {
       of: [
         {
           type: 'block'
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: '代替テキスト',
+              description: 'アクセシビリティとSEOのために重要です',
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'キャプション',
+            }
+          ]
         }
       ]
     },
@@ -161,6 +188,14 @@ export const post = {
       options: {
         hotspot: true
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: '代替テキスト',
+          description: 'アクセシビリティとSEOのために重要です',
+        }
+      ],
       validation: (rule: any) => rule.required()
     },
     {
@@ -170,6 +205,25 @@ export const post = {
       of: [
         {
           type: 'block'
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: '代替テキスト',
+              description: 'アクセシビリティとSEOのために重要です',
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'キャプション',
+            }
+          ]
         }
       ],
       validation: (rule: any) => rule.required()
@@ -258,6 +312,25 @@ export const news = {
       of: [
         {
           type: 'block'
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: '代替テキスト',
+              description: 'アクセシビリティとSEOのために重要です',
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'キャプション',
+            }
+          ]
         }
       ],
       validation: (rule: any) => rule.required()
@@ -281,7 +354,15 @@ export const news = {
       title: 'カバー画像',
       options: {
         hotspot: true
-      }
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: '代替テキスト',
+          description: 'アクセシビリティとSEOのために重要です',
+        }
+      ]
     },
     {
       name: 'reducedMotion',

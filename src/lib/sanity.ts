@@ -100,6 +100,7 @@ export async function getPostBySlug(slug: string) {
       body,
       category,
       coverImage,
+      toc,
       metaDescription,
       publishedAt
     }
