@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
+    id: 'lp',
     title: 'LP制作',
     description: '商品やサービスの魅力をしっかり伝え、お問い合わせや購入につながるランディングページを制作します。シンプルな設計で訪問者が自然に行動でき、広告やキャンペーンとの相性も抜群です。',
     icon: TrendingUp,
@@ -26,6 +27,7 @@ const services = [
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
+    id: 'portfolio',
     title: 'ポートフォリオサイト制作',
     description: 'クリエイターや個人の方の作品や実績を魅力的に見せるサイトを制作します。シンプルで直感的なデザインで作品の良さを引き出し、仕事の依頼や新しいチャンスにつなげます。',
     icon: PenTool,
@@ -39,6 +41,7 @@ const services = [
     gradient: 'from-purple-500 to-pink-500'
   },
   {
+    id: 'recruit',
     title: 'リクルートサイト制作',
     description: '会社の魅力や雰囲気を伝え、応募につながる採用専用サイトを制作します。求職者が必要な情報にすぐアクセスでき、社員インタビューで会社の雰囲気をリアルに伝えます。',
     icon: Users,
@@ -52,6 +55,7 @@ const services = [
     gradient: 'from-green-500 to-teal-500'
   },
   {
+    id: 'media',
     title: 'メディアサイト制作',
     description: '記事を発信してアクセスを集め、集客やブランド認知を広げるサイトを制作します。記事を整理しやすく、読者が欲しい情報にすぐたどり着ける設計です。',
     icon: FileText,
@@ -65,6 +69,7 @@ const services = [
     gradient: 'from-orange-500 to-red-500'
   },
   {
+    id: 'corporate',
     title: 'コーポレートサイト制作',
     description: '会社やお店の信頼を高める、本格的なホームページを制作します。必要なページをしっかりカバーし、ブランドイメージに合わせたデザインで長期的に運用できます。',
     icon: Building2,
@@ -168,7 +173,7 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                       <Button size="lg">
-                        <Link href="/contact" className="flex items-center gap-2">
+                        <Link href={`/contact?plan=${service.id}`} className="flex items-center gap-2">
                           お問い合わせ
                           <ArrowRight size={20} />
                         </Link>
