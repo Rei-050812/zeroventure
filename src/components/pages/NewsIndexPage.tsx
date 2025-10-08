@@ -63,9 +63,7 @@ export function NewsIndexPage() {
                 News
               </h1>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                ZEROVENTUREの最新ニュースと
-                <br />
-                重要なお知らせをご確認ください
+                最新のお知らせをご確認ください
               </p>
             </AnimatedElement>
           </AnimatedElement>
