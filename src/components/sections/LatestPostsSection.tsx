@@ -78,72 +78,71 @@ function PostCard({ post }: { post: BlogPost }) {
   const postSummary = post.excerpt || post.summary
 
   return (
-    <Card className="group overflow-hidden h-full">
-      {/* Cover Image */}
-      <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
-        {post.coverImage ? (
-          <Image
-            src={post.coverImage.asset ? urlFor(post.coverImage).width(600).height(400).url() : post.coverImage}
-            alt={post.coverImage.alt || post.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
-            <span className="text-slate-700 font-bold text-lg">
-              {post.title}
-            </span>
-          </div>
-        )}
-        {post.category && (
-          <div className="absolute top-4 right-4">
-            <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
-              {post.category}
-            </span>
-          </div>
-        )}
-      </div>
-
-      <CardHeader>
-        <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
-          <Calendar size={16} />
-          {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-        </div>
-        <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
-          {post.title}
-        </CardTitle>
-        {postSummary && (
-          <CardDescription className="line-clamp-3">
-            {postSummary}
-          </CardDescription>
-        )}
-      </CardHeader>
-
-      {post.tags && post.tags.length > 0 && (
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {post.tags.slice(0, 3).map((tag: string, index: number) => (
-              <span
-                key={index}
-                className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
-              >
-                {tag}
+    <Link href={href} className="block h-full">
+      <Card className="group overflow-hidden h-full cursor-pointer">
+        {/* Cover Image */}
+        <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
+          {post.coverImage ? (
+            <Image
+              src={post.coverImage.asset ? urlFor(post.coverImage).width(600).height(400).url() : post.coverImage}
+              alt={post.coverImage.alt || post.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+              <span className="text-slate-700 font-bold text-lg">
+                {post.title}
               </span>
-            ))}
-          </div>
-        </CardContent>
-      )}
+            </div>
+          )}
+          {post.category && (
+            <div className="absolute top-4 right-4">
+              <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+                {post.category}
+              </span>
+            </div>
+          )}
+        </div>
 
-      <CardFooter>
-        <Link
-          href={href}
-          className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1"
-        >
-          続きを読む
-          <ArrowRight size={14} />
-        </Link>
-      </CardFooter>
-    </Card>
+        <CardHeader>
+          <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
+            <Calendar size={16} />
+            {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+          </div>
+          <CardTitle className="group-hover:text-primary transition-colors duration-200 line-clamp-2">
+            {post.title}
+          </CardTitle>
+          {postSummary && (
+            <CardDescription className="line-clamp-3">
+              {postSummary}
+            </CardDescription>
+          )}
+        </CardHeader>
+
+        {post.tags && post.tags.length > 0 && (
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.slice(0, 3).map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </CardContent>
+        )}
+
+        <CardFooter>
+          <span className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium inline-flex items-center gap-1">
+            続きを読む
+            <ArrowRight size={14} />
+          </span>
+        </CardFooter>
+      </Card>
+    </Link>
   )
 }
 

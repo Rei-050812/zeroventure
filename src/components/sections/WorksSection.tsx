@@ -124,71 +124,71 @@ export function WorksSection() {
           >
             {works.map((work, index) => (
               <AnimatedElement key={work._id || `work-${index}`} variants={fadeUp}>
-                <Card className="group overflow-hidden">
-                  {/* Cover Image */}
-                  <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
-                    {work.coverImage ? (
-                      <Image
-                        src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
-                        alt={work.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
-                        <span className="text-slate-700 font-bold text-lg">
-                          {work.title}
+                <Link href={`/works/${work.slug.current}`} className="block h-full">
+                  <Card className="group overflow-hidden h-full cursor-pointer">
+                    {/* Cover Image */}
+                    <div className="aspect-video bg-gray-200 relative overflow-hidden mb-4">
+                      {work.coverImage ? (
+                        <Image
+                          src={work.coverImage.asset ? urlFor(work.coverImage).width(600).height(400).url() : work.coverImage}
+                          alt={work.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+                          <span className="text-slate-700 font-bold text-lg">
+                            {work.title}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+                          {work.category || 'Web制作'}
                         </span>
                       </div>
-                    )}
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
-                        {work.category || 'Web制作'}
+                    </div>
+
+                    <CardHeader>
+                      <CardTitle className="group-hover:text-primary transition-colors duration-200">
+                        {work.title}
+                      </CardTitle>
+                      <CardDescription>
+                        {work.summary}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {work.techStack?.map((tech, techIndex) => (
+                          <span
+                            key={`${work._id || index}-tech-${techIndex}-${tech}`}
+                            className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+
+                    <CardFooter className="flex justify-between items-center">
+                      <span className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium">
+                        詳細を見る
                       </span>
-                    </div>
-                  </div>
-
-                  <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors duration-200">
-                      {work.title}
-                    </CardTitle>
-                    <CardDescription>
-                      {work.summary}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {work.techStack?.map((tech, techIndex) => (
-                        <span
-                          key={`${work._id || index}-tech-${techIndex}-${tech}`}
-                          className="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded"
+                      {work.url && (
+                        <a
+                          href={work.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-slate-400 hover:text-slate-600 transition-colors duration-200"
                         >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-
-                  <CardFooter className="flex justify-between items-center">
-                    <Link
-                      href={`/works/${work.slug.current}`}
-                      className="text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
-                    >
-                      詳細を見る
-                    </Link>
-                    {work.url && (
-                      <a
-                        href={work.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-slate-600 transition-colors duration-200"
-                      >
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                  </CardFooter>
-                </Card>
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </CardFooter>
+                  </Card>
+                </Link>
               </AnimatedElement>
             ))}
           </AnimatedElement>
