@@ -84,16 +84,25 @@ export function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // ここで実際のフォーム送信処理を行う
-      // 例: fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+      // API経由でメール送信
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      // デモ用の遅延
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'メール送信に失敗しました')
+      }
 
       setIsSubmitted(true)
     } catch (error) {
       console.error('Form submission error:', error)
-      setErrors({ submit: 'エラーが発生しました。もう一度お試しください。' })
+      setErrors({ submit: error instanceof Error ? error.message : 'エラーが発生しました。もう一度お試しください。' })
     } finally {
       setIsSubmitting(false)
     }
@@ -124,7 +133,7 @@ export function ContactForm() {
           <p className="text-slate-600 mb-6">
             お問い合わせありがとうございます。
             <br />
-            24時間以内にご返信いたします。
+            担当者より改めてご連絡させていただきます。
           </p>
           <Button
             onClick={() => {
@@ -275,14 +284,9 @@ export function ContactForm() {
             disabled={isSubmitting}
           >
             {isSubmitting ? (
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="flex items-center gap-2"
-              >
-                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full" />
+              <div className="flex items-center gap-2">
                 送信中...
-              </motion.div>
+              </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Send size={20} />
