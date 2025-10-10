@@ -15,7 +15,7 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://zero-venture.com'),
   title: {
-    default: 'ZEROVENTURE | 信頼できるWebサイト制作',
+    default: 'ZEROVENTURE | フリーランスWebデザイナー',
     template: '%s | ZEROVENTURE'
   },
   description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     url: 'https://zero-venture.com',
     siteName: 'ZEROVENTURE',
-    title: 'ZEROVENTURE | 信頼できるWebサイト制作',
+    title: 'ZEROVENTURE | フリーランスWebデザイナー',
     description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
     images: [
       {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZEROVENTURE | 信頼できるWebサイト制作',
+    title: 'ZEROVENTURE | フリーランスWebデザイナー',
     description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。',
     images: ['/twitter-image.jpg'],
   },
