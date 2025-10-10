@@ -8,10 +8,10 @@ import { TrendingUp, PenTool, Users, FileText, Building2, ArrowRight, Check } fr
 
 export const metadata: Metadata = {
   title: 'Services',
-  description: 'LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルで、目的に合わせたWebサイトを制作。シンプルな設計で成果につながるサイトを提供します。',
+  description: '5つのサイトスタイルから、目的に合わせた最適なWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートサイトに対応。シンプルな設計で成果につながるサイトを提供します。',
   openGraph: {
     title: 'Services | ZEROVENTURE',
-    description: 'LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルで、目的に合わせたWebサイトを制作。',
+    description: '5つのサイトスタイルから、目的に合わせた最適なWebサイトを制作。',
     url: 'https://zero-venture.com/services',
   },
 }

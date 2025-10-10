@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: 'ZEROVENTURE | 信頼できるWebサイト制作',
     template: '%s | ZEROVENTURE'
   },
-  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルで、あなたのビジネスを支えます。',
+  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
   keywords: ['Webサイト制作', 'LP制作', 'ポートフォリオサイト', 'リクルートサイト', 'メディアサイト', 'コーポレートサイト', 'ホームページ制作'],
   authors: [{ name: 'ZEROVENTURE' }],
   creator: 'ZEROVENTURE',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: 'https://zero-venture.com',
     siteName: 'ZEROVENTURE',
     title: 'ZEROVENTURE | 信頼できるWebサイト制作',
-    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルであなたのビジネスを支えます。',
+    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
     images: [
       {
         url: '/opengraph-image.jpg',
