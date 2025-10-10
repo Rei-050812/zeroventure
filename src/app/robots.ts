@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/admin/', '/_next/'],
+      disallow: ['/api/', '/studio/', '/_next/'],
     },
-    sitemap: 'https://zeroventure.com/sitemap.xml',
+    sitemap: 'https://zero-venture.com/sitemap.xml',
   }
 }

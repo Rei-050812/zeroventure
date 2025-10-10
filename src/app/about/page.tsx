@@ -8,8 +8,13 @@ import { ArrowRight, MapPin, Mail } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Profile | ZEROVENTURE',
-  description: 'ZEROVENTUREの代表プロフィール、経歴、スキル、実績について紹介します。',
+  title: 'Profile',
+  description: 'ZEROVENTUREの代表プロフィール、経歴、スキル、実績について紹介します。ベンチャー企業向けWEB制作のプロフェッショナル。',
+  openGraph: {
+    title: 'Profile | ZEROVENTURE',
+    description: 'ZEROVENTUREの代表プロフィール、経歴、スキル、実績について紹介します。',
+    url: 'https://zero-venture.com/about',
+  },
 }
 
 const skills = [

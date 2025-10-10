@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const baseUrl = 'https://zeroventure.com'
+const baseUrl = 'https://zero-venture.com'
 
 // Mock data (実際の運用時はSanityから取得)
 const works = [
@@ -27,6 +27,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/pricing`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/works`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
@@ -36,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/news`,

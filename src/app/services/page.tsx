@@ -7,8 +7,13 @@ import { fadeUp, containerStagger } from '@/lib/animations'
 import { TrendingUp, PenTool, Users, FileText, Building2, ArrowRight, Check } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Services | ZEROVENTURE',
-  description: 'ZEROVENTUREが提供するLP制作・コーポレートサイト制作サービスの詳細をご紹介します。',
+  title: 'Services',
+  description: 'ZEROVENTUREが提供するLP制作・コーポレートサイト制作サービスの詳細をご紹介します。ベンチャー企業の成長を加速させるWEB制作サービス。',
+  openGraph: {
+    title: 'Services | ZEROVENTURE',
+    description: 'ZEROVENTUREが提供するLP制作・コーポレートサイト制作サービスの詳細をご紹介します。',
+    url: 'https://zero-venture.com/services',
+  },
 }
 
 const services = [

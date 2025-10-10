@@ -7,8 +7,13 @@ import { fadeUp, containerStagger } from '@/lib/animations'
 import { Check, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Pricing | ZEROVENTURE',
-  description: 'ZEROVENTUREの料金プランをご確認ください。目的に合わせて選べる5つのプランで、あなたのビジネスに最適なWebサイトを提供します。',
+  title: 'Pricing',
+  description: 'ZEROVENTUREの料金プランをご確認ください。目的に合わせて選べる5つのプランで、あなたのビジネスに最適なWebサイトを提供します。期間限定20%OFFキャンペーン実施中。',
+  openGraph: {
+    title: 'Pricing | ZEROVENTURE',
+    description: 'ZEROVENTUREの料金プランをご確認ください。目的に合わせて選べる5つのプラン。',
+    url: 'https://zero-venture.com/pricing',
+  },
 }
 
 const pricingPlans = [
