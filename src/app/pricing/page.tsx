@@ -27,6 +27,7 @@ const pricingPlans = [
     originalPrice: '80,000',
     price: '64,000',
     period: '（税込）',
+    deliveryTime: '2〜3週間',
     features: [
       'スマホ対応のシンプルデザイン',
       '必要な情報を1ページに集約',
@@ -47,6 +48,7 @@ const pricingPlans = [
     originalPrice: '100,000',
     price: '80,000',
     period: '（税込）',
+    deliveryTime: '3〜4週間',
     features: [
       'ギャラリー機能で作品を表示',
       'プロフィール・自己紹介ページ',
@@ -67,6 +69,7 @@ const pricingPlans = [
     originalPrice: '150,000',
     price: '120,000',
     period: '（税込）',
+    deliveryTime: '4〜6週間',
     features: [
       '求人一覧・詳細ページを用意',
       '社員紹介や会社紹介ページ',
@@ -87,6 +90,7 @@ const pricingPlans = [
     originalPrice: '180,000',
     price: '144,000',
     period: '（税込）',
+    deliveryTime: '6〜8週間',
     features: [
       '記事投稿機能',
       '関連記事や人気記事の表示',
@@ -107,6 +111,7 @@ const pricingPlans = [
     originalPrice: '200,000',
     price: '160,000',
     period: '（税込）',
+    deliveryTime: '8〜10週間',
     features: [
       '企業の強みを伝える情報設計',
       'ご要望に合わせたデザイン調整',
@@ -297,6 +302,10 @@ export default function PricingPage() {
                             <span className="text-slate-600 text-sm">{feature}</span>
                           </div>
                         ))}
+                        <div className="flex items-start gap-2">
+                          <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-600 text-sm">制作期間の目安：{plan.deliveryTime}</span>
+                        </div>
                       </div>
                     </CardContent>
 
@@ -364,6 +373,10 @@ export default function PricingPage() {
                             <span className="text-slate-600 text-sm">{feature}</span>
                           </div>
                         ))}
+                        <div className="flex items-start gap-2">
+                          <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-600 text-sm">制作期間の目安：{plan.deliveryTime}</span>
+                        </div>
                       </div>
                     </CardContent>
 

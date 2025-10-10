@@ -20,8 +20,8 @@ const footerLinks = {
     links: [
       { name: 'プロフィール', href: '/about' },
       { name: 'お問い合わせ', href: '/contact' },
-      { name: '特定商取引法に基づく表記', href: '/legal/tokushoho' },
-      { name: 'プライバシーポリシー', href: '/legal/privacy' },
+      { name: '特定商取引法に基づく表記', href: '/legal/specified-commercial-transaction' },
+      { name: 'プライバシーポリシー', href: '/legal/privacy-policy' },
     ]
   },
   content: {

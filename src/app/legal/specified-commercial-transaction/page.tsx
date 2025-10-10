@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: '特定商取引法に基づく表記',
   description: 'ZEROVENTUREの特定商取引法に基づく表記。事業者情報、販売価格、支払方法、返品・キャンセルポリシーなどを記載しています。',
   alternates: {
-    canonical: 'https://zero-venture.com/legal/tokushoho',
+    canonical: 'https://zero-venture.com/legal/specified-commercial-transaction',
   },
   robots: {
     index: true,

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'プライバシーポリシー',
   description: 'ZEROVENTUREのプライバシーポリシー。個人情報の取り扱い、収集方法、利用目的、Google Analyticsの使用について記載しています。',
   alternates: {
-    canonical: 'https://zero-venture.com/legal/privacy',
+    canonical: 'https://zero-venture.com/legal/privacy-policy',
   },
   robots: {
     index: true,
