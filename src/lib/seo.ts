@@ -22,14 +22,14 @@ interface SEOProps {
 
 const defaultSEO = {
   title: 'ZEROVENTURE',
-  description: 'ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。LP制作、コーポレートサイト制作で事業成長をサポートします。',
-  keywords: ['WEB制作', 'LP制作', 'ランディングページ', 'コーポレートサイト', 'ベンチャー', 'スタートアップ', 'ブランディング', 'Next.js'],
-  siteUrl: 'https://zeroventure.com',
+  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートの5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
+  keywords: ['Webサイト制作', 'LP制作', 'ポートフォリオサイト', 'リクルートサイト', 'メディアサイト', 'コーポレートサイト', 'ホームページ制作', 'Next.js'],
+  siteUrl: 'https://zero-venture.com',
   siteName: 'ZEROVENTURE',
   locale: 'ja_JP',
   twitterHandle: '@zeroventure',
   image: {
-    url: '/og-image.png',
+    url: '/opengraph-image.jpg',
     alt: 'ZEROVENTURE',
     width: 1200,
     height: 630
@@ -122,20 +122,18 @@ export function generateStructuredData(type: 'Organization' | 'WebSite' | 'BlogP
         address: {
           '@type': 'PostalAddress',
           addressCountry: 'JP',
-          addressRegion: '東京都',
-          addressLocality: '渋谷区'
+          addressRegion: '千葉県',
+          addressLocality: '千葉市緑区'
         },
         contactPoint: {
           '@type': 'ContactPoint',
-          telephone: '+81-3-1234-5678',
           contactType: 'customer service',
-          email: 'info@zeroventure.com',
+          email: 'r-numanou@zero-venture.com',
           availableLanguage: ['Japanese']
         },
         sameAs: [
-          'https://twitter.com/zeroventure',
-          'https://instagram.com/zeroventure',
-          'https://linkedin.com/company/zeroventure'
+          'https://x.com/zero_venture',
+          'https://www.instagram.com/zeroventure_official/'
         ]
       }
 

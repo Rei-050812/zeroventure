@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: 'ZEROVENTURE | フリーランスWebデザイナー',
     template: '%s | ZEROVENTURE'
   },
-  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
+  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートの5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。初回限定価格でご提供中。',
   keywords: ['Webサイト制作', 'LP制作', 'ポートフォリオサイト', 'リクルートサイト', 'メディアサイト', 'コーポレートサイト', 'ホームページ制作'],
   authors: [{ name: 'ZEROVENTURE' }],
   creator: 'ZEROVENTURE',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: 'https://zero-venture.com',
     siteName: 'ZEROVENTURE',
     title: 'ZEROVENTURE | フリーランスWebデザイナー',
-    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
+    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートの5つのサイトスタイルから、あなたのビジネスに最適なサイトをご提案します。',
     images: [
       {
         url: '/opengraph-image.jpg',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ZEROVENTURE | フリーランスWebデザイナー',
-    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。',
+    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。5つのサイトスタイルからビジネスに最適なサイトをご提案。',
     images: ['/twitter-image.jpg'],
   },
   robots: {

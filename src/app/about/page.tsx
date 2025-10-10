@@ -9,10 +9,13 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Profile',
-  description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。シンプルで使いやすいサイト制作を得意としています。',
+  description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について詳しく紹介します。システム開発とWeb制作の両方を経験。デザイン性と操作性を両立したWebサイト制作へ。AIも活用しながら、シンプルで使いやすく、成果につながるサイト制作を得意としています。',
+  alternates: {
+    canonical: 'https://zero-venture.com/about',
+  },
   openGraph: {
     title: 'Profile | ZEROVENTURE',
-    description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。',
+    description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について詳しく紹介します。',
     url: 'https://zero-venture.com/about',
   },
 }
