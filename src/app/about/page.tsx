@@ -9,10 +9,10 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Profile',
-  description: 'ZEROVENTUREの代表プロフィール、経歴、スキル、実績について紹介します。ベンチャー企業向けWEB制作のプロフェッショナル。',
+  description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。シンプルで使いやすいサイト制作を得意としています。',
   openGraph: {
     title: 'Profile | ZEROVENTURE',
-    description: 'ZEROVENTUREの代表プロフィール、経歴、スキル、実績について紹介します。',
+    description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。',
     url: 'https://zero-venture.com/about',
   },
 }

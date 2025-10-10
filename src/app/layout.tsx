@@ -15,11 +15,11 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://zero-venture.com'),
   title: {
-    default: 'ZEROVENTURE | ベンチャー企業向けブランディング・WEB制作',
+    default: 'ZEROVENTURE | 信頼できるWebサイト制作',
     template: '%s | ZEROVENTURE'
   },
-  description: 'ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。LP制作、コーポレートサイト制作で事業成長をサポートします。',
-  keywords: ['WEB制作', 'LP制作', 'コーポレートサイト', 'ベンチャー企業', 'ブランディング', 'Next.js', 'React'],
+  description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルで、あなたのビジネスを支えます。',
+  keywords: ['Webサイト制作', 'LP制作', 'ポートフォリオサイト', 'リクルートサイト', 'メディアサイト', 'コーポレートサイト', 'ホームページ制作'],
   authors: [{ name: 'ZEROVENTURE' }],
   creator: 'ZEROVENTURE',
   publisher: 'ZEROVENTURE',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     url: 'https://zero-venture.com',
     siteName: 'ZEROVENTURE',
-    title: 'ZEROVENTURE | ベンチャー企業向けブランディング・WEB制作',
-    description: 'ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。LP制作、コーポレートサイト制作で事業成長をサポートします。',
+    title: 'ZEROVENTURE | 信頼できるWebサイト制作',
+    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのスタイルであなたのビジネスを支えます。',
     images: [
       {
         url: '/opengraph-image.jpg',
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZEROVENTURE | ベンチャー企業向けブランディング・WEB制作',
-    description: 'ZEROVENTUREは、ベンチャー企業向けのブランディング・WEB制作を専門とする制作会社です。',
+    title: 'ZEROVENTURE | 信頼できるWebサイト制作',
+    description: 'シンプルかつ迷わない設計で、使いやすく成果につながるWebサイトを制作。',
     images: ['/twitter-image.jpg'],
   },
   robots: {

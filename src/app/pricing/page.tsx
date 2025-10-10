@@ -8,10 +8,10 @@ import { Check, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'ZEROVENTUREの料金プランをご確認ください。目的に合わせて選べる5つのプランで、あなたのビジネスに最適なWebサイトを提供します。期間限定20%OFFキャンペーン実施中。',
+  description: 'LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのプランをご用意。目的に合わせて選べる料金体系で、最適なWebサイトを提供します。期間限定20%OFF実施中。',
   openGraph: {
     title: 'Pricing | ZEROVENTURE',
-    description: 'ZEROVENTUREの料金プランをご確認ください。目的に合わせて選べる5つのプラン。',
+    description: 'LP、ポートフォリオ、リクルート、メディア、コーポレートサイトの5つのプランをご用意。',
     url: 'https://zero-venture.com/pricing',
   },
 }
