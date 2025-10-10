@@ -78,18 +78,12 @@ ZEROVENTURE
 Web: https://zero-venture.com
     `.trim()
 
-    // 送信先の設定
-    // 注: Resendの無料プランでは検証済みメールアドレスにのみ送信可能
-    const recipientEmail = process.env.NODE_ENV === 'production'
-      ? 'r-numanou@zero-venture.com'
-      : 'susukishima0836@gmail.com' // テスト環境ではResend登録アドレスに送信
-
     console.log('Attempting to send emails...')
 
     // 管理者向けメールを送信
     const adminEmail = await resend.emails.send({
-      from: 'ZEROVENTURE <onboarding@resend.dev>',
-      to: [recipientEmail],
+      from: 'ZEROVENTURE <noreply@zero-venture.com>',
+      to: ['r-numanou@zero-venture.com'],
       replyTo: email,
       subject: `【お問い合わせ】${name}様より`,
       text: adminEmailContent,
@@ -100,14 +94,9 @@ Web: https://zero-venture.com
     // 問い合わせ者への自動返信メールを送信
     let autoReply = null
     try {
-      // 開発環境では、Resendの制限により送信先も検証済みアドレスにする
-      const autoReplyRecipient = process.env.NODE_ENV === 'production'
-        ? email
-        : recipientEmail // テスト環境では管理者アドレスに送信
-
       autoReply = await resend.emails.send({
-        from: 'ZEROVENTURE <onboarding@resend.dev>',
-        to: [autoReplyRecipient],
+        from: 'ZEROVENTURE <noreply@zero-venture.com>',
+        to: [email],
         subject: '【ZEROVENTURE】お問い合わせを受け付けました',
         text: autoReplyContent,
       })
