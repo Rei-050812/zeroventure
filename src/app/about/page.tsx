@@ -255,13 +255,13 @@ export default function AboutPage() {
                       <p className="font-medium text-slate-900 mb-2">法的情報</p>
                       <div className="space-y-2">
                         <Link
-                          href="/legal/tokushoho"
+                          href="/legal/specified-commercial-transaction"
                           className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           特定商取引法に基づく表記
                         </Link>
                         <Link
-                          href="/legal/privacy"
+                          href="/legal/privacy-policy"
                           className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           プライバシーポリシー

@@ -46,36 +46,6 @@ export default function NotFound() {
           </Button>
         </div>
 
-        {/* Helpful Links */}
-        <div className="pt-8 border-t border-slate-200">
-          <p className="text-sm text-slate-500 mb-4">よく見られているページ</p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/services"
-              className="text-sm text-primary hover:underline"
-            >
-              サービス
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-sm text-primary hover:underline"
-            >
-              料金プラン
-            </Link>
-            <Link
-              href="/works"
-              className="text-sm text-primary hover:underline"
-            >
-              制作実績
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm text-primary hover:underline"
-            >
-              お問い合わせ
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   )
