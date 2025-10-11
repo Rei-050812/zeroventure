@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
@@ -25,6 +26,7 @@ const services = [
     title: 'LP制作',
     description: '商品やサービスの魅力をしっかり伝え、お問い合わせや購入につながるランディングページを制作します。シンプルな設計で訪問者が自然に行動でき、広告やキャンペーンとの相性も抜群です。',
     icon: TrendingUp,
+    image: '/images/service-landing-page.png',
     features: [
       '必要な情報を1ページに集約',
       '広告・キャンペーンと相性◎',
@@ -39,6 +41,7 @@ const services = [
     title: 'ポートフォリオサイト制作',
     description: 'クリエイターや個人の方の作品や実績を魅力的に見せるサイトを制作します。シンプルで直感的なデザインで作品の良さを引き出し、仕事の依頼や新しいチャンスにつなげます。',
     icon: PenTool,
+    image: '/images/service-portfolio.png',
     features: [
       'ギャラリー機能で作品を美しく表示',
       'プロフィールページで信頼感やストーリーを伝える',
@@ -53,6 +56,7 @@ const services = [
     title: 'リクルートサイト制作',
     description: '会社の魅力や雰囲気を伝え、応募につながる採用専用サイトを制作します。求職者が必要な情報にすぐアクセスでき、社員インタビューで会社の雰囲気をリアルに伝えます。',
     icon: Users,
+    image: '/images/service-recruitment.png',
     features: [
       '求人一覧・詳細ページで募集内容を明確に表示',
       '社員紹介や会社紹介ページで雰囲気を伝える',
@@ -67,6 +71,7 @@ const services = [
     title: 'メディアサイト制作',
     description: '記事を発信してアクセスを集め、集客やブランド認知を広げるサイトを制作します。記事を整理しやすく、読者が欲しい情報にすぐたどり着ける設計です。',
     icon: FileText,
+    image: '/images/service-media.png',
     features: [
       '記事投稿機能（カテゴリ・タグ対応）で情報を整理',
       '関連記事や人気記事の表示で回遊率を向上',
@@ -81,6 +86,7 @@ const services = [
     title: 'コーポレートサイト制作',
     description: '会社やお店の信頼を高める、本格的なホームページを制作します。必要なページをしっかりカバーし、ブランドイメージに合わせたデザインで長期的に運用できます。',
     icon: Building2,
+    image: '/images/service-corporate.png',
     features: [
       '会社に必要な基本ページを整備（会社概要・サービス紹介など）',
       'お知らせや実績を簡単に更新できる設計',
@@ -158,8 +164,14 @@ export default function ServicesPage() {
                     index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                   }`}>
                     <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                      <div className={`relative aspect-video rounded-xl overflow-hidden shadow-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center`}>
-                        <service.icon className="w-32 h-32 text-white opacity-90" strokeWidth={1.5} />
+                      <div className="relative aspect-video">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                       </div>
                     </div>
                     <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
