@@ -163,14 +163,32 @@ export default function ServicesPage() {
                   <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
                     index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                   }`}>
-                    <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                      <div className="relative aspect-video">
+                    <div className={`flex justify-center ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                      <div className="relative aspect-square w-4/5 rounded-lg" style={{
+                        border: '3px solid',
+                        borderColor: service.gradient === 'from-blue-500 to-cyan-500'
+                          ? '#3B82F6'
+                          : service.gradient === 'from-purple-500 to-pink-500'
+                          ? '#A855F7'
+                          : service.gradient === 'from-green-500 to-teal-500'
+                          ? '#14B8A6'
+                          : service.gradient === 'from-orange-500 to-red-500'
+                          ? '#F97316'
+                          : '#475569',
+                        boxShadow: `
+                          inset 0 2px 0 0 rgba(255, 255, 255, 0.6),
+                          inset 0 -2px 0 0 rgba(0, 0, 0, 0.15),
+                          0 8px 16px rgba(0, 0, 0, 0.12),
+                          0 0 0 1px rgba(255, 255, 255, 0.4) inset
+                        `,
+                        background: 'white',
+                      }}>
                         <Image
                           src={service.image}
                           alt={service.title}
                           fill
-                          className="object-contain"
-                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover rounded-md"
+                          sizes="(max-width: 768px) 80vw, 40vw"
                         />
                       </div>
                     </div>
