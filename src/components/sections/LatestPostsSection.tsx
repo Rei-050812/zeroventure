@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Calendar, ArrowRight, Tag } from 'lucide-react'
+import { Calendar, ArrowRight } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
@@ -20,6 +20,7 @@ interface BlogPost {
   summary?: string
   publishedAt: string
   category: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage?: any
   tags?: string[]
   type: string
@@ -29,6 +30,7 @@ interface NewsItem {
   _id: string
   title: string
   slug: { current: string }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any[]
   important: boolean
   publishedAt: string

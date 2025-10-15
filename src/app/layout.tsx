@@ -6,6 +6,9 @@ import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { generateStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 
+// 動的レンダリングを強制
+export const dynamic = 'force-dynamic'
+
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
   subsets: ["latin"],

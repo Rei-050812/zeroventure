@@ -17,7 +17,8 @@ interface Work {
   slug: { current: string }
   summary: string
   techStack: string[]
-  coverImage: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  coverImage: any
   url: string
   category: string
 }
@@ -78,7 +79,7 @@ export function WorksSection() {
         } else {
           setWorks(sanityWorks)
         }
-      } catch (error) {
+      } catch {
         setWorks(mockWorks)
       } finally {
         setLoading(false)

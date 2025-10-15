@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { motion } from 'framer-motion'
 import { Send, Check, AlertCircle } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Button } from '@/components/ui/Button'

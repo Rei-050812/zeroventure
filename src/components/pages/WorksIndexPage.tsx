@@ -3,10 +3,9 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ExternalLink, ArrowRight } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { AnimatedElement } from '@/components/ui/AnimatedElement'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
 import { fadeUp, containerStagger } from '@/lib/animations'
 import { getWorks, urlFor } from '@/lib/sanity'
 
@@ -17,6 +16,7 @@ interface Work {
   slug: { current: string }
   summary: string
   techStack: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage: string | any
   url: string
   category: string
@@ -101,7 +101,7 @@ export function WorksIndexPage() {
         } else {
           setWorks(mockWorks)
         }
-      } catch (error) {
+      } catch {
         setWorks(mockWorks)
       } finally {
         setLoading(false)
@@ -184,7 +184,7 @@ export function WorksIndexPage() {
             variants={containerStagger}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredWorks.map((work, index) => (
+            {filteredWorks.map((work) => (
               <AnimatedElement key={work._id} variants={fadeUp}>
                 <Link href={`/works/${work.slug.current}`} className="block h-full">
                   <Card className="group overflow-hidden h-full cursor-pointer bg-white">

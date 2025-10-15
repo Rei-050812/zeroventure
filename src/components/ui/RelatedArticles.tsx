@@ -12,6 +12,7 @@ interface Post {
   slug: { current: string }
   excerpt: string
   category: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage?: any
   publishedAt: string
 }

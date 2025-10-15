@@ -12,6 +12,7 @@ interface NewsItem {
   _id: string
   title: string
   slug: { current: string }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any[]
   important: boolean
   publishedAt: string
@@ -80,7 +81,7 @@ export function NewsIndexPage() {
               </div>
             ) : (
               <div className="space-y-6">
-                {newsItems.map((news, index) => (
+                {newsItems.map((news) => (
                   <AnimatedElement key={news._id} variants={fadeUp}>
                     <Link href={`/news/${news.slug.current}`} className="block">
                       <Card className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer" hover={false}>

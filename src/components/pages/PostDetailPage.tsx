@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Tag, List, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Calendar, List, ChevronDown } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/Card'
 import { ShareButtons } from '@/components/ui/ShareButtons'
 import { RelatedArticles } from '@/components/ui/RelatedArticles'
@@ -18,6 +18,7 @@ interface Heading {
   children: { text: string }[]
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function extractHeadings(body: any[]): Heading[] {
   return body.filter(
     (block) =>
@@ -35,8 +36,10 @@ interface Post {
   title: string
   slug: { current: string }
   excerpt?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any[]
   category: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage: any
   toc?: boolean
   publishedAt: string
@@ -48,7 +51,9 @@ interface PostDetailPageProps {
 
 export function PostDetailPage({ post }: PostDetailPageProps) {
   const headings = extractHeadings(post.body)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [relatedPosts, setRelatedPosts] = useState<any[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [adjacentPosts, setAdjacentPosts] = useState<{ prev: any | null; next: any | null }>({ prev: null, next: null })
   const [isTocOpen, setIsTocOpen] = useState(false)
 
@@ -71,6 +76,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
 
   const portableTextComponents = {
     types: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       image: ({ value }: any) => {
         return (
           <div className="my-8">
@@ -91,6 +97,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
       }
     },
     block: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h1: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -99,6 +106,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
           </h1>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h2: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -107,6 +115,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
           </h2>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h3: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -115,6 +124,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
           </h3>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h4: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -123,11 +133,13 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
           </h4>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       normal: ({ children }: any) => {
         return <p className="text-slate-700 leading-relaxed mb-4">{children}</p>
       }
     },
     marks: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       link: ({ children, value }: any) => {
         const target = value.href.startsWith('http') ? '_blank' : undefined
         return (

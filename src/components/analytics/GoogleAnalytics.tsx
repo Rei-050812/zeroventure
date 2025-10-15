@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { pageview, GA_TRACKING_ID } from '@/lib/gtag'
 
-export function GoogleAnalytics() {
+function GoogleAnalyticsInner() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -44,5 +44,13 @@ export function GoogleAnalytics() {
         }}
       />
     </>
+  )
+}
+
+export function GoogleAnalytics() {
+  return (
+    <Suspense fallback={null}>
+      <GoogleAnalyticsInner />
+    </Suspense>
   )
 }

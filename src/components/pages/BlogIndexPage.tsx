@@ -15,8 +15,10 @@ interface Post {
   title: string
   slug: { current: string }
   excerpt?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any[]
   category: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage: any
   publishedAt: string
 }
@@ -32,6 +34,7 @@ export function BlogIndexPage() {
       try {
         const sanityPosts = await getPosts()
         // slugがあるpostのみフィルター
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const validPosts = sanityPosts.filter((post: any) => post.slug?.current)
         setPosts(validPosts)
       } catch (error) {

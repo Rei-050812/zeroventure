@@ -75,7 +75,7 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
       url: fullUrl,
       siteName: defaultSEO.siteName,
       locale: defaultSEO.locale,
-      type: type as any,
+      type: type as 'website' | 'article',
       images: [
         {
           url: image.url.startsWith('http') ? image.url : `${defaultSEO.siteUrl}${image.url}`,
@@ -105,6 +105,7 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
   return metadata
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function generateStructuredData(type: 'Organization' | 'WebSite' | 'BlogPosting' | 'NewsArticle' | 'CreativeWork', data?: any) {
   const baseData = {
     '@context': 'https://schema.org',

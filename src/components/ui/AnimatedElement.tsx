@@ -12,15 +12,15 @@ interface AnimatedElementProps extends MotionProps {
   reducedMotionFallback?: 'fade' | 'none'
 }
 
-export const AnimatedElement = forwardRef<any, AnimatedElementProps>(
-  ({
+export const AnimatedElement = forwardRef<HTMLDivElement, AnimatedElementProps>(
+  (function AnimatedElementComponent({
     children,
     variants,
     className,
     as = 'div',
     reducedMotionFallback = 'fade',
     ...props
-  }, ref) => {
+  }, ref) {
     const { shouldReduceMotion } = useMotionContext()
     const MotionComponent = motion[as]
 
@@ -34,6 +34,7 @@ export const AnimatedElement = forwardRef<any, AnimatedElementProps>(
       : variants
 
     return (
+      // @ts-expect-error - Motion component type compatibility
       <MotionComponent
         ref={ref}
         className={className}
@@ -47,7 +48,7 @@ export const AnimatedElement = forwardRef<any, AnimatedElementProps>(
         {children}
       </MotionComponent>
     )
-  }
+  })
 )
 
 AnimatedElement.displayName = 'AnimatedElement'

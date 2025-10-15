@@ -4,11 +4,12 @@ import { NewsDetailPage } from '@/components/pages/NewsDetailPage'
 import { getNewsBySlug, getNews } from '@/lib/sanity'
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const news = await getNewsBySlug(params.slug)
+  const { slug } = await params
+  const news = await getNewsBySlug(slug)
 
   if (!news) {
     return {
@@ -24,13 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const newsItems = await getNews()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return newsItems.map((news: any) => ({
     slug: news.slug.current,
   }))
 }
 
 export default async function NewsPage({ params }: Props) {
-  const news = await getNewsBySlug(params.slug)
+  const { slug } = await params
+  const news = await getNewsBySlug(slug)
 
   if (!news) {
     notFound()

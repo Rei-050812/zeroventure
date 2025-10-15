@@ -5,8 +5,10 @@ declare global {
     gtag: (
       command: 'config' | 'event' | 'js' | 'set',
       targetId?: string | Date,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       config?: Record<string, any>
     ) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer: any[]
   }
 }
@@ -32,6 +34,7 @@ export const event = ({
   category?: string
   label?: string
   value?: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   custom_parameters?: Record<string, any>
 }) => {
   if (typeof window !== 'undefined' && window.gtag) {

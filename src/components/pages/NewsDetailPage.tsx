@@ -11,6 +11,7 @@ interface NewsItem {
   _id: string
   title: string
   slug: { current: string }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any[]
   important: boolean
   publishedAt: string
@@ -23,6 +24,7 @@ interface NewsDetailPageProps {
 export function NewsDetailPage({ news }: NewsDetailPageProps) {
   const portableTextComponents = {
     types: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       image: ({ value }: any) => {
         return (
           <div className="my-8">
@@ -43,6 +45,7 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
       }
     },
     block: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h1: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -51,6 +54,7 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
           </h1>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h2: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -59,6 +63,7 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
           </h2>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h3: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -67,6 +72,7 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
           </h3>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       h4: ({ children, value }: any) => {
         const id = value._key
         return (
@@ -75,11 +81,13 @@ export function NewsDetailPage({ news }: NewsDetailPageProps) {
           </h4>
         )
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       normal: ({ children }: any) => {
         return <p className="text-slate-700 leading-relaxed mb-4">{children}</p>
       }
     },
     marks: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       link: ({ children, value }: any) => {
         const target = value.href.startsWith('http') ? '_blank' : undefined
         return (

@@ -1,24 +1,9 @@
 import { MetadataRoute } from 'next'
+import { getWorks, getPosts, getNews } from '@/lib/sanity'
 
 const baseUrl = 'https://zero-venture.com'
 
-// Mock data (実際の運用時はSanityから取得)
-const works = [
-  { id: '1', updatedAt: '2024-01-15' },
-  { id: '2', updatedAt: '2024-01-10' },
-  { id: '3', updatedAt: '2024-01-05' },
-]
-
-const blogPosts = [
-  { id: '1', updatedAt: '2024-01-15' },
-  { id: '2', updatedAt: '2024-01-10' },
-]
-
-const newsItems = [
-  { id: '1', updatedAt: '2024-12-20' },
-]
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     {
       url: baseUrl,
@@ -70,26 +55,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const workPages = works.map((work) => ({
-    url: `${baseUrl}/works/${work.id}`,
-    lastModified: new Date(work.updatedAt),
+  try {
+    // Sanityから実際のデータを取得
+    const [works, blogPosts, newsItems] = await Promise.all([
+      getWorks(),
+      getPosts(),
+      getNews(),
+    ])
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const workPages = works.map((work: any) => ({
+    url: `${baseUrl}/works/${work.slug.current}`,
+    lastModified: work.publishedAt ? new Date(work.publishedAt) : new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
-  const blogPages = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified: new Date(post.updatedAt),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const blogPages = blogPosts.map((post: any) => ({
+    url: `${baseUrl}/blog/${post.slug.current}`,
+    lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 
-  const newsPages = newsItems.map((item) => ({
-    url: `${baseUrl}/news/${item.id}`,
-    lastModified: new Date(item.updatedAt),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const newsPages = newsItems.map((item: any) => ({
+    url: `${baseUrl}/news/${item.slug.current}`,
+    lastModified: item.publishedAt ? new Date(item.publishedAt) : new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }))
 
-  return [...staticPages, ...workPages, ...blogPages, ...newsPages]
+    return [...staticPages, ...workPages, ...blogPages, ...newsPages]
+  } catch (error) {
+    // エラー時は静的ページのみ返す
+    console.error('Sitemap generation error:', error)
+    return staticPages
+  }
 }

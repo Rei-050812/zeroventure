@@ -12,8 +12,10 @@ interface Work {
   title: string
   slug: { current: string }
   summary: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   description?: any[]
   techStack: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   coverImage: any
   url?: string
   category: string
@@ -29,6 +31,7 @@ interface WorkDetailPageProps {
 export function WorkDetailPage({ work }: WorkDetailPageProps) {
   const portableTextComponents = {
     types: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       image: ({ value }: any) => {
         return (
           <div className="my-8">

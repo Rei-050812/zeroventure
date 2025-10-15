@@ -9,6 +9,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const posts = await getPosts()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return posts.map((post: any) => ({
     slug: post.slug.current,
   }))

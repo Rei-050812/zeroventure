@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import { BlogIndexPage } from '@/components/pages/BlogIndexPage'
 
 export const metadata: Metadata = {
@@ -15,5 +16,9 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  return <BlogIndexPage />
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <BlogIndexPage />
+    </Suspense>
+  )
 }

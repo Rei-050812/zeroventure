@@ -11,6 +11,7 @@ export const work = {
       name: 'title',
       type: 'string',
       title: 'タイトル',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -20,6 +21,7 @@ export const work = {
       options: {
         source: 'title'
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     // コンテンツ
@@ -28,6 +30,7 @@ export const work = {
       type: 'text',
       title: '概要',
       description: '制作実績の概要（一覧表示で使用）。空欄の場合は詳細説明から自動抽出されます',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.max(200)
     },
     {
@@ -45,6 +48,7 @@ export const work = {
           description: 'アクセシビリティとSEOのために重要です',
         }
       ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -81,6 +85,7 @@ export const work = {
       type: 'array',
       title: '使用技術',
       of: [{ type: 'string' }],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required().min(1)
     },
     // 分類
@@ -97,6 +102,7 @@ export const work = {
           { title: 'コーポレートサイト', value: 'コーポレートサイト' }
         ]
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     // プロジェクト情報
@@ -121,6 +127,7 @@ export const work = {
       type: 'text',
       title: 'メタディスクリプション',
       description: 'SEO用の説明文（120-160文字推奨）。空欄の場合は概要が使用されます',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.max(160)
     },
     // 機能
@@ -136,6 +143,7 @@ export const work = {
       name: 'publishedAt',
       type: 'datetime',
       title: '公開日時',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     }
   ],
@@ -162,6 +170,7 @@ export const post = {
       name: 'title',
       type: 'string',
       title: 'タイトル',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -171,6 +180,7 @@ export const post = {
       options: {
         source: 'title'
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     // コンテンツ
@@ -179,6 +189,7 @@ export const post = {
       type: 'text',
       title: '要約',
       description: '記事の概要（一覧表示で使用）。空欄の場合は本文から自動抽出されます',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.max(200)
     },
     {
@@ -196,6 +207,7 @@ export const post = {
           description: 'アクセシビリティとSEOのために重要です',
         }
       ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -226,6 +238,7 @@ export const post = {
           ]
         }
       ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     // 分類
@@ -241,6 +254,7 @@ export const post = {
           { title: 'マーケティング', value: 'マーケティング' }
         ]
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     // SEO
@@ -249,6 +263,7 @@ export const post = {
       type: 'text',
       title: 'メタディスクリプション',
       description: 'SEO用の説明文（120-160文字推奨）。空欄の場合は要約が使用されます',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.max(160)
     },
     // 機能
@@ -270,6 +285,7 @@ export const post = {
       name: 'publishedAt',
       type: 'datetime',
       title: '公開日時',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     }
   ],
@@ -294,6 +310,7 @@ export const news = {
       name: 'title',
       type: 'string',
       title: 'タイトル',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -303,6 +320,7 @@ export const news = {
       options: {
         source: 'title'
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -333,6 +351,7 @@ export const news = {
           ]
         }
       ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     },
     {
@@ -353,6 +372,7 @@ export const news = {
       name: 'publishedAt',
       type: 'datetime',
       title: '公開日時',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validation: (rule: any) => rule.required()
     }
   ],
