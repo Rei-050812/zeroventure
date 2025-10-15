@@ -9,10 +9,13 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Profile',
-  description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。シンプルで使いやすいサイト制作を得意としています。',
+  description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について詳しく紹介します。システム開発とWeb制作の両方を経験。デザイン性と操作性を両立したWebサイト制作へ。AIも活用しながら、シンプルで使いやすく、成果につながるサイト制作を得意としています。',
+  alternates: {
+    canonical: 'https://zero-venture.com/about',
+  },
   openGraph: {
     title: 'Profile | ZEROVENTURE',
-    description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について紹介します。',
+    description: 'ZEROVENTUREの代表プロフィール、Web制作の経歴やスキル、実績について詳しく紹介します。',
     url: 'https://zero-venture.com/about',
   },
 }
@@ -252,13 +255,13 @@ export default function AboutPage() {
                       <p className="font-medium text-slate-900 mb-2">法的情報</p>
                       <div className="space-y-2">
                         <Link
-                          href="/legal/tokushoho"
+                          href="/legal/specified-commercial-transaction"
                           className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           特定商取引法に基づく表記
                         </Link>
                         <Link
-                          href="/legal/privacy"
+                          href="/legal/privacy-policy"
                           className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 block"
                         >
                           プライバシーポリシー

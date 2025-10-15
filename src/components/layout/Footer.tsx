@@ -20,8 +20,8 @@ const footerLinks = {
     links: [
       { name: 'プロフィール', href: '/about' },
       { name: 'お問い合わせ', href: '/contact' },
-      { name: '特定商取引法に基づく表記', href: '/legal/tokushoho' },
-      { name: 'プライバシーポリシー', href: '/legal/privacy' },
+      { name: '特定商取引法に基づく表記', href: '/legal/specified-commercial-transaction' },
+      { name: 'プライバシーポリシー', href: '/legal/privacy-policy' },
     ]
   },
   content: {
@@ -89,7 +89,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex space-x-4">
               <Link
-                href="https://x.com/zeroventure"
+                href="https://x.com/zero_venture"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -100,7 +100,7 @@ export function Footer() {
                 </svg>
               </Link>
               <Link
-                href="https://instagram.com/zeroventure"
+                href="https://instagram.com/zeroventure_official"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
