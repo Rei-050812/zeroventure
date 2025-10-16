@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
+// Edge Runtimeではなく、Node.js Runtimeを使用
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+// デバッグ用ログ
+console.log('API Route loaded, RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY)
+
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const planNames: { [key: string]: string } = {
@@ -12,6 +19,12 @@ const planNames: { [key: string]: string } = {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('=== Contact API Route Called ===')
+  console.log('Environment check:', {
+    hasResendKey: !!process.env.RESEND_API_KEY,
+    keyPrefix: process.env.RESEND_API_KEY?.substring(0, 5)
+  })
+
   try {
     // APIキーの確認
     if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'your_resend_api_key_here') {
@@ -31,6 +44,15 @@ export async function POST(request: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: '必須項目が入力されていません' },
+        { status: 400 }
+      )
+    }
+
+    // メールアドレスのバリデーション
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: '有効なメールアドレスを入力してください' },
         { status: 400 }
       )
     }
@@ -80,9 +102,16 @@ Web: https://zero-venture.com
 
     console.log('Attempting to send emails...')
 
-    // 管理者向けメールを送信
+    // Resendのテストメールアドレスを使用（ドメイン認証不要）
+    // 注意: onboarding@resend.dev は管理者メールアドレスにのみ送信可能
+    const fromEmail = 'onboarding@resend.dev'
+
+    console.log('Using from email:', fromEmail)
+    console.log('Note: Using Resend test mode - only admin email will be sent')
+
+    // 管理者向けメールを送信（テストモードでは確実に送信可能）
     const adminEmail = await resend.emails.send({
-      from: 'ZEROVENTURE <noreply@zero-venture.com>',
+      from: fromEmail,
       to: ['r-numanou@zero-venture.com'],
       replyTo: email,
       subject: `【お問い合わせ】${name}様より`,
@@ -91,32 +120,34 @@ Web: https://zero-venture.com
 
     console.log('Admin email sent:', adminEmail)
 
-    // 問い合わせ者への自動返信メールを送信
-    let autoReply = null
-    try {
-      autoReply = await resend.emails.send({
-        from: 'ZEROVENTURE <noreply@zero-venture.com>',
-        to: [email],
-        subject: '【ZEROVENTURE】お問い合わせを受け付けました',
-        text: autoReplyContent,
-      })
+    // テストモードでは顧客への自動返信は送信されないため、スキップ
+    console.log('Auto-reply skipped in test mode (Resend limitation without domain verification)')
 
-      console.log('Auto-reply email sent:', autoReply)
-    } catch (autoReplyError) {
-      console.error('Auto-reply email failed (non-critical):', autoReplyError)
-      // 自動返信の失敗は致命的ではないので、処理を継続
-    }
+    // 注意: ドメイン認証を完了すると、顧客への自動返信も送信可能になります
+    let autoReply = null
 
     return NextResponse.json({
       success: true,
+      message: 'お問い合わせを受け付けました',
       adminEmail,
       autoReply
     }, { status: 200 })
   } catch (error) {
     console.error('Email sending error:', error)
+
+    // エラーの詳細をログに記録
+    if (error instanceof Error) {
+      console.error('Error name:', error.name)
+      console.error('Error message:', error.message)
+      console.error('Error stack:', error.stack)
+    }
+
     const errorMessage = error instanceof Error ? error.message : 'メール送信に失敗しました'
     return NextResponse.json(
-      { error: errorMessage, details: error },
+      {
+        error: 'メール送信に失敗しました。しばらく時間をおいて再度お試しいただくか、直接お問い合わせください。',
+        details: errorMessage
+      },
       { status: 500 }
     )
   }
