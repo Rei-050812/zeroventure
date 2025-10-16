@@ -102,14 +102,12 @@ Web: https://zero-venture.com
 
     console.log('Attempting to send emails...')
 
-    // Resendのテストメールアドレスを使用（ドメイン認証不要）
-    // 注意: onboarding@resend.dev は管理者メールアドレスにのみ送信可能
-    const fromEmail = 'onboarding@resend.dev'
+    // 認証済みドメインからメール送信
+    const fromEmail = 'ZEROVENTURE <noreply@zero-venture.com>'
 
     console.log('Using from email:', fromEmail)
-    console.log('Note: Using Resend test mode - only admin email will be sent')
 
-    // 管理者向けメールを送信（テストモードでは確実に送信可能）
+    // 管理者向けメールを送信
     const adminEmail = await resend.emails.send({
       from: fromEmail,
       to: ['r-numanou@zero-venture.com'],
@@ -120,11 +118,21 @@ Web: https://zero-venture.com
 
     console.log('Admin email sent:', adminEmail)
 
-    // テストモードでは顧客への自動返信は送信されないため、スキップ
-    console.log('Auto-reply skipped in test mode (Resend limitation without domain verification)')
-
-    // 注意: ドメイン認証を完了すると、顧客への自動返信も送信可能になります
+    // 問い合わせ者への自動返信メールを送信
     let autoReply = null
+    try {
+      autoReply = await resend.emails.send({
+        from: fromEmail,
+        to: [email],
+        subject: '【ZEROVENTURE】お問い合わせを受け付けました',
+        text: autoReplyContent,
+      })
+
+      console.log('Auto-reply email sent:', autoReply)
+    } catch (autoReplyError) {
+      console.error('Auto-reply email failed (non-critical):', autoReplyError)
+      // 自動返信の失敗は致命的ではないので、処理を継続
+    }
 
     return NextResponse.json({
       success: true,
