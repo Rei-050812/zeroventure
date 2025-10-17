@@ -147,7 +147,7 @@ export function PostDetailPage({ post }: PostDetailPageProps) {
             href={value.href}
             target={target}
             rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-            className="text-primary hover:text-primary/80 underline"
+            className="text-primary hover:text-primary/80 underline break-words"
           >
             {children}
           </a>
