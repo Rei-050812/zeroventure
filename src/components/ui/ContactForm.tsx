@@ -14,6 +14,7 @@ interface FormData {
   company: string
   plan: string
   message: string
+  agreePrivacy: boolean
 }
 
 const planNames: { [key: string]: string } = {
@@ -37,7 +38,8 @@ export function ContactForm() {
     email: '',
     company: '',
     plan: '',
-    message: ''
+    message: '',
+    agreePrivacy: false
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -67,6 +69,10 @@ export function ContactForm() {
       newErrors.message = 'お問い合わせ内容を入力してください'
     } else if (formData.message.trim().length < 10) {
       newErrors.message = '10文字以上で入力してください'
+    }
+
+    if (!formData.agreePrivacy) {
+      newErrors.agreePrivacy = 'プライバシーポリシーへの同意が必要です'
     }
 
     setErrors(newErrors)
@@ -110,8 +116,13 @@ export function ContactForm() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    const { name, value, type } = e.target
+    const checked = (e.target as HTMLInputElement).checked
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }))
 
     // Clear error when user starts typing
     if (errors[name]) {
@@ -138,7 +149,7 @@ export function ContactForm() {
             onClick={() => {
               setIsSubmitted(false)
               setFormData({
-                name: '', email: '', company: '', plan: planParam || '', message: ''
+                name: '', email: '', company: '', plan: planParam || '', message: '', agreePrivacy: false
               })
             }}
             variant="outline"
@@ -262,6 +273,52 @@ export function ContactForm() {
             <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
               <AlertCircle size={16} />
               {errors.message}
+            </p>
+          )}
+        </div>
+      </AnimatedElement>
+
+      {/* Privacy Policy Agreement */}
+      <AnimatedElement variants={fadeUp}>
+        <div id="agreePrivacy">
+          <div
+            onClick={() => setFormData(prev => ({ ...prev, agreePrivacy: !prev.agreePrivacy }))}
+            className={cn(
+              "border-2 rounded-lg p-4 cursor-pointer transition-all duration-200",
+              formData.agreePrivacy
+                ? "border-primary bg-primary/5"
+                : errors.agreePrivacy
+                  ? "border-red-500"
+                  : "border-gray-300 hover:border-primary/50"
+            )}
+          >
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="agreePrivacy-input"
+                name="agreePrivacy"
+                checked={formData.agreePrivacy}
+                onChange={handleChange}
+                className="mt-1 w-4 h-4 text-primary focus:ring-primary rounded"
+              />
+              <label htmlFor="agreePrivacy-input" className="flex-1 cursor-pointer text-slate-900">
+                <a
+                  href="https://zero-venture.com/legal/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  プライバシーポリシー
+                </a>
+                に同意する <span className="text-red-400">*</span>
+              </label>
+            </div>
+          </div>
+          {errors.agreePrivacy && (
+            <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+              <AlertCircle size={16} />
+              {errors.agreePrivacy}
             </p>
           )}
         </div>
